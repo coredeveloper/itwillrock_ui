@@ -108,6 +108,9 @@ class CheckBoxState extends State<NeumorphicCheckBox>
                 }
               },
               onTap: () {
+                if (_animationController.lastElapsedDuration?.inSeconds == 0) {
+                  return;
+                }
                 if (_animationController.isCompleted) {
                   switchTo(false);
                 } else {
@@ -192,15 +195,7 @@ class CheckBoxState extends State<NeumorphicCheckBox>
                       CustomPaint(
                         painter: NeumorphicContainerPainter(
                             color: _colorTween.value,
-                            borderGradient: const LinearGradient(
-                                stops: [0.1, 0.76, 1],
-                                begin: FractionalOffset.topLeft,
-                                end: FractionalOffset.bottomRight,
-                                colors: [
-                                  Color(0xA0FFFFFF),
-                                  Color(0x10FFFFFF),
-                                  Color(0x51000000),
-                                ]),
+                            borderGradient: AppColors.shadowGradient,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                     elementHeightOne / 4)),
