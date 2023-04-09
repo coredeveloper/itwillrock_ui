@@ -1,12 +1,17 @@
 This is an advance Neumorphic design implementation. Feel free to contribute. 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+This packahe allows you to easily create UI based on Neumorphism design language. 
+Currently next controls supported: 
+1. Generic Container
+2. RoundButton (basically the button with or without accent support)
+3. AccentList (list like Widget)
+4. Indicator Button
+5. Checkbox
+6. TextInputs
+7. Counter
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+more to come. 
 
 ## Usage
 

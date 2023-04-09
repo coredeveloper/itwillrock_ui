@@ -41,11 +41,11 @@ class AppColors {
       colors: [altAccentColor, accentColor]);
 
   static Gradient get shadowGradient => LinearGradient(
-          colors: [AppColors.lightShadowColor, AppColors.darkShadowColor],
-          stops: const [0, 1],
-          begin: FractionalOffset.topLeft,
-          end: FractionalOffset.bottomRight,
-        );
+        colors: [AppColors.lightShadowColor, AppColors.darkShadowColor],
+        stops: const [0, 1],
+        begin: FractionalOffset.topLeft,
+        end: FractionalOffset.bottomRight,
+      );
 
   static List<Shadow> currentShadows(
           {double blurMultiplier = 1.0, double offsetMultiplier = 1.0}) =>
