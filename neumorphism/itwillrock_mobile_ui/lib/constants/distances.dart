@@ -28,4 +28,6 @@ const double largeTextSize = 28;
 const double smallTextSize = 14;
 
 const double actionContainerHeight = 96;
+const double iconSizeSmall = 24;
 const double iconSizeLarge = 48;
+
