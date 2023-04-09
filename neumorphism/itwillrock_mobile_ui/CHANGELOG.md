@@ -1,3 +1,2 @@
 ## 0.0.1
-
-* TODO: Describe initial release.
+This is an initial working release. There is a room to improve performance. 
