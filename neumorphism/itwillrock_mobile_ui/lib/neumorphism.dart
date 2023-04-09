@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'constants/text.dart';
 import 'constants/distances.dart';
 import 'constants/colors.dart';
+import 'email_validator.dart';
+import 'gradient_text.dart';
 import 'menu/menu_button.dart';
 import 'menu/back_button.dart' as menu;
 import 'neumorphic_counter.dart';
@@ -16,6 +18,9 @@ import 'neumorphic_checkbox.dart';
 import 'neumorphic_accent_list.dart';
 
 class Neumorphism {
+  static final _emailController = TextEditingController();
+  static final _passwordController = TextEditingController();
+
   static Duration animationDuration = const Duration(milliseconds: 64);
   static double borderRadius = 24;
 
@@ -86,20 +91,8 @@ class Neumorphism {
         shadows: dropShadow ? AppColors.currentShadows() : <Shadow>[],
         innerShadows:
             dropInnerShadow ? AppColors.currentInnerShadows() : <Shadow>[],
-        borderGradient: LinearGradient(
-            stops: const [0, 1],
-            begin: FractionalOffset.topLeft,
-            end: FractionalOffset.bottomRight,
-            colors: [
-              AppColors.lightShadowColor,
-              AppColors.darkShadowColor,
-            ]),
-        gradient: LinearGradient(
-          colors: [AppColors.lightShadowColor, AppColors.darkShadowColor],
-          stops: const [0, 1],
-          begin: FractionalOffset.topLeft,
-          end: FractionalOffset.bottomRight,
-        ),
+        borderGradient: AppColors.shadowGradient,
+        gradient: AppColors.shadowGradient,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius)),
         child: child,
@@ -140,6 +133,7 @@ class Neumorphism {
           {String? label,
           TextEditingController? controller,
           FormFieldValidator<String>? validator,
+          AutovalidateMode validateMode = AutovalidateMode.disabled,
           String? hint,
           Icon? icon,
           bool obscureText = false,
@@ -150,6 +144,7 @@ class Neumorphism {
         padding: padding,
         margin: margin,
         child: TextFormField(
+          autovalidateMode: validateMode,
           textDirection: TextDirection.ltr,
           controller: controller,
           validator: validator,
@@ -163,23 +158,39 @@ class Neumorphism {
         ),
       );
 
+  static Widget emailFormField(
+          {String? label,
+          TextEditingController? controller,
+          FormFieldValidator<String>? validator,
+          AutovalidateMode validateMode = AutovalidateMode.disabled,
+          String hint = 'Enter your email',
+          Icon? icon,
+          bool obscureText = false,
+          TextInputType inputType = TextInputType.text,
+          EdgeInsets padding = paddingStepOne,
+          EdgeInsets margin = paddingStepOne}) =>
+      textFormField(
+          label: label,
+          controller: _emailController,
+          validator: Validators.validateEmail,
+          icon: icon ??
+              Icon(
+                Icons.email,
+                color: AppColors.textColor,
+                size: iconSizeSmall,
+              ));
+
   static Widget passwordFormField(
           {String? label,
           String? hint,
           Icon? icon,
           EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne}) =>
-      Container(
-        padding: padding,
-        margin: margin,
-        child: TextFormField(
-          style: TextStyle(
-            fontFamily: defaultFontFamily,
-            color: AppColors.textColor,
-          ),
-          decoration: inputDecoration(label: label, hint: hint, icon: icon),
-        ),
-      );
+      textFormField(
+          label: label,
+          controller: _passwordController,
+          obscureText: true,
+          icon: Neumorphism.icon(Icons.password));
 
   static Widget actionContainer(
           {Widget? child,
@@ -400,5 +411,15 @@ class Neumorphism {
         iconData,
         color: color ?? AppColors.textColor,
         size: size,
+      );
+
+  static Widget gradientText(String text) => GradientText(
+        text,
+        gradient: AppColors.shadowGradient,
+        style: TextStyle(
+            fontFamily: defaultFontFamily,
+            color: AppColors.textColor,
+            fontSize: largeTextSize,
+            fontWeight: FontWeight.normal),
       );
 }

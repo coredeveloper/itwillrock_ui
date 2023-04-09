@@ -32,7 +32,6 @@ class NeumorphicSurfacePainter extends NeumorphicShapePainter {
       borderPaintObject.maskFilter =
           MaskFilter.blur(BlurStyle.normal, convertRadiusToSigma(borderBlur));
     }
-
     if (gradient != null) {
       if (path != null) {
         paintObject.shader = gradient?.createShader(path.getBounds());

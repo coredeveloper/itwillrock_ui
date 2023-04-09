@@ -64,10 +64,14 @@ class CheckBoxState extends State<NeumorphicCheckBox>
   void switchTo(bool value) {
     if (value) {
       _animationController.forward();
-      widget.onChanged!(true);
+      if (widget.onChanged != null) {
+        widget.onChanged!(true);
+      }
     } else {
       _animationController.reverse();
-      widget.onChanged!(false);
+      if (widget.onChanged != null) {
+        widget.onChanged!(false);
+      }
     }
     HapticFeedback.selectionClick();
   }

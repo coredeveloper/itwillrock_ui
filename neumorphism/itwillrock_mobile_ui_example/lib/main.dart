@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:itwillrock_mobile_ui/neumorphism.dart';
+import 'package:itwillrock_mobile_ui_example/test_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,7 +51,6 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Neumorphism.container(
-        padding: const EdgeInsets.all(120), margin: const EdgeInsets.all(100));
+    return const TestPageView();
   }
 }

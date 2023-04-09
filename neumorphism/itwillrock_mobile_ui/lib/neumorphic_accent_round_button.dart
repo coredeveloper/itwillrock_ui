@@ -65,6 +65,9 @@ class NeumorphicAccentRoundButtonState
   }
 
   void processTapDown() {
+    if (_animationController.lastElapsedDuration?.inSeconds == 0) {
+      return;
+    }
     HapticFeedback.selectionClick();
     if (widget.toggle) {
       if (_animationController.status == AnimationStatus.completed) {
@@ -77,6 +80,9 @@ class NeumorphicAccentRoundButtonState
   }
 
   void processTapUp() {
+    if (_animationController.lastElapsedDuration?.inSeconds == 0) {
+      return;
+    }
     if (widget.toggle) {
       if (_animationController.status == AnimationStatus.completed) {
         _animationController.reverse();
@@ -112,43 +118,46 @@ class NeumorphicAccentRoundButtonState
       onTap: widget.onTap,
       child: Container(
         margin: widget.margin,
-        child: AnimatedBuilder(
-          animation: _shadowTween,
-          builder: (context, child) => CustomPaint(
-            size: const Size(double.infinity, double.infinity),
-            painter: NeumorphicButtonPainter(
-              animationValue: _animationController.value,
-              blur: 5.0 - 5.0 * _shadowTween.value,
-              color: Color.alphaBlend(
-                  AppColors.darkShadowColor
-                      .withOpacity((1 - _shadowTween.value) / 4),
-                  widget.color),
-              borderGradient: LinearGradient(
-                  stops: const [.5, 2],
-                  begin: FractionalOffset.topLeft,
-                  end: FractionalOffset.bottomRight,
-                  colors: [
-                    AppColors.lightShadowColor.withOpacity(_shadowTween.value),
+        child: RepaintBoundary(
+          child: AnimatedBuilder(
+            animation: _shadowTween,
+            builder: (context, child) => CustomPaint(
+              size: const Size(double.infinity, double.infinity),
+              painter: NeumorphicButtonPainter(
+                animationValue: _animationController.value,
+                blur: 5.0 - 5.0 * _shadowTween.value,
+                color: Color.alphaBlend(
                     AppColors.darkShadowColor
-                        .withOpacity(_shadowTween.value / 3),
-                  ]),
-              shape: widget.shape,
-              strokeWidth: 0,
-              shadows: [
-                Shadow(
-                  color: widget.color.withOpacity(0.6),
-                  blurRadius: 16.0 * _shadowTween.value,
-                  offset: Offset(0, 4.0 * _shadowTween.value),
-                ),
-              ],
-            ),
-            child: Container(
-              height: widget.size.height,
-              width: widget.size.width,
-              alignment: const Alignment(0, 0),
-              margin: const EdgeInsets.all(0),
-              padding: widget.padding,
-              child: widget.child,
+                        .withOpacity((1 - _shadowTween.value) / 4),
+                    widget.color),
+                borderGradient: LinearGradient(
+                    stops: const [.5, 2],
+                    begin: FractionalOffset.topLeft,
+                    end: FractionalOffset.bottomRight,
+                    colors: [
+                      AppColors.lightShadowColor
+                          .withOpacity(_shadowTween.value),
+                      AppColors.darkShadowColor
+                          .withOpacity(_shadowTween.value / 3),
+                    ]),
+                shape: widget.shape,
+                strokeWidth: 0,
+                shadows: [
+                  Shadow(
+                    color: widget.color.withOpacity(0.6),
+                    blurRadius: 16.0 * _shadowTween.value,
+                    offset: Offset(0, 4.0 * _shadowTween.value),
+                  ),
+                ],
+              ),
+              child: Container(
+                height: widget.size.height,
+                width: widget.size.width,
+                alignment: const Alignment(0, 0),
+                margin: const EdgeInsets.all(0),
+                padding: widget.padding,
+                child: widget.child,
+              ),
             ),
           ),
         ),
