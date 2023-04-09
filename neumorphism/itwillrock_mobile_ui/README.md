@@ -19,8 +19,8 @@ dependencies:
   itwillrock_mobile_ui:
 ```
 
-## Additional information
+## Demo
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+![Screenshot](demo.gif)
+
+Note that there is a highlight of the surrounded controls to indicate the change in the main control. 
