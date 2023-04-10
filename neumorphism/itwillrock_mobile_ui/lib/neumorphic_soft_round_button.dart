@@ -84,8 +84,7 @@ class NeumorphicSoftRoundButtonState extends State<NeumorphicSoftRoundButton>
   }
 
   void processTapUp() {
-    if(_animationController.lastElapsedDuration?.inSeconds==0)
-    {
+    if (_animationController.lastElapsedDuration?.inSeconds == 0) {
       return;
     }
     if (widget.toggle) {

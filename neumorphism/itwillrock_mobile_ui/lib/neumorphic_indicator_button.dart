@@ -83,8 +83,7 @@ class NeumorphicIndicatorButtonState extends State<NeumorphicIndicatorButton>
   }
 
   void processTap() {
-     if(_animationController.lastElapsedDuration?.inSeconds==0)
-    {
+    if (_animationController.lastElapsedDuration?.inSeconds == 0) {
       return;
     }
     if (_animationController.status == AnimationStatus.completed) {
