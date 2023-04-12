@@ -19,12 +19,12 @@ const innerShadows = [
   ),
 ];
 
-class NeumorphicSwitch extends StatefulWidget {
+class NeumorphicSimpleCheckBox extends StatefulWidget {
   final double borderRadius;
   final EdgeInsets margin;
   final EdgeInsets padding;
   final ValueChanged<bool>? onChanged;
-  const NeumorphicSwitch(
+  const NeumorphicSimpleCheckBox(
       {this.borderRadius = 0,
       this.padding = emptyPadding,
       this.margin = emptyPadding,
@@ -33,10 +33,11 @@ class NeumorphicSwitch extends StatefulWidget {
       : super(key: key);
 
   @override
-  CheckBoxState createState() => CheckBoxState();
+  NeumorphicSimpleCheckBoxState createState() =>
+      NeumorphicSimpleCheckBoxState();
 }
 
-class CheckBoxState extends State<NeumorphicSwitch>
+class NeumorphicSimpleCheckBoxState extends State<NeumorphicSimpleCheckBox>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation _colorTween;

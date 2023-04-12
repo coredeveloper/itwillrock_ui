@@ -82,15 +82,39 @@ class TestPageViewState extends State<TestPageView> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Neumorphism.container(
-                margin: const EdgeInsets.all(10),
-                padding: const EdgeInsets.all(10),
-                dropShadow: false,
-                dropInnerShadow: true,
-                child: const SizedBox(
-                  width: 100,
-                  height: 100,
-                ),
+              Stack(
+                children: [
+                  Neumorphism.container(
+                      dropInnerShadow: false,
+                      margin: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
+                      accentAligment: const Alignment(1, -1),
+                      renderAccent: true,
+                      accentIntensity: intensity1,
+                      child: Container(
+                        child: Neumorphism.softRoundButton(
+                            size: const Size(60, 60),
+                            toggle: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                            margin: const EdgeInsets.all(10),
+                            icon: Icon(
+                              Icons.home,
+                              color: AppColors.accentColor,
+                              size: 32,
+                            )),
+                      )),
+                  Neumorphism.frostedGlassContainer(
+                    margin: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
+                    dropShadow: true,
+                    dropInnerShadow: true,
+                    child: const SizedBox(
+                      width: 60,
+                      height: 60,
+                    ),
+                  ),
+                ],
               ),
               Neumorphism.softRoundButton(
                   accentAligment: const Alignment(-0.3, -1),
