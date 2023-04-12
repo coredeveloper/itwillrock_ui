@@ -65,9 +65,6 @@ class NeumorphicAccentRoundButtonState
   }
 
   void processTapDown() {
-    // if (_animationController.lastElapsedDuration?.inSeconds == 0) {
-    //   return;
-    // }
     HapticFeedback.selectionClick();
     if (widget.toggle) {
       if (_animationController.status == AnimationStatus.completed) {
@@ -80,9 +77,6 @@ class NeumorphicAccentRoundButtonState
   }
 
   void processTapUp() {
-    // if (_animationController.lastElapsedDuration?.inSeconds == 0) {
-    //   return;
-    // }
     if (widget.toggle) {
       if (_animationController.status == AnimationStatus.completed) {
         _animationController.reverse();

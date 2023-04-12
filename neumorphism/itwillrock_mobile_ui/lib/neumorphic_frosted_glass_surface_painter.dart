@@ -8,9 +8,8 @@ class NeumorphicFrostGlassSurfacePainter extends NeumorphicShapePainter {
   NeumorphicFrostGlassSurfacePainter({shape})
       : super(shape: shape, strokeWidth: 0);
 
-  void paintSurface(Canvas canvas, {double sigmaX = 1.3, double sigmaY = 1.3}) {
-    final paint = Paint()
-      ..blendMode = BlendMode.colorBurn
+  void paintSurface(Canvas canvas, {double sigmaX = 0.4, double sigmaY = 0.4}) {
+    final paint = Paint()     
       ..imageFilter = ui.ImageFilter.blur(
           sigmaX: sigmaX, sigmaY: sigmaY, tileMode: TileMode.repeated)
       ..shader = ImageShader(

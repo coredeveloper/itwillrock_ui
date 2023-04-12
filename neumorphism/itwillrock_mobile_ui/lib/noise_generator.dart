@@ -15,7 +15,7 @@ class NoiseGenerator {
     for (int y = 0; y < height; y++) {
       for (int x = 0; x < width; x++) {
         int gray = _random.nextInt(56) + 100;
-        paint.color = Color.fromARGB(100, gray - 20, gray - 20, gray);
+        paint.color = Color.fromARGB(40, gray - 50, gray - 50, gray);
         canvas.drawRect(Rect.fromLTWH(x.toDouble(), y.toDouble(), 1, 1), paint);
       }
     }
