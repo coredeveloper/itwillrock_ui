@@ -7,6 +7,7 @@ import 'gradient_text.dart';
 import 'menu/menu_button.dart';
 import 'menu/back_button.dart' as menu;
 import 'neumorphic_counter.dart';
+import 'neumorphic_frosted_glass_container.dart';
 import 'neumorphic_indicator_button.dart';
 import 'neumorphic_accent_round_button.dart';
 import 'neumorphic_soft_round_button.dart';
@@ -93,6 +94,28 @@ class Neumorphism {
             dropInnerShadow ? AppColors.currentInnerShadows() : <Shadow>[],
         borderGradient: AppColors.shadowGradient,
         gradient: AppColors.shadowGradient,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius)),
+        child: child,
+      );
+
+  static Widget frostedGlassContainer(
+          {Widget? child,
+          double width = double.infinity,
+          double height = double.infinity,
+          bool dropShadow = true,
+          bool dropInnerShadow = false,
+          EdgeInsets padding = paddingStepOne,
+          EdgeInsets margin = paddingStepOne,
+          bool renderAccent = false,
+          Alignment? accentAligment,
+          double accentIntensity = 0}) =>
+      NeumorphicFrostedGlassContainer(
+        margin: margin,
+        padding: padding,
+        accentAligment: renderAccent ? accentAligment : null,
+        accentColor: renderAccent ? AppColors.accentColor : null,
+        accentIntensity: renderAccent ? accentIntensity : 0,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius)),
         child: child,
@@ -338,7 +361,7 @@ class Neumorphism {
           {EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne,
           ValueChanged<bool>? onChanged}) =>
-      NeumorphicCheckBox(
+      NeumorphicSwitch(
         padding: padding,
         margin: margin,
         borderRadius: borderRadius,

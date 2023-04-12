@@ -1,6 +1,6 @@
 name: itwillrock_mobile_ui
 description: Neumorphic controls and controls environment implementation. 
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/coredeveloper/itwillrock_ui/tree/main/neumorphism/itwillrock_mobile_ui
 
 environment:
