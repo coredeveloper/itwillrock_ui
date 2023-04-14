@@ -10,3 +10,5 @@ Bug fixes
 Bug fixes and documentation added
 ## 0.0.6
 Example updated
+## 0.0.7
+Rebranding / Just renamed the package and polished the references.
