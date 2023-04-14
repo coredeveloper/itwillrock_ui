@@ -4,3 +4,7 @@ This is an initial working release. There is a room to improve performance.
 Added example in a proper place. 
 ## 0.0.3
 Frost glass container added
+## 0.0.4
+Bug fixes
+## 0.0.5
+Bug fixes and documentation added
