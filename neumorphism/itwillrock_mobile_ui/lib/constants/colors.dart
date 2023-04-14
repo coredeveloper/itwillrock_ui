@@ -36,7 +36,7 @@ const accentColor = Color(0xFFFC5C7D);
 ///The accent color used to highlight or mark non primary controls
 const altAccentColor = Color(0xFF6A82FB);
 
-///THe class for dynamicly changable colors. Like in case you switching modes. 
+///THe class for dynamicly changable colors. Like in case you switching modes.
 class AppColors {
   static Color mainColor = mainColorLightMode;
   static Color textColor = textColorLightMode;

@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:itwillrock_mobile_ui/constants/distances.dart';
+import 'constants/distances.dart';
 import '../../../constants/colors.dart';
 import 'neumorphic_button_painter.dart';
 import 'neumorphic_container_painter.dart';
