@@ -46,9 +46,9 @@ class CheckBoxState extends State<NeumorphicSwitch>
   void initState() {
     _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 100));
-    _colorTween = ColorTween(
-            begin: const Color(0x00FFFFFF), end: AppColors.altAccentColor)
-        .animate(_animationController);
+    _colorTween =
+        ColorTween(begin: const Color(0x00FFFFFF), end: altAccentColor)
+            .animate(_animationController);
 
     _positionTween = Tween(begin: -1.0, end: 1.0).animate(_animationController);
 

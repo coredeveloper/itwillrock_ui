@@ -5,7 +5,7 @@ import 'back_icon_painter.dart';
 
 class BackButtonPainter extends CustomPainter {
   final BackIconPainter iconPainter =
-      BackIconPainter(color: AppColors.accentColor, strokeWidth: 2);
+      BackIconPainter(color: accentColor, strokeWidth: 2);
 
   @override
   void paint(Canvas canvas, Size size) {
