@@ -8,3 +8,5 @@ Frost glass container added
 Bug fixes
 ## 0.0.5
 Bug fixes and documentation added
+## 0.0.6
+Example updated
