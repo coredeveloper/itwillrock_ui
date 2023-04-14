@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 
 class NoiseGenerator {
   static final _random = Random();
-  static final cachedSmall = generate(100, 100);
+  static final cachedSmall = generate(30, 30);
 
   static ui.Image generate(int width, int height) {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
@@ -14,8 +14,8 @@ class NoiseGenerator {
     final paint = Paint();
     for (int y = 0; y < height; y++) {
       for (int x = 0; x < width; x++) {
-        int gray = _random.nextInt(56) + 100;
-        paint.color = Color.fromARGB(40, gray - 50, gray - 50, gray);
+        int gray = _random.nextInt(56) + 150;
+        paint.color = Color.fromARGB(80, gray - 50, gray - 50, gray);
         canvas.drawRect(Rect.fromLTWH(x.toDouble(), y.toDouble(), 1, 1), paint);
       }
     }
