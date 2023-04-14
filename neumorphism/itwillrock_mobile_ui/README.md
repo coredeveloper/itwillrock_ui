@@ -19,9 +19,7 @@ Just add it to your project by adding it to dependencies.
 
 ```dart
 dependencies:
-  flutter:
-    sdk: flutter
-  itwillrock_mobile_ui:
+  itwillrock_neumorphism:
 ```
 
 ## Demo
