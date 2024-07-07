@@ -4,12 +4,11 @@ import 'constants/colors.dart';
 /// Based on [OutlineInputBorder]
 class GradientOutlineInputBorder extends InputBorder {
   const GradientOutlineInputBorder({
-    BorderSide borderSide = const BorderSide(),
+    super.borderSide = const BorderSide(),
     this.borderRadius = const BorderRadius.all(Radius.circular(4.0)),
     this.gapPadding = 4.0,
   })  : assert(borderRadius != null),
-        assert(gapPadding >= 0.0),
-        super(borderSide: borderSide);
+        assert(gapPadding >= 0.0);
 
   static bool _cornersAreCircular(BorderRadius borderRadius) {
     return borderRadius.topLeft.x == borderRadius.topLeft.y &&
@@ -133,10 +132,10 @@ class GradientOutlineInputBorder extends InputBorder {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (runtimeType != other.runtimeType) return false;
-    final GradientOutlineInputBorder typedOther = other;
+    final GradientOutlineInputBorder typedOther = other as GradientOutlineInputBorder;
     return typedOther.borderSide == borderSide &&
         typedOther.borderRadius == borderRadius &&
         typedOther.gapPadding == gapPadding;

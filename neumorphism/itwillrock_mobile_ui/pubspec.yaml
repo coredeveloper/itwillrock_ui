@@ -1,6 +1,6 @@
 name: itwillrock_neumorphism
 description: Neumorphic controls and controls environment implementation. 
-version: 0.0.7
+version: 0.0.28
 homepage: https://github.com/coredeveloper/itwillrock_ui/tree/main/neumorphism/itwillrock_mobile_ui
 repository: https://github.com/coredeveloper/itwillrock_ui/tree/main/neumorphism/itwillrock_mobile_ui
 screenshots:
@@ -8,7 +8,7 @@ screenshots:
     path: demo.gif
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=2.19.6 <4.0.0'
 
 dependencies:
   flutter:

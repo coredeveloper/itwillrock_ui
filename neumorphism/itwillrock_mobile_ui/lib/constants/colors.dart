@@ -31,10 +31,10 @@ const textColorDarkMode = Color(0xFFFFFFFF);
 const altTextColor = Color(0xFFFFFFFF);
 
 ///The accent color used to highlight or mark
-const accentColor = Color(0xFFFC5C7D);
+const accentColorConst = Color(0xFFFC5C7D);
 
 ///The accent color used to highlight or mark non primary controls
-const altAccentColor = Color(0xFF6A82FB);
+const altAccentColorConst = Color(0xFF6A82FB);
 
 ///THe class for dynamicly changable colors. Like in case you switching modes.
 class AppColors {
@@ -42,21 +42,23 @@ class AppColors {
   static Color textColor = textColorLightMode;
   static Color lightShadowColor = lightColorLightMode;
   static Color darkShadowColor = darkColorLightMode;
+  static Color accentColor = accentColorConst;
+  static Color altAccentColor = altAccentColorConst;
 
-  static Gradient get mainGradient => const LinearGradient(
-      stops: [0, 1],
+  static Gradient get mainGradient => LinearGradient(
+      stops: const [0, 1],
       begin: FractionalOffset.centerLeft,
       end: FractionalOffset.centerRight,
       colors: [
-        accentColor,
-        altAccentColor,
+        AppColors.accentColor,
+        AppColors.altAccentColor,
       ]);
 
-  static Gradient get reversedGradient => const LinearGradient(
-      stops: [0, 1],
+  static Gradient get reversedGradient => LinearGradient(
+      stops: const [0, 1],
       begin: FractionalOffset.centerLeft,
       end: FractionalOffset.centerRight,
-      colors: [altAccentColor, accentColor]);
+      colors: [AppColors.altAccentColor, AppColors.accentColor]);
 
   static Gradient get shadowGradient => LinearGradient(
         colors: [AppColors.lightShadowColor, AppColors.darkShadowColor],

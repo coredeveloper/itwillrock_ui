@@ -12,11 +12,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          backgroundColor: Colors.white, scaffoldBackgroundColor: Colors.white),
+    return const MaterialApp(
       title: 'Flutter Demo',
-      home: const Scaffold(
+      home: Scaffold(
         //Here you can set what ever background color you need.
         backgroundColor: Colors.white,
         body: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -113,9 +111,9 @@ class _MyHomePageState extends State<MyHomePage>
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
                         margin: const EdgeInsets.all(10),
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.home,
-                          color: accentColor,
+                          color: AppColors.accentColor,
                           size: 32,
                         )),
                   )),
@@ -133,9 +131,9 @@ class _MyHomePageState extends State<MyHomePage>
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
                         margin: const EdgeInsets.all(10),
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.home,
-                          color: accentColor,
+                          color: AppColors.accentColor,
                           size: 32,
                         )),
                   )),
@@ -181,7 +179,7 @@ class _MyHomePageState extends State<MyHomePage>
                   )),
               Neumorphism.indicatorButton(
                   accentAligment: const Alignment(1, -1),
-                  accentColor: accentColor,
+                  accentColor: AppColors.accentColor,
                   accentIntensity: intensity1 * 0.5,
                   size: 74,
                   shape: RoundedRectangleBorder(

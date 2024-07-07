@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'charts/label_model.dart';
+import 'charts/series_chart.dart';
+import 'charts/series_type_chart.dart';
+import 'charts/time_period_type.dart';
 import 'constants/text.dart';
 import 'constants/distances.dart';
 import 'constants/colors.dart';
@@ -25,6 +29,24 @@ class Neumorphism {
   static Duration animationDuration = const Duration(milliseconds: 64);
   static double borderRadius = 24;
 
+  static SeriesTypesChart seriesTypesChart(
+          {ValueChanged<TimePeriodType>? onItemSelected, 
+          required Color color}) =>
+      SeriesTypesChart(
+        textColor: AppColors.textColor,
+        color: color,
+        onItemSelected: onItemSelected,
+      );
+
+  static ChartSeries seriesChart(ValueNotifier<LabelSeriesModel> values,
+          {EdgeInsets padding = paddingStepOne,
+          EdgeInsets margin = paddingStepOne}) =>
+      ChartSeries(
+          values: values,
+          padding: padding,
+          textColor: AppColors.textColor,
+          margin: margin);
+
   static Widget accentList(
           {required List<String> items,
           EdgeInsets padding = paddingStepOne,
@@ -33,7 +55,7 @@ class Neumorphism {
           EdgeInsets margin = paddingStepOne}) =>
       NeumorphicAccentList(
           padding: padding,
-          color: accentColor,
+          color: AppColors.accentColor,
           textColor: AppColors.textColor,
           selectedItem: selectedItem,
           onItemSelected: onItemSelected,
@@ -43,7 +65,8 @@ class Neumorphism {
   static Widget menuButton({
     double animationStep = 0,
   }) =>
-      MenuButton(size: 24, color: accentColor, animationStep: animationStep);
+      MenuButton(
+          size: 24, color: AppColors.accentColor, animationStep: animationStep);
 
   static Widget backButton({GestureTapCallback? onTap}) => menu.BackButton(
         24.0,
@@ -81,12 +104,14 @@ class Neumorphism {
           Alignment? accentAligment,
           double accentIntensity = 0}) =>
       NeumorphicContainer(
+        width: width,
+        height: height,
         margin: margin,
         padding: padding,
         blur: 0,
         borderBlur: 3,
         accentAligment: renderAccent ? accentAligment : null,
-        accentColor: renderAccent ? accentColor : null,
+        accentColor: renderAccent ? AppColors.accentColor : null,
         accentIntensity: renderAccent ? accentIntensity : 0,
         shadows: dropShadow ? AppColors.currentShadows() : <Shadow>[],
         innerShadows:
@@ -113,7 +138,7 @@ class Neumorphism {
         margin: margin,
         padding: padding,
         accentAligment: renderAccent ? accentAligment : null,
-        accentColor: renderAccent ? accentColor : null,
+        accentColor: renderAccent ? AppColors.accentColor : null,
         accentIntensity: renderAccent ? accentIntensity : 0,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius)),
@@ -229,7 +254,7 @@ class Neumorphism {
       NeumorphicActionContainer(
         animationDuration: animationDuration,
         accentAligment: renderAccent ? accentAligment : null,
-        accentColor: renderAccent ? accentColor : null,
+        accentColor: renderAccent ? AppColors.accentColor : null,
         accentIntensity: renderAccent ? accentIntensity : 0,
         onTap: onTap,
         size: size,
@@ -258,7 +283,7 @@ class Neumorphism {
       NeumorphicExtendedActionContainer(
         animationDuration: animationDuration,
         accentAligment: renderAccent ? accentAligment : null,
-        accentColor: renderAccent ? accentColor : null,
+        accentColor: renderAccent ? AppColors.accentColor : null,
         accentIntensity: renderAccent ? accentIntensity : 0,
         onTap: onTap,
         size: size,
@@ -289,7 +314,7 @@ class Neumorphism {
       NeumorphicSoftRoundButton(
         animationDuration: animationDuration,
         accentAligment: renderAccent ? accentAligment : null,
-        accentColor: renderAccent ? accentColor : null,
+        accentColor: renderAccent ? AppColors.accentColor : null,
         accentIntensity: renderAccent ? accentIntensity : 0,
         onTap: onTap,
         icon: icon,
@@ -346,7 +371,7 @@ class Neumorphism {
         accentChanged: accentChanged,
         animationDuration: animationDuration,
         size: size,
-        color: accentColor,
+        color: AppColors.accentColor,
         shape: shape ??
             RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius)),
