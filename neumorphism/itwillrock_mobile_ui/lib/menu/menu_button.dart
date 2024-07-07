@@ -9,8 +9,7 @@ class MenuButton extends StatefulWidget {
       {this.size = 0,
       this.color = const Color.fromARGB(0, 0, 0, 0),
       this.animationStep = 0,
-      Key? key})
-      : super(key: key);
+      super.key});
 
   @override
   MenuButtonState createState() => MenuButtonState();

@@ -15,17 +15,18 @@ class NeumorphicAccentList extends StatefulWidget {
   final Color color;
   final Color textColor;
   final List<String> items;
-  const NeumorphicAccentList(
-      {this.padding = emptyPadding,
-      this.margin = emptyMargin,
-      this.color = const Color.fromARGB(0, 0, 0, 0),
-      this.textColor = const Color.fromARGB(0, 0, 0, 0),
-      this.onItemSelected,
-      this.selectedItem,
-      this.accentChanged,
-      required this.items,
-      Key? key})
-      : super(key: key);
+
+  const NeumorphicAccentList({
+    this.padding = emptyPadding,
+    this.margin = emptyMargin,
+    this.color = const Color.fromARGB(0, 0, 0, 0),
+    this.textColor = const Color.fromARGB(0, 0, 0, 0),
+    this.onItemSelected,
+    this.selectedItem,
+    this.accentChanged,
+    required this.items,
+    super.key,
+  });
 
   @override
   NeumorphicAccentListState createState() => NeumorphicAccentListState();
@@ -38,6 +39,7 @@ class NeumorphicAccentListState extends State<NeumorphicAccentList>
   late Animation _positionTween;
   late Animation _bounceTween;
   String? _selectedItem;
+
   @override
   void initState() {
     super.initState();
@@ -50,12 +52,16 @@ class NeumorphicAccentListState extends State<NeumorphicAccentList>
       vsync: this,
       duration: const Duration(milliseconds: 120),
     );
+
     _positionTween =
         Tween<double>(begin: 0, end: 1).animate(_animationController);
     _bounceTween = Tween<double>(begin: 0, end: 1).animate(
         CurvedAnimation(parent: _bounceController, curve: Curves.easeIn));
+
     if (widget.selectedItem != null) {
-      _selectItem(widget.selectedItem!);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _selectItem(widget.selectedItem!);
+      });
       _selectedItem = widget.selectedItem;
     }
   }
@@ -71,6 +77,12 @@ class NeumorphicAccentListState extends State<NeumorphicAccentList>
     }
   }
 
+  void selectItem(String item) {
+    setState(() {
+      _selectItem(item);
+    });
+  }
+
   List<Widget> buildItems() {
     var items = <Widget>[];
 
@@ -83,12 +95,13 @@ class NeumorphicAccentListState extends State<NeumorphicAccentList>
             return;
           }
           _selectedItem = widget.items[i];
-          if (widget.onItemSelected != null) {
-            widget.onItemSelected!(_selectedItem!);
-          }
+
           _animationController
               .animateTo(1 / widget.items.length * i)
               .whenCompleteOrCancel(() {
+            if (widget.onItemSelected != null) {
+              widget.onItemSelected!(_selectedItem!);
+            }
             _bounceController.forward().whenCompleteOrCancel(() {
               _bounceController.reverse();
             });
@@ -141,18 +154,18 @@ class NeumorphicAccentListState extends State<NeumorphicAccentList>
                         _positionTween.value *
                                 itemHeight *
                                 widget.items.length +
-                            widget.margin +
+                            widget.margin.top +
                             _bounceTween.value * 10),
                     shadows: [
                       Shadow(
-                        color: widget.color,
-                        blurRadius: 12,
-                        offset: const Offset(19, 0),
+                        color: widget.color.withAlpha(20),
+                        blurRadius: 24,
+                        offset: const Offset(12, 0),
                       ),
                       Shadow(
-                        color: widget.color,
-                        blurRadius: 10,
-                        offset: const Offset(5, 0),
+                        color: widget.color.withAlpha(50),
+                        blurRadius: 16,
+                        offset: const Offset(4, 0),
                       ),
                     ],
                     blur: 0,

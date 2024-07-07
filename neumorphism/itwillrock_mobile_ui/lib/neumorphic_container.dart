@@ -5,6 +5,8 @@ class NeumorphicContainer extends StatelessWidget {
   final ShapeBorder shape;
   final EdgeInsets margin;
   final EdgeInsets padding;
+  final double width;
+  final double height;
   final Widget? child;
   final List<Shadow> shadows;
   final List<Shadow> innerShadows;
@@ -30,9 +32,10 @@ class NeumorphicContainer extends StatelessWidget {
       this.innerShadows = const <Shadow>[],
       this.accentColor,
       this.accentAligment,
+      this.width = double.infinity,
+      this.height = double.infinity,
       this.accentIntensity = 0,
-      Key? key})
-      : super(key: key);
+      super.key});
 
   @override
   Widget build(BuildContext context) {

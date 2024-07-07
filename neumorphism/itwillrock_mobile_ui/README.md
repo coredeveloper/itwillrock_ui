@@ -19,7 +19,7 @@ Just add it to your project by adding it to dependencies.
 
 ```dart
 dependencies:
-  itwillrock_neumorphism:
+  itwillrock_mobile_ui:
 ```
 
 ## Demo

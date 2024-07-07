@@ -4,8 +4,7 @@ import 'neumorphic_shape_painter.dart';
 class NeumorphicShadowPainter extends NeumorphicShapePainter {
   final List<Shadow> shadows;
   final shadowPaint = Paint();
-  NeumorphicShadowPainter({required this.shadows, shape, @required strokeWidth})
-      : super(shape: shape, strokeWidth: strokeWidth);
+  NeumorphicShadowPainter({required this.shadows, super.shape, super.strokeWidth});
 
   void paintShadow(Canvas canvas, {Path? path}) {
     for (final shadow in shadows) {

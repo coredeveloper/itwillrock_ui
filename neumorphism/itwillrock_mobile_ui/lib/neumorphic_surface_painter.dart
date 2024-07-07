@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-
 import 'neumorphic_shape_painter.dart';
 
 class NeumorphicSurfacePainter extends NeumorphicShapePainter {
@@ -17,9 +16,8 @@ class NeumorphicSurfacePainter extends NeumorphicShapePainter {
       this.borderGradient,
       this.blur = 0,
       this.borderBlur = 0,
-      shape,
-      @required strokeWidth})
-      : super(shape: shape, strokeWidth: strokeWidth);
+      super.shape,
+      super.strokeWidth});
 
   void paintSurface(Canvas canvas, {Path? path}) {
     if (path != null) {
