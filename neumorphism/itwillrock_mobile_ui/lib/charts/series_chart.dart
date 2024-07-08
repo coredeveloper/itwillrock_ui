@@ -33,7 +33,10 @@ class _ChartSeriesState extends State<ChartSeries> {
         padding: const EdgeInsets.all(0),
         alignment: const Alignment(0, 0),
         width: itemWidth,
-        child: Neumorphism.text(widget.values.value.data[i].label),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Neumorphism.text(widget.values.value.data[i].label),
+        ),
       ));
     }
     return items;
