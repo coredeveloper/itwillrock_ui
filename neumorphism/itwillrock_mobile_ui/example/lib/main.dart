@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:itwillrock_mobile_ui/constants/colors.dart';
-import 'package:itwillrock_mobile_ui/neumorphism.dart';
+import 'package:itwillrock_neumorphism/charts/label_model.dart';
+import 'package:itwillrock_neumorphism/constants/colors.dart';
+import 'package:itwillrock_neumorphism/neumorphism.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,6 +47,12 @@ class _MyHomePageState extends State<MyHomePage>
   double intensity1 = 1;
   late AnimationController _animationController;
   late Animation<double> _heightAnimation;
+  ValueNotifier<LabelSeriesModel> chartData =
+      ValueNotifier<LabelSeriesModel>(LabelSeriesModel());
+
+  void addDataToChart(double val, LabelSeriesModel model) {
+    model.data.add(LabelModel(label: '$val', value: val));
+  }
 
   @override
   void initState() {
@@ -57,6 +64,11 @@ class _MyHomePageState extends State<MyHomePage>
     _heightAnimation = Tween<double>(begin: 10, end: 260).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
+    addDataToChart(122, chartData.value);
+    addDataToChart(2, chartData.value);
+    addDataToChart(5, chartData.value);
+    addDataToChart(23, chartData.value);
+    chartData.value.splitIndex = 2;
   }
 
   @override
@@ -91,7 +103,10 @@ class _MyHomePageState extends State<MyHomePage>
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
+        children: [
+          Expanded(
+            child: Neumorphism.seriesChart(chartData),
+          ),
           Neumorphism.emailFormField(
             hint: 'some hint2',
           ),
