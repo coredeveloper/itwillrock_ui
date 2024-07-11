@@ -29,7 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  itwillrock_mobile_ui:
+  itwillrock_neumorphism:
     path: ../
 
 dev_dependencies:

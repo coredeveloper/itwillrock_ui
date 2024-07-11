@@ -22,8 +22,7 @@ class ChartPainter extends CustomPainter {
     gridPainter = GridPainter(
         color: AppColors.textColor.withAlpha(100),
         columns: series.data.length * 2);
-    areaPainter = ChartAriaPainter(
-        fillColor: AppColors.textColor.withAlpha(50), series: series);
+    areaPainter = ChartAriaPainter(series: series);
   }
 
   @override
@@ -40,7 +39,7 @@ class ChartPainter extends CustomPainter {
     var offset = const Offset(0, 0);
     offset = Offset(0, verticalOffset);
     size = Size(size.width, size.height - verticalOffset * 2);
-      gridPainter.calculateShape(offset, size);
+    gridPainter.calculateShape(offset, size);
     areaPainter.calculateShape(offset, size);
 
     gridPainter.paintSurface(canvas);
