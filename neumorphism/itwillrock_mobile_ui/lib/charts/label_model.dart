@@ -1,8 +1,7 @@
 class LabelSeriesModel {
   List<LabelModel> data = <LabelModel>[];
-  int splitIndex = 0;
+  double referenceValue = -1;
 }
-
 
 class LabelModel {
   final double value;

@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage>
     addDataToChart(2, chartData.value);
     addDataToChart(5, chartData.value);
     addDataToChart(23, chartData.value);
-    chartData.value.splitIndex = 2;
+    chartData.value.referenceValue = 222;
   }
 
   @override
