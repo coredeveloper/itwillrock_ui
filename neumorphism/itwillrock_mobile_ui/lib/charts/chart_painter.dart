@@ -8,7 +8,6 @@ class ChartPainter extends CustomPainter {
   late GridPainter gridPainter;
   late ChartAriaPainter areaPainter;
   final Size indicatorSize;
-  Offset indicatorOffset = Offset.zero;
   LabelSeriesModel series;
   final double verticalOffset;
 
@@ -30,12 +29,6 @@ class ChartPainter extends CustomPainter {
     if (series.data.isEmpty) {
       return;
     }
-    var columnWidth = size.width / (series.data.length);
-    indicatorOffset = Offset(
-        columnWidth * series.splitIndex +
-            (columnWidth / 2) -
-            indicatorSize.width / 2,
-        0);
     var offset = const Offset(0, 0);
     offset = Offset(0, verticalOffset);
     size = Size(size.width, size.height - verticalOffset * 2);
@@ -44,7 +37,6 @@ class ChartPainter extends CustomPainter {
 
     gridPainter.paintSurface(canvas);
     areaPainter.paintSurface(canvas);
-    //indicatorPainter.paintSurface(canvas);
   }
 
   @override
