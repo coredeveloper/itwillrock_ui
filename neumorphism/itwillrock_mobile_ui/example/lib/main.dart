@@ -107,6 +107,16 @@ class _MyHomePageState extends State<MyHomePage>
           Expanded(
             child: Neumorphism.seriesChart(chartData),
           ),
+          Expanded(
+            child: Neumorphism.accentList(
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                items: [
+                  "List 1",
+                  "List 2",
+                  "...",
+                ]),
+          ),
           Neumorphism.emailFormField(
             hint: 'some hint2',
           ),
