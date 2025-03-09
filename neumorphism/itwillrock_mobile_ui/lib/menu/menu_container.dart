@@ -3,10 +3,10 @@ import 'package:flutter/widgets.dart';
 
 class MenuContainer extends SingleChildRenderObjectWidget {
   const MenuContainer({
-    Key? key,
+    super.key,
     required this.shiftValue,
-    Widget? child,
-  }) : super(key: key, child: child);
+    super.child,
+  });
 
   final double shiftValue;
   @override

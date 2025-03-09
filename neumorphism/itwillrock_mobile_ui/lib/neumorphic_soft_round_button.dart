@@ -154,8 +154,7 @@ class NeumorphicSoftRoundButtonState extends State<NeumorphicSoftRoundButton>
                   blur: 3,
                   borderBlur: 5,
                   color: Color.alphaBlend(
-                      AppColors.darkShadowColor
-                          .withOpacity((1 - _shadowTween.value) / 4),
+                        AppColors.darkShadowColor.withAlpha(((1 - _shadowTween.value) * 255 / 4).round()),
                       widget.color),
                   gradient: widget.gradient,
                   borderGradient: LinearGradient(

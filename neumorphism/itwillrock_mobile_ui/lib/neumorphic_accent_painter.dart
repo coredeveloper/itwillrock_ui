@@ -11,16 +11,15 @@ class NeumorphicAccentPainter extends NeumorphicShapePainter {
       {required this.color,
       required this.alignment,
       required this.value,
-      shape,
-      required strokeWidth})
-      : super(shape: shape, strokeWidth: strokeWidth) {
+      required super.shape,
+      required super.strokeWidth}) {
     if (value < 0) {
       value = 0;
     } else if (value > 1) {
       value = 1;
     }
     paintObject = Paint()
-      ..color = color.withOpacity(value / 3)
+      ..color = color.withAlpha((value / 3 * 255).toInt())
       ..maskFilter =
           MaskFilter.blur(BlurStyle.normal, convertRadiusToSigma(15));
   }

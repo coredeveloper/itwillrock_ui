@@ -28,8 +28,7 @@ class NeumorphicAccentRoundButton extends StatefulWidget {
       this.onTap,
       this.accentChanged,
       this.toggle = false,
-      Key? key})
-      : super(key: key);
+      super.key});
 
   @override
   NeumorphicAccentRoundButtonState createState() =>
@@ -121,24 +120,23 @@ class NeumorphicAccentRoundButtonState
                 animationValue: _animationController.value,
                 blur: 5.0 - 5.0 * _shadowTween.value,
                 color: Color.alphaBlend(
-                    AppColors.darkShadowColor
-                        .withOpacity((1 - _shadowTween.value) / 4),
+                    AppColors.darkShadowColor.withAlpha((255 * ((1 - _shadowTween.value) / 4)).round()),
                     widget.color),
                 borderGradient: LinearGradient(
                     stops: const [.5, 2],
                     begin: FractionalOffset.topLeft,
                     end: FractionalOffset.bottomRight,
                     colors: [
-                      AppColors.lightShadowColor
-                          .withOpacity(_shadowTween.value),
-                      AppColors.darkShadowColor
-                          .withOpacity(_shadowTween.value / 3),
+                        AppColors.lightShadowColor
+                          .withAlpha((255 * _shadowTween.value).round()),
+                        AppColors.darkShadowColor
+                          .withAlpha((255 * (_shadowTween.value / 3)).round()),
                     ]),
                 shape: widget.shape,
                 strokeWidth: 0,
                 shadows: [
                   Shadow(
-                    color: widget.color.withOpacity(0.6),
+                    color: widget.color.withAlpha((0.6 * 255).toInt()),
                     blurRadius: 16.0 * _shadowTween.value,
                     offset: Offset(0, 4.0 * _shadowTween.value),
                   ),

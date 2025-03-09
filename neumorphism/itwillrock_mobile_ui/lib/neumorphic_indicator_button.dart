@@ -40,8 +40,7 @@ class NeumorphicIndicatorButton extends StatefulWidget {
       this.accentAligment,
       this.accentIntensity = 0,
       this.onChanged,
-      Key? key})
-      : super(key: key);
+      super.key});
 
   @override
   NeumorphicIndicatorButtonState createState() =>
@@ -125,8 +124,7 @@ class NeumorphicIndicatorButtonState extends State<NeumorphicIndicatorButton>
                         blur: 3,
                         borderBlur: 5,
                         color: Color.alphaBlend(
-                            AppColors.darkShadowColor
-                                .withOpacity((1 - _shadowTween.value) / 4),
+                            AppColors.darkShadowColor.withAlpha(((1 - _shadowTween.value) / 4 * 255).toInt()),
                             widget.color),
                         borderGradient: LinearGradient(
                             stops: const [0, 1],

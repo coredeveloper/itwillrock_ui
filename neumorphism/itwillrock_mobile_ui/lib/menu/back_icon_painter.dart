@@ -6,8 +6,7 @@ class BackIconPainter extends NeumorphicShapePainter {
   final Paint paintObject = Paint();
 
   final maxRotationRadians = 0.79;
-  BackIconPainter({required this.color, required double strokeWidth})
-      : super(strokeWidth: strokeWidth) {
+  BackIconPainter({required this.color, required super.strokeWidth}) {
     paintObject.color = color;
   }
 
