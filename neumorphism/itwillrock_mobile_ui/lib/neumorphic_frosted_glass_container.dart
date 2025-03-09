@@ -18,8 +18,7 @@ class NeumorphicFrostedGlassContainer extends StatelessWidget {
       this.accentColor,
       this.accentAligment,
       this.accentIntensity = 0,
-      Key? key})
-      : super(key: key);
+      super.key});
 
   @override
   Widget build(BuildContext context) {

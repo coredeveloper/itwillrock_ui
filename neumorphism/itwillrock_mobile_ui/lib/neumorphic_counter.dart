@@ -23,8 +23,7 @@ class NeumorphicCounter extends StatefulWidget {
       this.borderRadius = 0,
       this.animationDuration = Duration.zero,
       this.padding = emptyPadding,
-      Key? key})
-      : super(key: key);
+      super.key});
   @override
   NeumorphicCounterState createState() => NeumorphicCounterState();
 }

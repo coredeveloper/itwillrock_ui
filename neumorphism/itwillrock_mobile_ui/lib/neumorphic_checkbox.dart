@@ -29,8 +29,7 @@ class NeumorphicSwitch extends StatefulWidget {
       this.padding = emptyPadding,
       this.margin = emptyPadding,
       this.onChanged,
-      Key? key})
-      : super(key: key);
+      super.key});
 
   @override
   CheckBoxState createState() => CheckBoxState();

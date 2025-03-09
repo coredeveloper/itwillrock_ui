@@ -4,7 +4,7 @@ import 'back_button_painter.dart';
 class BackButton extends StatelessWidget {
   final double size;
   final GestureTapCallback? onTap;
-  const BackButton(this.size, this.onTap, {Key? key}) : super(key: key);
+  const BackButton(this.size, this.onTap, {super.key});
 
   @override
   Widget build(BuildContext context) {

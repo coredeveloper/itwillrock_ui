@@ -5,8 +5,7 @@ import 'neumorphic_shape_painter.dart';
 
 class NeumorphicFrostGlassSurfacePainter extends NeumorphicShapePainter {
   final ui.Image noiseTexture = NoiseGenerator.cachedSmall;
-  NeumorphicFrostGlassSurfacePainter({shape})
-      : super(shape: shape, strokeWidth: 0);
+  NeumorphicFrostGlassSurfacePainter({super.shape}) : super(strokeWidth: 0);
 
   void paintSurface(Canvas canvas, {double sigmaX = 0.9, double sigmaY = 0.9}) {
     final paint = Paint()

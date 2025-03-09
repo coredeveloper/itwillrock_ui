@@ -32,8 +32,7 @@ class NeumorphicExtendedActionContainer extends StatefulWidget {
       this.accentIntensity = 0,
       this.onTap,
       this.toggle = false,
-      Key? key})
-      : super(key: key);
+      super.key});
 
   @override
   NeumorphicExtendedActionContainerState createState() =>

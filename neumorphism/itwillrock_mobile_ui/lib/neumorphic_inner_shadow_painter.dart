@@ -5,9 +5,11 @@ import 'neumorphic_shape_painter.dart';
 class NeumorphicInnerShadowPainter extends NeumorphicShapePainter {
   final List<Shadow> innerShadows;
 
-  NeumorphicInnerShadowPainter(
-      {required this.innerShadows, shape, required strokeWidth})
-      : super(shape: shape, strokeWidth: strokeWidth);
+  NeumorphicInnerShadowPainter({
+    required this.innerShadows,
+    required super.shape,
+    required super.strokeWidth,
+  });
 
   void paintShadow(Canvas canvas, {Path? path}) {
     if (path != null) {
