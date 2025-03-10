@@ -16,3 +16,5 @@ Rebranding / Just renamed the package and polished the references.
 Fixes according to the latest language standards and few minor upgrades
 ## 0.0.33
 Readme and samples updated
+## 0.0.34
+Code annotation and documentation added

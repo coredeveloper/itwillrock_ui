@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'constants/colors.dart';
 
-/// Based on [OutlineInputBorder]
+/// A custom input border with a gradient outline.
+///
+/// This class is based on [OutlineInputBorder] and provides a gradient outline
+/// for input fields.
 class GradientOutlineInputBorder extends InputBorder {
+  /// Creates a gradient outline input border.
+  ///
+  /// The [borderSide], [borderRadius], and [gapPadding] arguments must not be null.
   const GradientOutlineInputBorder({
     super.borderSide = const BorderSide(),
     this.borderRadius = const BorderRadius.all(Radius.circular(4.0)),
@@ -17,8 +23,10 @@ class GradientOutlineInputBorder extends InputBorder {
         borderRadius.bottomRight.x == borderRadius.bottomRight.y;
   }
 
+  /// The padding for the gap between the border and the input field.
   final double gapPadding;
 
+  /// The border radius of the outline.
   final BorderRadius? borderRadius;
 
   @override
@@ -135,7 +143,8 @@ class GradientOutlineInputBorder extends InputBorder {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (runtimeType != other.runtimeType) return false;
-    final GradientOutlineInputBorder typedOther = other as GradientOutlineInputBorder;
+    final GradientOutlineInputBorder typedOther =
+        other as GradientOutlineInputBorder;
     return typedOther.borderSide == borderSide &&
         typedOther.borderRadius == borderRadius &&
         typedOther.gapPadding == gapPadding;

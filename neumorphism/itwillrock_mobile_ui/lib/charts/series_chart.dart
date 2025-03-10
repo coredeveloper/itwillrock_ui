@@ -3,12 +3,24 @@ import '../neumorphism.dart';
 import 'chart_painter.dart';
 import 'label_model.dart';
 
+/// A stateful widget that represents a chart series.
+///
+/// This widget is used to display a series of data points in a chart.
+/// It can be customized to show different types of charts such as line, bar, or pie charts.
 class ChartSeries extends StatefulWidget {
+  /// The padding around the series.
   final EdgeInsets padding;
+
+  /// The margin around the series.
   final EdgeInsets margin;
+
+  /// The color of the text.
   final Color textColor;
+
+  /// The values of the series.
   final ValueNotifier<LabelSeriesModel> values;
 
+  /// Creates a [ChartSeries] widget.
   const ChartSeries({
     super.key,
     this.padding = const EdgeInsets.all(0),

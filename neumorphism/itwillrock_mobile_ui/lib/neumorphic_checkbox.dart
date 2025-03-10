@@ -6,6 +6,10 @@ import 'constants/colors.dart';
 import 'neumorphic_container.dart';
 import 'neumorphic_container_painter.dart';
 
+/// A list of inner shadows used for the Neumorphic Checkbox widget.
+///
+/// This list defines the shadows that will be applied inside the checkbox
+/// to create a neumorphic effect, giving it a 3D appearance.
 const innerShadows = [
   Shadow(
     color: Color(0x30000000),
@@ -19,11 +23,65 @@ const innerShadows = [
   ),
 ];
 
+/// A custom switch widget that uses a neumorphic design.
+///
+/// This widget is a stateful widget that represents a switch with a neumorphic
+/// design. It can be toggled on or off, and its appearance will change
+/// accordingly.
+///
+/// The [NeumorphicSwitch] can be used in forms, settings, or anywhere a switch
+/// is needed.
+///
+/// Example usage:
+/// ```dart
+/// NeumorphicSwitch(
+///   value: _isSwitched,
+///   onChanged: (newValue) {
+///     setState(() {
+///       _isSwitched = newValue;
+///     });
+///   },
+/// )
+/// ```
+///
+/// See also:
+///  * [Switch], which is a material design switch.
+///  * [Checkbox], which is a material design checkbox.
 class NeumorphicSwitch extends StatefulWidget {
+  /// The border radius of the checkbox.
+  ///
+  /// This determines the roundness of the corners of the checkbox.
+  /// A higher value will result in more rounded corners.
   final double borderRadius;
+
+  /// The margin around the checkbox.
+  ///
+  /// This property defines the amount of space to be added around the checkbox
+  /// widget. It is of type [EdgeInsets] and can be used to create padding
+  /// around the checkbox to adjust its position within its parent widget.
   final EdgeInsets margin;
+
+  /// The amount of space to surround the child inside the checkbox.
+  ///
+  /// This property defines the padding around the checkbox's child widget,
+  /// allowing you to control the spacing inside the checkbox.
   final EdgeInsets padding;
+
+  /// A callback that is called when the state of the checkbox changes.
+  ///
+  /// The callback receives a boolean value indicating whether the checkbox
+  /// is checked (`true`) or unchecked (`false`).
+  ///
+  /// If this is set to `null`, the checkbox will be displayed as disabled.
   final ValueChanged<bool>? onChanged;
+
+  /// A custom switch widget that uses a Neumorphic design.
+  ///
+  /// This widget is used to create a switch with a Neumorphic appearance,
+  /// providing a modern and visually appealing toggle switch.
+  ///
+  /// The `NeumorphicSwitch` is a constant constructor, meaning its
+  /// properties must be compile-time constants.
   const NeumorphicSwitch(
       {this.borderRadius = 0,
       this.padding = emptyPadding,
@@ -35,6 +93,13 @@ class NeumorphicSwitch extends StatefulWidget {
   CheckBoxState createState() => CheckBoxState();
 }
 
+/// A state class for the NeumorphicSwitch widget that manages the state of a custom checkbox.
+///
+/// This class is responsible for handling the visual representation and interaction logic
+/// of the NeumorphicSwitch, which is a custom checkbox styled with neumorphism design principles.
+///
+/// The state includes properties and methods to manage the checkbox's checked state,
+/// handle user interactions, and update the UI accordingly.
 class CheckBoxState extends State<NeumorphicSwitch>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
@@ -45,9 +110,9 @@ class CheckBoxState extends State<NeumorphicSwitch>
   void initState() {
     _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 100));
-    _colorTween =
-        ColorTween(begin: const Color(0x00FFFFFF), end: AppColors.altAccentColor)
-            .animate(_animationController);
+    _colorTween = ColorTween(
+            begin: const Color(0x00FFFFFF), end: AppColors.altAccentColor)
+        .animate(_animationController);
 
     _positionTween = Tween(begin: -1.0, end: 1.0).animate(_animationController);
 
@@ -60,6 +125,12 @@ class CheckBoxState extends State<NeumorphicSwitch>
     _animationController.dispose();
   }
 
+  /// Switches the state of the checkbox to the given value.
+  ///
+  /// This method updates the checkbox to reflect the provided [value].
+  ///
+  /// [value] - The new state of the checkbox. If `true`, the checkbox will be checked;
+  /// if `false`, the checkbox will be unchecked.
   void switchTo(bool value) {
     if (value) {
       _animationController.forward();
@@ -75,6 +146,17 @@ class CheckBoxState extends State<NeumorphicSwitch>
     HapticFeedback.selectionClick();
   }
 
+  /// Aligns the switch to its designated position.
+  ///
+  /// This method is responsible for adjusting the alignment of the switch
+  /// within its parent container or layout. It ensures that the switch is
+  /// positioned correctly based on the current layout constraints and
+  /// alignment settings.
+  ///
+  /// Usage:
+  /// ```dart
+  /// alignSwitch();
+  /// ```
   void alignSwitch() {
     if (_animationController.value > 0.5) {
       switchTo(true);

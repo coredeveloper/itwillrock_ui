@@ -6,23 +6,63 @@ import 'constants/colors.dart';
 import 'constants/animations.dart';
 import 'neumorphic_button_painter.dart';
 
+/// A custom button widget that provides a neumorphic soft round button appearance.
+///
+/// This widget is stateful and can be used to create buttons with a soft,
+/// rounded, and elevated look, which is a common design pattern in neumorphism.
+///
+/// The button can be customized with various properties to achieve the desired
+/// look and feel.
 class NeumorphicSoftRoundButton extends StatefulWidget {
+  /// The shape of the button.
   final ShapeBorder shape;
+
+  /// The margin around the button.
   final EdgeInsets margin;
+
+  /// The padding inside the button.
   final EdgeInsets padding;
+
+  /// The size of the button.
   final Size size;
+
+  /// The icon to display inside the button.
   final Icon? icon;
+
+  /// The text to display inside the button.
   final String? text;
+
+  /// The color of the text.
   final Color? textColor;
+
+  /// Callback when the button is tapped.
   final VoidCallback? onTap;
+
+  /// Whether the button should toggle its state.
   final bool toggle;
+
+  /// The color of the button.
   final Color color;
+
+  /// The accent color of the button.
   final Color? accentColor;
+
+  /// The alignment of the accent.
   final Alignment? accentAligment;
+
+  /// The intensity of the accent.
   final double accentIntensity;
+
+  /// The gradient to apply to the button.
   final Gradient? gradient;
+
+  /// The duration of the animation.
   final Duration animationDuration;
+
+  /// The elevation multiplier for the button.
   final double elevationMultiplier;
+
+  /// Creates a [NeumorphicSoftRoundButton] widget.
   const NeumorphicSoftRoundButton(
       {this.shape = const ContinuousRectangleBorder(),
       this.animationDuration = genericDuration,
@@ -47,11 +87,19 @@ class NeumorphicSoftRoundButton extends StatefulWidget {
       NeumorphicSoftRoundButtonState();
 }
 
+/// The state class for the `NeumorphicSoftRoundButton` widget.
+///
+/// This class is responsible for managing the state and behavior of the
+/// `NeumorphicSoftRoundButton` widget, including its appearance and
+/// interaction logic.
 class NeumorphicSoftRoundButtonState extends State<NeumorphicSoftRoundButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation _shadowTween;
+
+  /// Whether the button should reverse its state.
   bool shouldReverse = false;
+
   @override
   void initState() {
     _animationController = AnimationController(
@@ -70,6 +118,10 @@ class NeumorphicSoftRoundButtonState extends State<NeumorphicSoftRoundButton>
     super.initState();
   }
 
+  /// Handles the tap down event for the button.
+  ///
+  /// This method is called when the user presses down on the button.
+  /// It can be used to trigger visual feedback or other actions.
   void processTapDown() {
     HapticFeedback.selectionClick();
     if (widget.toggle) {
@@ -82,6 +134,7 @@ class NeumorphicSoftRoundButtonState extends State<NeumorphicSoftRoundButton>
     }
   }
 
+  /// Handles the tap up event for the button.
   void processTapUp() {
     // if (_animationController.lastElapsedDuration?.inSeconds == 0) {
     //   return;
@@ -99,6 +152,7 @@ class NeumorphicSoftRoundButtonState extends State<NeumorphicSoftRoundButton>
     }
   }
 
+  /// Marks the animation to reverse.
   void markReverse() {
     shouldReverse = true;
   }
@@ -154,7 +208,8 @@ class NeumorphicSoftRoundButtonState extends State<NeumorphicSoftRoundButton>
                   blur: 3,
                   borderBlur: 5,
                   color: Color.alphaBlend(
-                        AppColors.darkShadowColor.withAlpha(((1 - _shadowTween.value) * 255 / 4).round()),
+                      AppColors.darkShadowColor.withAlpha(
+                          ((1 - _shadowTween.value) * 255 / 4).round()),
                       widget.color),
                   gradient: widget.gradient,
                   borderGradient: LinearGradient(

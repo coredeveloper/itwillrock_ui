@@ -1,13 +1,19 @@
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
+/// A widget that represents a container for a menu.
+///
+/// This widget extends [SingleChildRenderObjectWidget] and is used to
+/// create a custom render object for a menu container in the UI.
 class MenuContainer extends SingleChildRenderObjectWidget {
+  /// Creates a [MenuContainer].
   const MenuContainer({
     super.key,
     required this.shiftValue,
     super.child,
   });
 
+  /// The amount to shift the menu container.
   final double shiftValue;
   @override
   RenderMenuContainer createRenderObject(BuildContext context) {
@@ -23,13 +29,22 @@ class MenuContainer extends SingleChildRenderObjectWidget {
   }
 }
 
+/// A custom render object that extends [RenderProxyBox] to provide
+/// additional functionality for rendering a menu container.
+///
+/// This class is responsible for handling the rendering logic of
+/// the menu container in the application. It can be used to apply
+/// custom painting, layout, and hit testing behavior specific to
+/// the menu container.
 class RenderMenuContainer extends RenderProxyBox {
+  /// Creates a [RenderMenuContainer].
   RenderMenuContainer({
     double shiftValue = 0,
     RenderBox? child,
   })  : _shiftValue = shiftValue,
         super(child);
 
+  /// The amount to shift the menu container.
   double get shiftValue => _shiftValue;
   double _shiftValue;
   set shiftValue(double shiftValue) {

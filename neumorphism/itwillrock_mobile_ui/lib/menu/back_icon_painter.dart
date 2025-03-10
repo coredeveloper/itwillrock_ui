@@ -1,15 +1,27 @@
 import 'package:flutter/widgets.dart';
 import '../neumorphic_shape_painter.dart';
 
+/// A custom painter that draws a back icon with a neumorphic design.
+///
+/// This class extends [NeumorphicShapePainter] to provide a custom
+/// painting implementation for a back icon, typically used for
+/// navigation purposes in a user interface.
 class BackIconPainter extends NeumorphicShapePainter {
+  /// The color of the icon.
   final Color color;
+
+  /// The paint object used to draw the icon.
   final Paint paintObject = Paint();
 
+  /// The maximum rotation angle for the icon.
   final maxRotationRadians = 0.79;
+
+  /// Creates a [BackIconPainter].
   BackIconPainter({required this.color, required super.strokeWidth}) {
     paintObject.color = color;
   }
 
+  /// Paints the back icon onto the given canvas.
   void paintIcon(Canvas canvas) {
     var step = innerRect.height / 3;
 

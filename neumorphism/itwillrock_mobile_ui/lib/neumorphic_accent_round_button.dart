@@ -4,43 +4,85 @@ import 'constants/distances.dart';
 import 'constants/colors.dart';
 import 'neumorphic_button_painter.dart';
 
+/// A callback function type definition for accent button actions.
+///
+/// This callback is triggered when an accent button is pressed, providing
+/// the intensity of the press as a [double] value.
+///
+/// The [intensity] parameter represents the force or pressure of the button press.
 typedef AccentButtonCallback = void Function(double intensity);
 
+/// A neumorphic round button with accent effects.
+///
+/// The [NeumorphicAccentRoundButton] widget displays a round button with neumorphic
+/// accent effects. It uses [NeumorphicButtonPainter] to paint the button.
 class NeumorphicAccentRoundButton extends StatefulWidget {
+  /// The shape of the button.
   final ShapeBorder shape;
+
+  /// The margin around the button.
   final EdgeInsets margin;
+
+  /// The padding inside the button.
   final EdgeInsets padding;
+
+  /// The size of the button.
   final Size size;
+
+  /// The child widget to display inside the button.
   final Widget? child;
+
+  /// Callback when the button is tapped.
   final VoidCallback? onTap;
+
+  /// Callback when the accent changes.
   final AccentButtonCallback? accentChanged;
+
+  /// Whether the button should toggle its state.
   final bool toggle;
+
+  /// The color of the button.
   final Color color;
+
+  /// The duration of the animation.
   final Duration animationDuration;
-  const NeumorphicAccentRoundButton(
-      {this.shape = const ContinuousRectangleBorder(),
-      this.animationDuration = Duration.zero,
-      this.padding = emptyPadding,
-      this.margin = emptyMargin,
-      this.child,
-      this.size = const Size(0, 0),
-      this.color = const Color.fromARGB(0, 0, 0, 0),
-      this.onTap,
-      this.accentChanged,
-      this.toggle = false,
-      super.key});
+
+  /// Creates a [NeumorphicAccentRoundButton] widget.
+  ///
+  /// The [shape], [animationDuration], [padding], [margin], [size], [color], and [toggle]
+  /// arguments must not be null.
+  const NeumorphicAccentRoundButton({
+    this.shape = const ContinuousRectangleBorder(),
+    this.animationDuration = Duration.zero,
+    this.padding = emptyPadding,
+    this.margin = emptyMargin,
+    this.child,
+    this.size = const Size(0, 0),
+    this.color = const Color.fromARGB(0, 0, 0, 0),
+    this.onTap,
+    this.accentChanged,
+    this.toggle = false,
+    super.key,
+  });
 
   @override
   NeumorphicAccentRoundButtonState createState() =>
       NeumorphicAccentRoundButtonState();
 }
 
+/// The state for a [NeumorphicAccentRoundButton] widget.
 class NeumorphicAccentRoundButtonState
     extends State<NeumorphicAccentRoundButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation _shadowTween;
+
+  /// Indicates whether the action should be reversed.
+  ///
+  /// When set to `true`, the action will be performed in the reverse order.
+  /// Defaults to `false`.
   bool shouldReverse = false;
+
   @override
   void initState() {
     _animationController =
@@ -63,6 +105,7 @@ class NeumorphicAccentRoundButtonState
     super.initState();
   }
 
+  /// Processes the tap down event.
   void processTapDown() {
     HapticFeedback.selectionClick();
     if (widget.toggle) {
@@ -75,6 +118,7 @@ class NeumorphicAccentRoundButtonState
     }
   }
 
+  /// Processes the tap up event.
   void processTapUp() {
     if (widget.toggle) {
       if (_animationController.status == AnimationStatus.completed) {
@@ -89,6 +133,7 @@ class NeumorphicAccentRoundButtonState
     }
   }
 
+  /// Marks the animation to reverse.
   void markReverse() {
     shouldReverse = true;
   }
@@ -120,16 +165,17 @@ class NeumorphicAccentRoundButtonState
                 animationValue: _animationController.value,
                 blur: 5.0 - 5.0 * _shadowTween.value,
                 color: Color.alphaBlend(
-                    AppColors.darkShadowColor.withAlpha((255 * ((1 - _shadowTween.value) / 4)).round()),
+                    AppColors.darkShadowColor.withAlpha(
+                        (255 * ((1 - _shadowTween.value) / 4)).round()),
                     widget.color),
                 borderGradient: LinearGradient(
                     stops: const [.5, 2],
                     begin: FractionalOffset.topLeft,
                     end: FractionalOffset.bottomRight,
                     colors: [
-                        AppColors.lightShadowColor
+                      AppColors.lightShadowColor
                           .withAlpha((255 * _shadowTween.value).round()),
-                        AppColors.darkShadowColor
+                      AppColors.darkShadowColor
                           .withAlpha((255 * (_shadowTween.value / 3)).round()),
                     ]),
                 shape: widget.shape,
