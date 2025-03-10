@@ -3,46 +3,88 @@ import 'package:flutter/widgets.dart';
 import 'constants/colors.dart';
 import 'neumorphic_button_painter.dart';
 
+/// A neumorphic container with action effects.
+///
+/// The [NeumorphicActionContainer] widget displays a container with neumorphic
+/// action effects. It uses [NeumorphicButtonPainter] to paint the container.
 class NeumorphicActionContainer extends StatefulWidget {
+  /// The shape of the container.
   final ShapeBorder shape;
+
+  /// The margin around the container.
   final double margin;
+
+  /// The padding inside the container.
   final double padding;
+
+  /// The size of the container.
   final Size size;
+
+  /// The child widget to display inside the container.
   final Widget? child;
+
+  /// Callback when the container is tapped.
   final VoidCallback? onTap;
+
+  /// Whether the container should toggle its state.
   final bool toggle;
+
+  /// The color of the container.
   final Color color;
+
+  /// The accent color of the container.
   final Color? accentColor;
+
+  /// The alignment of the accent.
   final Alignment? accentAligment;
+
+  /// The intensity of the accent.
   final double accentIntensity;
+
+  /// The gradient to apply to the container.
   final Gradient? gradient;
+
+  /// The duration of the animation.
   final Duration animationDuration;
-  const NeumorphicActionContainer(
-      {this.shape = const ContinuousRectangleBorder(),
-      this.animationDuration = Duration.zero,
-      this.padding = 0,
-      this.margin = 0,
-      this.child,
-      this.size = const Size(0, 0),
-      this.color = const Color.fromARGB(0, 0, 0, 0),
-      this.gradient,
-      this.accentColor,
-      this.accentAligment,
-      this.accentIntensity = 0,
-      this.onTap,
-      this.toggle = false,
-      super.key});
+
+  /// Creates a [NeumorphicActionContainer] widget.
+  ///
+  /// The [shape], [animationDuration], [padding], [margin], [size], [color], and [toggle]
+  /// arguments must not be null.
+  const NeumorphicActionContainer({
+    this.shape = const ContinuousRectangleBorder(),
+    this.animationDuration = Duration.zero,
+    this.padding = 0,
+    this.margin = 0,
+    this.child,
+    this.size = const Size(0, 0),
+    this.color = const Color.fromARGB(0, 0, 0, 0),
+    this.gradient,
+    this.accentColor,
+    this.accentAligment,
+    this.accentIntensity = 0,
+    this.onTap,
+    this.toggle = false,
+    super.key,
+  });
 
   @override
   NeumorphicActionContainerState createState() =>
       NeumorphicActionContainerState();
 }
 
+/// The state for a [NeumorphicActionContainer] widget.
 class NeumorphicActionContainerState extends State<NeumorphicActionContainer>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation _shadowTween;
+
+  /// Indicates whether the action should be reversed.
+  ///
+  /// This boolean flag is used to determine if the action should be performed
+  /// in the reverse order. When set to `true`, the action will be reversed.
   bool shouldReverse = false;
+
   @override
   void initState() {
     _animationController = AnimationController(
@@ -61,6 +103,7 @@ class NeumorphicActionContainerState extends State<NeumorphicActionContainer>
     super.initState();
   }
 
+  /// Processes the tap down event.
   void processTapDown() {
     HapticFeedback.selectionClick();
     if (widget.toggle) {
@@ -73,6 +116,7 @@ class NeumorphicActionContainerState extends State<NeumorphicActionContainer>
     }
   }
 
+  /// Processes the tap up event.
   void processTapUp() {
     if (widget.toggle) {
       if (_animationController.status == AnimationStatus.completed) {
@@ -87,6 +131,7 @@ class NeumorphicActionContainerState extends State<NeumorphicActionContainer>
     }
   }
 
+  /// Marks the animation to reverse.
   void markReverse() {
     shouldReverse = true;
   }

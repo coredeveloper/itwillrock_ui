@@ -5,11 +5,72 @@ import 'neumorphic_inner_shadow_painter.dart';
 import 'neumorphic_shadow_painter.dart';
 import 'neumorphic_surface_painter.dart';
 
+/// A custom painter that draws a neumorphic container.
+///
+/// This painter is used to create a neumorphic effect on a container,
+/// giving it a soft, extruded look with light and shadow effects.
 class NeumorphicContainerPainter extends CustomPainter {
+  /// A painter that handles the drawing of shadows for a neumorphic container.
+  ///
+  /// This painter is used to create the shadow effects that give the neumorphic
+  /// design its characteristic look.
+  ///
+  /// See also:
+  ///
+  ///  * [NeumorphicContainer], which uses this painter to draw its shadows.
   late NeumorphicShadowPainter shadowPainter;
+
+  /// A painter that applies an inner shadow effect to a Neumorphic container.
+  ///
+  /// This painter is used to create a concave or inset effect, giving the
+  /// appearance that the container is pressed into the background.
+  ///
+  /// Example usage:
+  ///
+  /// ```dart
+  /// NeumorphicInnerShadowPainter innerShadowPainter = NeumorphicInnerShadowPainter();
+  /// ```
+  ///
+  /// See also:
+  ///
+  ///  * [NeumorphicContainer], which uses this painter to create Neumorphic designs.
   late NeumorphicInnerShadowPainter innerShadowPainter;
+
+  /// A painter that is used to draw the surface of a Neumorphic container.
+  ///
+  /// This painter is responsible for rendering the visual appearance of the
+  /// Neumorphic surface, including shadows, highlights, and other effects
+  /// that give the container its characteristic look.
   late NeumorphicSurfacePainter surfacePainter;
+
+  /// A painter that is used to draw accents on a Neumorphic container.
+  ///
+  /// This painter can be used to add additional visual effects to a Neumorphic
+  /// container, such as shadows, highlights, or other decorative elements.
   NeumorphicAccentPainter? accentPainter;
+
+  /// A custom painter for rendering a Neumorphic container effect.
+  ///
+  /// This painter is used to create a Neumorphic design, which gives the
+  /// appearance of extruded or inset shapes, creating a soft, 3D effect.
+  ///
+  /// The NeumorphicContainerPainter class should be used with a CustomPaint
+  /// widget to apply the Neumorphic effect to a container.
+  ///
+  /// Example usage:
+  ///
+  /// ```dart
+  /// CustomPaint(
+  ///   painter: NeumorphicContainerPainter(),
+  ///   child: Container(
+  ///     width: 100,
+  ///     height: 100,
+  ///   ),
+  /// )
+  /// ```
+  ///
+  /// The painter can be customized to achieve different Neumorphic effects
+  /// by adjusting its properties.
   NeumorphicContainerPainter(
       {Gradient? gradient,
       List<Shadow> shadows = const <Shadow>[],

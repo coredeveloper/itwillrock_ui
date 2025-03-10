@@ -22,15 +22,26 @@ import 'neumorphic_container.dart';
 import 'neumorphic_checkbox.dart';
 import 'neumorphic_accent_list.dart';
 
+/// A class that provides Neumorphism design elements and utilities.
+///
+/// Neumorphism is a design trend that combines shapes, gradients, and shadows
+/// to create a soft, extruded plastic look. This class can be used to apply
+/// Neumorphism effects to UI components.
 class Neumorphism {
   static final _emailController = TextEditingController();
   static final _passwordController = TextEditingController();
 
+  /// The duration of the animation used in the neumorphism effect.
+  ///
+  /// This duration is set to 64 milliseconds.
   static Duration animationDuration = const Duration(milliseconds: 64);
+
+  /// The border radius for neumorphic elements.
   static double borderRadius = 24;
 
+  /// The size of the icons used in neumorphic elements.
   static SeriesTypesChart seriesTypesChart(
-          {ValueChanged<TimePeriodType>? onItemSelected, 
+          {ValueChanged<TimePeriodType>? onItemSelected,
           required Color color}) =>
       SeriesTypesChart(
         textColor: AppColors.textColor,
@@ -38,6 +49,12 @@ class Neumorphism {
         onItemSelected: onItemSelected,
       );
 
+  /// Creates a ChartSeries based on the provided [values].
+  ///
+  /// The [values] parameter is a [ValueNotifier] that holds a [LabelSeriesModel].
+  /// This method generates a series chart using the data from the [LabelSeriesModel].
+  ///
+  /// Returns a [ChartSeries] object representing the series chart.
   static ChartSeries seriesChart(ValueNotifier<LabelSeriesModel> values,
           {EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne}) =>
@@ -47,6 +64,13 @@ class Neumorphism {
           textColor: AppColors.textColor,
           margin: margin);
 
+  /// Creates a list of widgets with accent styling.
+  ///
+  /// This method returns a list of widgets that have a neumorphic accent
+  /// design. The exact appearance and behavior of the widgets depend on the
+  /// implementation details provided in the method.
+  ///
+  /// Returns a [Widget] that contains the accent-styled list.
   static Widget accentList(
           {required List<String> items,
           EdgeInsets padding = paddingStepOne,
@@ -62,17 +86,54 @@ class Neumorphism {
           margin: margin,
           items: items);
 
+  /// Creates a menu button widget.
+  ///
+  /// This widget can be customized using the provided parameters.
+  ///
+  /// The [menuButton] method returns a [Widget] that represents a menu button.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// Widget button = menuButton(
+  ///   // Add your parameters here
+  /// );
+  /// ```
+  ///
+  /// Add detailed parameter descriptions here.
   static Widget menuButton({
     double animationStep = 0,
   }) =>
       MenuButton(
           size: 24, color: AppColors.accentColor, animationStep: animationStep);
 
+  /// Creates a back button widget.
+  ///
+  /// The [onTap] parameter is a callback that is triggered when the button is tapped.
+  ///
+  /// Returns a [Widget] that represents a back button.
   static Widget backButton({GestureTapCallback? onTap}) => menu.BackButton(
         24.0,
         onTap,
       );
 
+  /// Creates an [InputDecoration] with neumorphism styling.
+  ///
+  /// This method allows you to customize the appearance of input fields
+  /// with neumorphism design principles.
+  ///
+  /// The [inputDecoration] method accepts various parameters to define
+  /// the look and feel of the input field.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// InputDecoration decoration = Neumorphism.inputDecoration(
+  ///   hintText: 'Enter your text',
+  ///   labelText: 'Label',
+  ///   // other parameters
+  /// );
+  /// ```
+  ///
+  /// Returns an [InputDecoration] object with the specified styling.
   static InputDecoration inputDecoration({
     String? label,
     String? hint,
@@ -92,6 +153,15 @@ class Neumorphism {
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ));
 
+  /// Creates a neumorphic container widget.
+  ///
+  /// This widget applies a neumorphic design to its child widget, giving it
+  /// a soft, extruded look that appears to be carved out of the background.
+  ///
+  /// The [container] method takes various parameters to customize the appearance
+  /// and behavior of the neumorphic container.
+  ///
+  /// Returns a [Widget] that represents the neumorphic container.
   static Widget container(
           {Widget? child,
           double width = double.infinity,
@@ -123,6 +193,22 @@ class Neumorphism {
         child: child,
       );
 
+  /// Creates a frosted glass effect container.
+  ///
+  /// This widget applies a frosted glass effect to its child widget,
+  /// giving it a blurred, translucent appearance.
+  ///
+  /// The [frostedGlassContainer] can be used to create visually appealing
+  /// UI elements that stand out with a glass-like effect.
+  ///
+  /// Example usage:
+  /// ```
+  /// frostedGlassContainer(
+  ///   child: Text('Hello, World!'),
+  /// )
+  /// ```
+  ///
+  /// Returns a [Widget] that applies the frosted glass effect.
   static Widget frostedGlassContainer(
           {Widget? child,
           double width = double.infinity,
@@ -145,6 +231,21 @@ class Neumorphism {
         child: child,
       );
 
+  /// Creates a dropdown form field widget.
+  ///
+  /// The generic type [T] represents the type of the value the dropdown holds.
+  ///
+  /// This widget is used to create a dropdown menu within a form, allowing users
+  /// to select a value from a list of options.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// dropDownFormField<String>(
+  ///   // parameters here
+  /// );
+  /// ```
+  ///
+  /// Returns a [Widget] that displays a dropdown form field.
   static Widget dropDownFormField<T>(
           {required T value,
           bool obscureText = false,
@@ -176,6 +277,20 @@ class Neumorphism {
             }).toList(),
           ));
 
+  /// Creates a TextFormField widget with neumorphism design.
+  ///
+  /// This method returns a [Widget] that represents a TextFormField with
+  /// neumorphic styling, providing a modern and visually appealing user interface.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// Neumorphism.textFormField(
+  ///   // Add your parameters here
+  /// );
+  /// ```
+  ///
+  /// Returns:
+  ///   A [Widget] that represents a TextFormField with neumorphic design.
   static Widget textFormField(
           {String? label,
           TextEditingController? controller,
@@ -205,6 +320,12 @@ class Neumorphism {
         ),
       );
 
+  /// Creates a form field for email input with neumorphic design.
+  ///
+  /// This widget provides a text field specifically designed for email input,
+  /// incorporating neumorphic design principles to give a soft, raised appearance.
+  ///
+  /// Returns a [Widget] that can be used as an email input form field.
   static Widget emailFormField(
           {String? label,
           TextEditingController? controller,
@@ -227,6 +348,11 @@ class Neumorphism {
                 size: iconSizeSmall,
               ));
 
+  /// Creates a password form field widget with neumorphism design.
+  ///
+  /// This widget is used to input passwords securely.
+  ///
+  /// Returns a [Widget] that represents the password form field.
   static Widget passwordFormField(
           {String? label,
           String? hint,
@@ -239,6 +365,13 @@ class Neumorphism {
           obscureText: true,
           icon: Neumorphism.icon(Icons.password));
 
+  /// Creates a container widget for an action.
+  ///
+  /// This widget is used to display an action button or any other interactive
+  /// element within a neumorphic design.
+  ///
+  /// The [actionContainer] method returns a [Widget] that can be customized
+  /// with various properties to achieve the desired neumorphic effect.
   static Widget actionContainer(
           {Widget? child,
           Size size = const Size(double.infinity, 48),
@@ -268,6 +401,15 @@ class Neumorphism {
         child: child,
       );
 
+  /// Creates a container with extended action capabilities.
+  ///
+  /// This widget is designed to provide a neumorphic style container
+  /// that can be used for extended actions within the UI.
+  ///
+  /// The container can be customized with various properties to fit
+  /// the design requirements of the application.
+  ///
+  /// Returns a [Widget] that represents the extended action container.
   static Widget extendedActionContainer(
           {Widget? child,
           Size size = const Size(double.infinity, 48),
@@ -297,6 +439,12 @@ class Neumorphism {
         child: child,
       );
 
+  /// Creates a soft round button with neumorphism design.
+  ///
+  /// This widget applies a soft shadow effect to give the appearance of
+  /// a raised button with rounded corners.
+  ///
+  /// Returns a [Widget] representing the soft round button.
   static Widget softRoundButton(
           {Icon? icon,
           String? text,
@@ -332,6 +480,15 @@ class Neumorphism {
         toggle: toggle,
       );
 
+  /// Creates a button with an indicator.
+  ///
+  /// This widget is typically used to show a button with some form of
+  /// visual indicator, such as a loading spinner or a progress bar.
+  ///
+  /// The [indicatorButton] method takes various parameters to customize
+  /// the appearance and behavior of the button.
+  ///
+  /// Returns a [Widget] that represents the button with an indicator.
   static Widget indicatorButton(
           {required Icon icon,
           double size = 96,
@@ -357,6 +514,12 @@ class Neumorphism {
         margin: margin,
       );
 
+  /// Creates an accent button with neumorphism design.
+  ///
+  /// This button is styled with a unique accent color and neumorphic
+  /// effects to provide a modern and visually appealing look.
+  ///
+  /// Returns a [Widget] that represents the accent button.
   static Widget accentButton(
           {Widget? child,
           Size size = const Size(elementWidthTwo, elementHeightTwo),
@@ -381,6 +544,13 @@ class Neumorphism {
         child: child,
       );
 
+  /// Creates a custom checkbox widget with neumorphism design.
+  ///
+  /// This widget can be used to display a checkbox with a unique
+  /// neumorphic style, which gives it a soft, extruded, and 3D-like
+  /// appearance.
+  ///
+  /// Returns a [Widget] that represents the custom checkbox.
   static Widget checkBox(
           {EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne,
@@ -392,6 +562,14 @@ class Neumorphism {
         onChanged: onChanged,
       );
 
+  /// Creates a widget that displays an image from the given [url].
+  ///
+  /// The [url] parameter must not be null.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// Widget imageWidget = Neumorphism.image('https://example.com/image.png');
+  /// ```
   static Widget image(String url,
           {EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne,
@@ -406,6 +584,24 @@ class Neumorphism {
         ),
       );
 
+  /// Creates a counter widget with neumorphism design.
+  ///
+  /// This widget displays a counter with a neumorphic style, which gives
+  /// a soft, extruded, and 3D-like appearance. It can be used to show
+  /// numerical values that can be incremented or decremented.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// Neumorphism.counter(
+  ///   initialValue: 0,
+  ///   onIncrement: () => setState(() => _counter++),
+  ///   onDecrement: () => setState(() => _counter--),
+  /// );
+  /// ```
+  ///
+  /// - [initialValue]: The starting value of the counter.
+  /// - [onIncrement]: Callback function to be called when the counter is incremented.
+  /// - [onDecrement]: Callback function to be called when the counter is decremented.
   static Widget counter(
           {EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne,
@@ -422,6 +618,9 @@ class Neumorphism {
         onChanged: onChanged,
       );
 
+  /// Creates a text widget with the given [text].
+  ///
+  /// The [text] parameter specifies the string to be displayed in the widget.
   static Widget text(String text,
           {double size = defaultTextSize,
           Color? color,
@@ -437,6 +636,17 @@ class Neumorphism {
             fontWeight: fontWeight),
       );
 
+  /// Wraps the given [text] in a widget.
+  ///
+  /// This method takes a [String] [text] and returns a [Widget] that
+  /// displays the text with specific styling or behavior.
+  ///
+  /// Example:
+  /// ```dart
+  /// Widget wrappedText = wrappingText("Hello, World!");
+  /// ```
+  ///
+  /// Returns a [Widget] that contains the wrapped text.
   static Widget wrappingText(String text,
           {double size = defaultTextSize,
           Color? color,
@@ -454,12 +664,24 @@ class Neumorphism {
         ),
       );
 
+  /// Creates an icon with neumorphism style.
+  ///
+  /// The [iconData] parameter must not be null and specifies the icon to display.
+  ///
+  /// The [size] parameter specifies the size of the icon in logical pixels.
+  /// If not specified, it defaults to 24.
+  ///
+  /// The [color] parameter specifies the color of the icon. If not specified,
+  /// the icon will use the default color.
   static Icon icon(IconData iconData, {double size = 24, Color? color}) => Icon(
         iconData,
         color: color ?? AppColors.textColor,
         size: size,
       );
 
+  /// Creates a widget that displays text with a gradient effect.
+  ///
+  /// The [text] parameter specifies the text to be displayed.
   static Widget gradientText(String text) => GradientText(
         text,
         gradient: AppColors.shadowGradient,

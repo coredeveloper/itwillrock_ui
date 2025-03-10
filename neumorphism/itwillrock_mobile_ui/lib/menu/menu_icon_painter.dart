@@ -7,7 +7,9 @@ class MenuIconPainter extends NeumorphicShapePainter {
   final double animationStep;
   final maxRotationRadians = 0.79;
   MenuIconPainter(
-      {required this.color, required super.strokeWidth, required this.animationStep}) {
+      {required this.color,
+      required super.strokeWidth,
+      required this.animationStep}) {
     paintObject.color = color;
   }
 

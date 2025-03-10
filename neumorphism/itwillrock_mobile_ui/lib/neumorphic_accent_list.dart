@@ -3,19 +3,51 @@ import 'constants/distances.dart';
 import 'constants/text.dart';
 import 'neumorphic_accent_list_painter.dart';
 
+/// The height of each item in the list, measured in logical pixels.
 const double itemHeight = 42;
+
+/// A callback function type definition that takes a [double] value representing
+/// the intensity of the accent.
+///
+/// This callback can be used to handle changes in accent intensity, for example,
+/// in a UI component that allows users to adjust the intensity of a neumorphic effect.
+///
+/// The [intensity] parameter represents the level of intensity, where higher values
+/// indicate a stronger effect.
 typedef AccentCallback = void Function(double intensity);
 
+/// A widget that displays a list with a neumorphic accent.
+///
+/// The [NeumorphicAccentList] widget displays a list of items with a neumorphic
+/// accent effect. It uses [NeumorphicAccentListPainter] to paint the accent.
 class NeumorphicAccentList extends StatefulWidget {
+  /// The margin around the list.
   final EdgeInsets margin;
+
+  /// The padding inside the list.
   final EdgeInsets padding;
+
+  /// Callback when an item is selected.
   final ValueChanged<String>? onItemSelected;
+
+  /// The currently selected item.
   final String? selectedItem;
+
+  /// Callback when the accent changes.
   final AccentCallback? accentChanged;
+
+  /// The color of the accent.
   final Color color;
+
+  /// The color of the text.
   final Color textColor;
+
+  /// The list of items to display.
   final List<String> items;
 
+  /// Creates a [NeumorphicAccentList] widget.
+  ///
+  /// The [items] argument must not be null.
   const NeumorphicAccentList({
     this.padding = emptyPadding,
     this.margin = emptyMargin,
@@ -32,6 +64,7 @@ class NeumorphicAccentList extends StatefulWidget {
   NeumorphicAccentListState createState() => NeumorphicAccentListState();
 }
 
+/// The state for a [NeumorphicAccentList] widget.
 class NeumorphicAccentListState extends State<NeumorphicAccentList>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
@@ -77,12 +110,27 @@ class NeumorphicAccentListState extends State<NeumorphicAccentList>
     }
   }
 
+  /// Selects an item based on the provided [item] string.
+  ///
+  /// This method performs the necessary actions to handle the selection
+  /// of an item within the application.
+  ///
+  /// [item]: The identifier of the item to be selected.
   void selectItem(String item) {
     setState(() {
       _selectItem(item);
     });
   }
 
+  /// Builds a list of widgets to be displayed as items.
+  ///
+  /// This method creates and returns a list of [Widget] objects that
+  /// represent the items in the list. The specific implementation
+  /// details of how the items are built are not provided in this
+  /// documentation comment.
+  ///
+  /// Returns:
+  ///   A list of [Widget] objects representing the items.
   List<Widget> buildItems() {
     var items = <Widget>[];
 

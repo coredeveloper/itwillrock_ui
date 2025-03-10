@@ -1,8 +1,10 @@
-///Validators collection class
-///
-///Only static classes which used in controls are implemented here.
+/// A collection of validators for form fields.
 class Validators {
-  ///Email address validation helper method
+  /// Validates an email address.
+  ///
+  /// Returns an error message if the email is invalid, otherwise returns null.
+  ///
+  /// [email] The email address to validate.
   static String? validateEmail(String? email) {
     var pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';

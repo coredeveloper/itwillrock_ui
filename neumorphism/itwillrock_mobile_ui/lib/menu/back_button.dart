@@ -1,9 +1,19 @@
 import 'package:flutter/widgets.dart';
 import 'back_button_painter.dart';
 
+/// A custom back button widget that extends [StatelessWidget].
+///
+/// This widget can be used to navigate back to the previous screen
+/// in a Flutter application. It is designed to fit within the
+/// neumorphism design pattern.
 class BackButton extends StatelessWidget {
+  /// The size of the button.
   final double size;
+
+  /// The callback function when the button is tapped.
   final GestureTapCallback? onTap;
+
+  /// Creates a [BackButton].
   const BackButton(this.size, this.onTap, {super.key});
 
   @override

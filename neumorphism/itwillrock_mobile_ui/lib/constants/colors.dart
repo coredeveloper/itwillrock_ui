@@ -38,13 +38,25 @@ const altAccentColorConst = Color(0xFF6A82FB);
 
 ///THe class for dynamicly changable colors. Like in case you switching modes.
 class AppColors {
+  ///The main color
   static Color mainColor = mainColorLightMode;
+
+  ///The text color
   static Color textColor = textColorLightMode;
+
+  ///The light shadow color
   static Color lightShadowColor = lightColorLightMode;
+
+  ///The dark shadow color
   static Color darkShadowColor = darkColorLightMode;
+
+  ///The accent color
   static Color accentColor = accentColorConst;
+
+  ///The alternative accent color
   static Color altAccentColor = altAccentColorConst;
 
+  ///The alternative text color
   static Gradient get mainGradient => LinearGradient(
       stops: const [0, 1],
       begin: FractionalOffset.centerLeft,
@@ -54,12 +66,14 @@ class AppColors {
         AppColors.altAccentColor,
       ]);
 
+  ///The alternative text color
   static Gradient get reversedGradient => LinearGradient(
       stops: const [0, 1],
       begin: FractionalOffset.centerLeft,
       end: FractionalOffset.centerRight,
       colors: [AppColors.altAccentColor, AppColors.accentColor]);
 
+  ///The alternative text color
   static Gradient get shadowGradient => LinearGradient(
         colors: [AppColors.lightShadowColor, AppColors.darkShadowColor],
         stops: const [0, 1],
@@ -67,6 +81,7 @@ class AppColors {
         end: FractionalOffset.bottomRight,
       );
 
+  ///The alternative text color
   static List<Shadow> currentShadows(
           {double blurMultiplier = 1.0, double offsetMultiplier = 1.0}) =>
       [
@@ -82,6 +97,7 @@ class AppColors {
         ),
       ];
 
+  ///The alternative text color
   static List<Shadow> currentInnerShadows(
           {double blurMultiplier = 1.0, double offsetMultiplier = 1.0}) =>
       [
@@ -97,6 +113,7 @@ class AppColors {
         ),
       ];
 
+  ///The alternative text color
   static switchColorMode(bool darkMode) {
     if (darkMode) {
       mainColor = mainColorDarkMode;

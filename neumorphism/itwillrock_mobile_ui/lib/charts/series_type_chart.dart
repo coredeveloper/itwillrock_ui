@@ -3,14 +3,29 @@ import '../neumorphic_indicator_list_painter.dart';
 import '../neumorphism.dart';
 import 'time_period_type.dart';
 
+/// The width of each item in the list, measured in logical pixels.
 const double itemWidth = 64;
 
+/// A chart widget that displays different types of series.
+///
+/// This widget is a stateful widget that can be used to display various
+/// types of data series in a chart format. It is part of the
+/// `itwillrock_mobile_ui` package and is located in the
+/// `lib/charts/series_type_chart.dart` file.
 class SeriesTypesChart extends StatefulWidget {
+  /// The color of the text.
   final Color textColor;
+
+  /// The gradient to apply to the chart.
   final Gradient? gradient;
+
+  /// The color of the chart.
   final Color color;
+
+  /// Callback when an item is selected.
   final ValueChanged<TimePeriodType>? onItemSelected;
 
+  /// Creates a [SeriesTypesChart] widget.
   const SeriesTypesChart(
       {super.key,
       required this.textColor,

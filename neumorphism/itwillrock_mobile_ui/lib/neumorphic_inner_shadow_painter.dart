@@ -2,15 +2,22 @@ import 'package:flutter/widgets.dart';
 
 import 'neumorphic_shape_painter.dart';
 
+/// A custom painter that draws an inner shadow to create a
+/// neumorphic effect on a widget. This painter extends the
+/// [NeumorphicShapePainter] to provide additional styling
+/// specific to inner shadows.
 class NeumorphicInnerShadowPainter extends NeumorphicShapePainter {
+  /// The list of inner shadows to apply to the widget.
   final List<Shadow> innerShadows;
 
+  /// Creates a [NeumorphicInnerShadowPainter].
   NeumorphicInnerShadowPainter({
     required this.innerShadows,
     required super.shape,
     required super.strokeWidth,
   });
 
+  /// Paints the inner shadow effect on the widget.
   void paintShadow(Canvas canvas, {Path? path}) {
     if (path != null) {
       innerPath = path;

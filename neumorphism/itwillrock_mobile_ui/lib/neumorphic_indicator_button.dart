@@ -60,9 +60,9 @@ class NeumorphicIndicatorButtonState extends State<NeumorphicIndicatorButton>
         vsync: this, duration: const Duration(milliseconds: 32));
 
     _shadowTween = Tween(begin: 1.0, end: 0.0).animate(_animationController);
-    _colorTween =
-        ColorTween(begin: const Color(0x00FFFFFF), end: AppColors.altAccentColor)
-            .animate(_animationController);
+    _colorTween = ColorTween(
+            begin: const Color(0x00FFFFFF), end: AppColors.altAccentColor)
+        .animate(_animationController);
 
     super.initState();
   }
@@ -124,7 +124,8 @@ class NeumorphicIndicatorButtonState extends State<NeumorphicIndicatorButton>
                         blur: 3,
                         borderBlur: 5,
                         color: Color.alphaBlend(
-                            AppColors.darkShadowColor.withAlpha(((1 - _shadowTween.value) / 4 * 255).toInt()),
+                            AppColors.darkShadowColor.withAlpha(
+                                ((1 - _shadowTween.value) / 4 * 255).toInt()),
                             widget.color),
                         borderGradient: LinearGradient(
                             stops: const [0, 1],
