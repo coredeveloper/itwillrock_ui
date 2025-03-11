@@ -16,7 +16,7 @@ const lightColorLightMode = Color(0xFFFFFFFF);
 const darkColorLightMode = Color(0xFFD1D9E6);
 
 ///The light color in Dark mode
-const lightColorDarkMode = Color(0xFF30343A);
+const lightColorDarkMode = Color(0xFF000000);
 
 ///The dark color in Dark mode
 const darkColorDarkMode = Color(0xFF24262B);
@@ -76,6 +76,14 @@ class AppColors {
   ///The alternative text color
   static Gradient get shadowGradient => LinearGradient(
         colors: [AppColors.lightShadowColor, AppColors.darkShadowColor],
+        stops: const [0, 1],
+        begin: FractionalOffset.topLeft,
+        end: FractionalOffset.bottomRight,
+      );
+
+  ///The alternative text color
+  static Gradient get reversedShadowGradient => LinearGradient(
+        colors: [AppColors.darkShadowColor, AppColors.lightShadowColor],
         stops: const [0, 1],
         begin: FractionalOffset.topLeft,
         end: FractionalOffset.bottomRight,

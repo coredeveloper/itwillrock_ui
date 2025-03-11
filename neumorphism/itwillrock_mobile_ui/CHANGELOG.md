@@ -18,3 +18,5 @@ Fixes according to the latest language standards and few minor upgrades
 Readme and samples updated
 ## 0.0.34
 Code annotation and documentation added
+## 0.0.35
+Theme usage fixes and example code updated

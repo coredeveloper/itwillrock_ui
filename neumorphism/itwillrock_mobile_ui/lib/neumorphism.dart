@@ -134,13 +134,21 @@ class Neumorphism {
   /// ```
   ///
   /// Returns an [InputDecoration] object with the specified styling.
-  static InputDecoration inputDecoration({
-    String? label,
-    String? hint,
-    Widget? icon,
-    bool filled = true,
-  }) =>
+  static InputDecoration inputDecoration(
+          {String? label,
+          String? hint,
+          Widget? icon,
+          bool filled = true,
+          bool renderAccent = false,
+          Alignment? accentAligment,
+          double accentIntensity = 0}) =>
       InputDecoration(
+          enabledBorder: GradientOutlineInputBorder(
+            accentAligment: renderAccent ? accentAligment : null,
+            accentColor: renderAccent ? AppColors.accentColor : null,
+            accentIntensity: renderAccent ? accentIntensity : 0,
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+          ),
           hintStyle: TextStyle(color: AppColors.textColor),
           suffixIcon: icon,
           suffixStyle: TextStyle(color: AppColors.textColor),
@@ -149,7 +157,10 @@ class Neumorphism {
           fillColor: AppColors.mainColor,
           labelText: label,
           hintText: hint,
-          border: const GradientOutlineInputBorder(
+          border: GradientOutlineInputBorder(
+            accentAligment: renderAccent ? accentAligment : null,
+            accentColor: renderAccent ? AppColors.accentColor : null,
+            accentIntensity: renderAccent ? accentIntensity : 0,
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ));
 
@@ -178,6 +189,7 @@ class Neumorphism {
         height: height,
         margin: margin,
         padding: padding,
+        color: AppColors.mainColor,
         blur: 0,
         borderBlur: 3,
         accentAligment: renderAccent ? accentAligment : null,
@@ -299,6 +311,9 @@ class Neumorphism {
           String? hint,
           Icon? icon,
           bool obscureText = false,
+          bool renderAccent = false,
+          Alignment? accentAlignment,
+          double accentIntensity = 0,
           TextInputType inputType = TextInputType.text,
           EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne}) =>
@@ -316,7 +331,13 @@ class Neumorphism {
             fontFamily: defaultFontFamily,
             color: AppColors.textColor,
           ),
-          decoration: inputDecoration(label: label, hint: hint, icon: icon),
+          decoration: inputDecoration(
+              accentAligment: renderAccent ? accentAlignment : null,
+              accentIntensity: renderAccent ? accentIntensity : 0,
+              renderAccent: renderAccent,
+              label: label,
+              hint: hint,
+              icon: icon),
         ),
       );
 
@@ -357,9 +378,15 @@ class Neumorphism {
           {String? label,
           String? hint,
           Icon? icon,
+          bool renderAccent = false,
+          Alignment? accentAlignment,
+          double accentIntensity = 0,
           EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne}) =>
       textFormField(
+          renderAccent: renderAccent,
+          accentAlignment: accentAlignment,
+          accentIntensity: accentIntensity,
           label: label,
           controller: _passwordController,
           obscureText: true,
