@@ -1,24 +1,48 @@
-## 0.0.1
-This is an initial working release. There is a room to improve performance. 
-## 0.0.2
-Added example in a proper place. 
-## 0.0.3
-Frost glass container added
-## 0.0.4
-Bug fixes
-## 0.0.5
-Bug fixes and documentation added
-## 0.0.6
-Example updated
-## 0.0.7
-Rebranding / Just renamed the package and polished the references.
-## 0.0.32
-Fixes according to the latest language standards and few minor upgrades
-## 0.0.33
-Readme and samples updated
-## 0.0.34
-Code annotation and documentation added
-## 0.0.35
-Theme usage fixes and example code updated
+# Changelog
+
+## 0.0.37
+- Demo GIF file optimizations
+- Improved example code readability
+
 ## 0.0.36
-Readme updated with more samples
+- Updated README with more sample code examples
+
+## 0.0.35
+- Fixed theme usage issues
+- Updated example code
+
+## 0.0.34
+- Added comprehensive code annotations
+- Improved API documentation
+
+## 0.0.33
+- Updated README
+- Added new usage samples
+
+## 0.0.32
+- Fixed issues to comply with latest language standards
+- Various minor upgrades
+
+## 0.0.7
+- Rebranded package name
+- Polished references
+
+## 0.0.6
+- Updated example project
+
+## 0.0.5
+- Bug fixes
+- Added documentation
+
+## 0.0.4
+- Bug fixes
+
+## 0.0.3
+- Added frost glass container component
+
+## 0.0.2
+- Added example in proper location
+
+## 0.0.1
+- Initial working release
+- Note: Performance improvements planned for future releases
