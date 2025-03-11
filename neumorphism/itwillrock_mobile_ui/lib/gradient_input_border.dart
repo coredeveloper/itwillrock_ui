@@ -6,13 +6,25 @@ import 'constants/colors.dart';
 /// This class is based on [OutlineInputBorder] and provides a gradient outline
 /// for input fields.
 class GradientOutlineInputBorder extends InputBorder {
+  /// The accent color of the container.
+  final Color? accentColor;
+
+  /// The alignment of the accent.
+  final Alignment? accentAligment;
+
+  /// The intensity of the accent.
+  final double accentIntensity;
+
   /// Creates a gradient outline input border.
   ///
   /// The [borderSide], [borderRadius], and [gapPadding] arguments must not be null.
-  const GradientOutlineInputBorder({
+  GradientOutlineInputBorder({
     super.borderSide = const BorderSide(),
     this.borderRadius = const BorderRadius.all(Radius.circular(4.0)),
     this.gapPadding = 4.0,
+    this.accentColor,
+    this.accentAligment,
+    this.accentIntensity = 0,
   })  : assert(borderRadius != null),
         assert(gapPadding >= 0.0);
 
@@ -35,7 +47,13 @@ class GradientOutlineInputBorder extends InputBorder {
   @override
   GradientOutlineInputBorder copyWith({BorderSide? borderSide}) {
     return GradientOutlineInputBorder(
-        borderSide: borderSide ?? this.borderSide);
+      borderSide: borderSide ?? this.borderSide,
+      borderRadius: borderRadius,
+      gapPadding: gapPadding,
+      accentColor: accentColor,
+      accentAligment: accentAligment,
+      accentIntensity: accentIntensity,
+    );
   }
 
   @override
@@ -50,6 +68,9 @@ class GradientOutlineInputBorder extends InputBorder {
       borderSide: borderSide.scale(t),
       borderRadius: radius * t,
       gapPadding: gapPadding * t,
+      accentColor: accentColor,
+      accentAligment: accentAligment,
+      accentIntensity: accentIntensity,
     );
   }
 
@@ -61,6 +82,9 @@ class GradientOutlineInputBorder extends InputBorder {
         borderRadius: BorderRadius.lerp(outline.borderRadius, borderRadius, t),
         borderSide: BorderSide.lerp(outline.borderSide, borderSide, t),
         gapPadding: outline.gapPadding,
+        accentColor: accentColor,
+        accentAligment: accentAligment,
+        accentIntensity: accentIntensity,
       );
     }
     return super.lerpFrom(a, t);
@@ -74,6 +98,9 @@ class GradientOutlineInputBorder extends InputBorder {
         borderRadius: BorderRadius.lerp(borderRadius, outline.borderRadius, t),
         borderSide: BorderSide.lerp(borderSide, outline.borderSide, t),
         gapPadding: outline.gapPadding,
+        accentColor: accentColor,
+        accentAligment: accentAligment,
+        accentIntensity: accentIntensity,
       );
     }
     return super.lerpTo(b, t);
@@ -113,23 +140,32 @@ class GradientOutlineInputBorder extends InputBorder {
 
     final shaderRect = rect.deflate(borderSide.width);
     shadowPaint
-      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 2 + borderSide.width)
-      ..shader = LinearGradient(
-          begin: FractionalOffset.topCenter,
-          end: FractionalOffset.bottomCenter,
-          colors: [
-            AppColors.darkShadowColor,
-            AppColors.lightShadowColor,
-          ],
-          stops: const [
-            0,
-            1
-          ]).createShader(shaderRect);
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 5 + borderSide.width)
+      ..shader = AppColors.reversedShadowGradient.createShader(shaderRect);
 
     canvas.save();
     canvas.clipRRect(center);
     canvas.drawPath(
-        _calculateShadowPath(center, 5 - borderSide.width), shadowPaint);
+        _calculateShadowPath(center, 3 - borderSide.width), shadowPaint);
+
+    if (accentColor != null &&
+        accentAligment != null &&
+        accentIntensity > 0.0) {
+      final accentPaint = Paint()
+        ..color = accentColor!
+        ..maskFilter = MaskFilter.blur(BlurStyle.normal, 5 + borderSide.width)
+        ..shader = LinearGradient(
+          begin: accentAligment!,
+          end: Alignment(-accentAligment!.x, -accentAligment!.y),
+          colors: [
+            accentColor!.withValues(alpha: accentIntensity),
+            accentColor!.withValues(alpha: 0.0),
+          ],
+          stops: const [0, 1],
+        ).createShader(shaderRect);
+      canvas.drawPath(
+          _calculateShadowPath(center, 3 - borderSide.width), accentPaint);
+    }
     canvas.restore();
   }
 
@@ -147,9 +183,13 @@ class GradientOutlineInputBorder extends InputBorder {
         other as GradientOutlineInputBorder;
     return typedOther.borderSide == borderSide &&
         typedOther.borderRadius == borderRadius &&
-        typedOther.gapPadding == gapPadding;
+        typedOther.gapPadding == gapPadding &&
+        typedOther.accentColor == accentColor &&
+        typedOther.accentAligment == accentAligment &&
+        typedOther.accentIntensity == accentIntensity;
   }
 
   @override
-  int get hashCode => Object.hash(borderSide, borderRadius, gapPadding);
+  int get hashCode => Object.hash(borderSide, borderRadius, gapPadding,
+      accentColor, accentAligment, accentIntensity);
 }
