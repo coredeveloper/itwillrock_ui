@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:itwillrock_neumorphism/charts/label_model.dart';
-import 'package:itwillrock_neumorphism/constants/colors.dart';
-import 'package:itwillrock_neumorphism/neumorphism.dart';
-
 import 'menu_demo.dart';
 import 'theme.dart';
 

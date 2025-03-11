@@ -20,3 +20,5 @@ Readme and samples updated
 Code annotation and documentation added
 ## 0.0.35
 Theme usage fixes and example code updated
+## 0.0.36
+Readme updated with more samples
