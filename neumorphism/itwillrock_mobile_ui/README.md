@@ -30,7 +30,7 @@ Add the package to your project by including it in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  itwillrock_mobile_ui: ^0.0.33
+  itwillrock_neumorphism: ^0.0.36
 ```
 
 Then, run `flutter pub get` to install the package.
@@ -40,7 +40,7 @@ Then, run `flutter pub get` to install the package.
 Import the package in your Dart code:
 
 ```dart
-import 'package:itwillrock_mobile_ui/itwillrock_mobile_ui.dart';
+import 'package:itwillrock_neumorphism/neumorphism.dart';
 ```
 
 ## Demo
@@ -207,5 +207,199 @@ Neumorphism.softRoundButton(
     }
   },
   text: "Login",
+);
+```
+
+### Text and Icons
+
+```dart
+// Simple text with default styling
+Neumorphism.text("Hello World");
+
+// Gradient text effect
+Neumorphism.gradientText("Gradient Title");
+
+// Neumorphic icon
+Neumorphism.icon(Icons.favorite, size: 32);
+
+// Flexible text that wraps
+Neumorphism.wrappingText("This is a long text that will wrap to the next line if needed", 
+  size: 18,
+  fontWeight: FontWeight.bold
+);
+```
+
+### Form Elements
+
+```dart
+// Email field with validation
+Neumorphism.emailFormField(
+  hint: 'Enter your email',
+);
+
+// Password field
+Neumorphism.passwordFormField(
+  label: 'Password',
+  renderAccent: true,
+  accentAlignment: Alignment(0, 1),
+  accentIntensity: 0.5,
+);
+
+// Dropdown form field
+Neumorphism.dropDownFormField<String>(
+  value: selectedValue,
+  items: ['Option 1', 'Option 2', 'Option 3'],
+  onChanged: (value) {
+    setState(() {
+      selectedValue = value;
+    });
+  },
+);
+
+// Custom text form field
+Neumorphism.textFormField(
+  label: 'Custom Input',
+  icon: Neumorphism.icon(Icons.description),
+  renderAccent: true,
+);
+
+// Counter
+Neumorphism.counter(
+  initialValue: 1,
+  onChanged: (value) {
+    setState(() {
+      count = value;
+    });
+  },
+);
+
+// Checkbox
+Neumorphism.checkBox(
+  onChanged: (value) {
+    setState(() {
+      isChecked = value;
+    });
+  },
+);
+```
+
+### Containers and Buttons
+
+```dart
+// Basic container
+Neumorphism.container(
+  child: Text('Basic container'),
+  dropShadow: true,
+  dropInnerShadow: false,
+);
+
+// Action container
+Neumorphism.actionContainer(
+  onTap: () => print('Tapped!'),
+  child: Neumorphism.text("Tap me"),
+  size: const Size(200, 48),
+  renderAccent: true,
+  accentIntensity: 0.5,
+);
+
+// Extended action container
+Neumorphism.extendedActionContainer(
+  child: Neumorphism.text("Extended Action"),
+  onTap: () => print('Extended action'),
+  size: const Size(250, 60),
+  main: true,
+);
+
+// Soft round button
+Neumorphism.softRoundButton(
+  size: const Size(96, 42),
+  text: "Login",
+);
+
+// Soft round button with icon
+Neumorphism.softRoundButton(
+  size: const Size(60, 60),
+  toggle: true,
+  icon: Neumorphism.icon(Icons.home, color: AppColors.accentColor),
+);
+
+// Animated soft round button
+Neumorphism.softRoundButton(
+  margin: const EdgeInsets.all(10),
+  padding: const EdgeInsets.all(0),
+  size: const Size(96, 42),
+  onTap: () {
+    if (_animationController.status == AnimationStatus.completed) {
+      _animationController.reverse();
+    } else {
+      _animationController.forward();
+    }
+  },
+  text: "Login",
+);
+
+// Indicator button 
+Neumorphism.indicatorButton(
+  accentAligment: const Alignment(1, -1),
+  accentColor: AppColors.accentColor,
+  accentIntensity: 0.5,
+  size: 74,
+  icon: Neumorphism.icon(Icons.fingerprint),
+);
+
+// Back button
+Neumorphism.backButton(
+  onTap: () => Navigator.pop(context),
+);
+
+// Menu button
+Neumorphism.menuButton(
+  animationStep: 0.5, // 0 for hamburger, 1 for X
+);
+
+// Image with neumorphic styling
+Neumorphism.image(
+  'https://example.com/image.jpg',
+  width: 200,
+  height: 150,
+);
+```
+
+### Charts and Lists
+
+```dart
+// Accent list
+Neumorphism.accentList(
+  margin: const EdgeInsets.all(10),
+  padding: const EdgeInsets.all(10),
+  items: ["Item 1", "Item 2", "Item 3"],
+  onItemSelected: (item) => print('Selected: $item'),
+);
+
+// Series chart
+Neumorphism.seriesChart(
+  valueNotifier,
+  padding: const EdgeInsets.all(16),
+);
+
+// Series types chart
+Neumorphism.seriesTypesChart(
+  color: AppColors.accentColor,
+  onItemSelected: (type) => print('Selected type: $type'),
+);
+```
+
+### Frosted Glass Container
+
+```dart
+Neumorphism.frostedGlassContainer(
+  margin: const EdgeInsets.all(10),
+  padding: const EdgeInsets.all(10),
+  dropShadow: true,
+  dropInnerShadow: true,
+  child: SizedBox(
+    height: 200,
+    child: Center(child: Neumorphism.text('Frosted glass effect')),
+  ),
 );
 ```
