@@ -181,7 +181,7 @@ class NeumorphicActionContainerState extends State<NeumorphicActionContainer>
                       widget.accentIntensity * (1 - _animationController.value),
                   blur: 2,
                   borderBlur: 0,
-                  color: AppColors.mainColor,
+                  color: widget.color,
                   gradient: widget.gradient,
                   shape: widget.shape,
                   strokeWidth: 0,
