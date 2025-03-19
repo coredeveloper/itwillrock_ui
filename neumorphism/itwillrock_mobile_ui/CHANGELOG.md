@@ -1,4 +1,8 @@
 # Changelog
+## 0.0.39
+- Lincense  adopted to the opensource standard
+- fixes related to container rendering
+
 ## 0.0.38
 - Lincense changed (free to use with Attribution)
 - added color option for container and actionContainer
