@@ -175,6 +175,7 @@ class Neumorphism {
   /// Returns a [Widget] that represents the neumorphic container.
   static Widget container(
           {Widget? child,
+          Color? color,
           double width = double.infinity,
           double height = double.infinity,
           bool dropShadow = true,
@@ -189,7 +190,7 @@ class Neumorphism {
         height: height,
         margin: margin,
         padding: padding,
-        color: AppColors.mainColor,
+        color: color ?? AppColors.mainColor,
         blur: 0,
         borderBlur: 3,
         accentAligment: renderAccent ? accentAligment : null,
@@ -401,6 +402,7 @@ class Neumorphism {
   /// with various properties to achieve the desired neumorphic effect.
   static Widget actionContainer(
           {Widget? child,
+          Color? color,
           Size size = const Size(double.infinity, 48),
           ShapeBorder? shape,
           bool main = false,
@@ -418,7 +420,7 @@ class Neumorphism {
         accentIntensity: renderAccent ? accentIntensity : 0,
         onTap: onTap,
         size: size,
-        color: main ? transparentColor : AppColors.mainColor,
+        color: main ? transparentColor : (color ?? AppColors.mainColor),
         gradient: main ? AppColors.mainGradient : null,
         shape: shape ??
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

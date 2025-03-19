@@ -1,6 +1,6 @@
-# ItWillRock Neumorphism
+# ITWiLLROCK Neumorphism
 
-This is an advanced Neumorphic design implementation. Feel free to contribute.
+This project showcases an advanced implementation of Neumorphic design. Contributions are welcome. For assistance with integrating this UI into your project, please contact the author at contact@itwillrock.com.
 
 ## Table of Contents
 
