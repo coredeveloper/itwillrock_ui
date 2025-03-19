@@ -1,4 +1,7 @@
 # Changelog
+## 0.0.38
+- Lincense changed (free to use with Attribution)
+- added color option for container and actionContainer
 
 ## 0.0.37
 - Demo GIF file optimizations
