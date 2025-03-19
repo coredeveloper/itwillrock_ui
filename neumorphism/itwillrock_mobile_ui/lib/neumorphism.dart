@@ -200,7 +200,7 @@ class Neumorphism {
         innerShadows:
             dropInnerShadow ? AppColors.currentInnerShadows() : <Shadow>[],
         borderGradient: AppColors.shadowGradient,
-        gradient: AppColors.shadowGradient,
+        gradient: color != null ? null : AppColors.shadowGradient,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius)),
         child: child,
