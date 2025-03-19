@@ -1,4 +1,7 @@
 # Changelog
+## 0.0.40
+- actionContainer color parameter ignored, now that fixed
+
 ## 0.0.39
 - Lincense  adopted to the opensource standard
 - fixes related to container rendering
