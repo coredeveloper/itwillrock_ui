@@ -1,4 +1,7 @@
 # Changelog
+## 0.0.41
+- NeumorphicButtonPainter fix
+
 ## 0.0.40
 - actionContainer color parameter ignored, now that fixed
 
