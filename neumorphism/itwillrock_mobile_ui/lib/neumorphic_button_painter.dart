@@ -86,6 +86,10 @@ class NeumorphicButtonPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(NeumorphicButtonPainter oldDelegate) {
-    return animationValue != oldDelegate.animationValue;
+    // Safely compare colors, handling null values
+    final colorChanged =
+        surfacePainter.color == oldDelegate.surfacePainter.color ? false : true;
+
+    return animationValue != oldDelegate.animationValue || colorChanged;
   }
 }
