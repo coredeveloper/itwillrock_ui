@@ -5,6 +5,7 @@ import '../../../constants/colors.dart';
 import 'neumorphic_button_painter.dart';
 import 'neumorphic_container_painter.dart';
 
+/// Default inner shadows for the indicator dot
 const innerShadows = [
   Shadow(
     color: Color(0x30000000),
@@ -18,17 +19,39 @@ const innerShadows = [
   ),
 ];
 
+/// A neumorphic button with an indicator dot that shows active state
 class NeumorphicIndicatorButton extends StatefulWidget {
+  /// The shape of the button border
   final ShapeBorder shape;
+
+  /// Outer margin around the button
   final EdgeInsets margin;
+
+  /// Inner padding within the button
   final EdgeInsets padding;
+
+  /// Size of the button (width and height)
   final double size;
+
+  /// Icon displayed in the center of the button
   final Icon icon;
+
+  /// Callback when the button state changes
   final ValueChanged<bool>? onChanged;
+
+  /// Background color of the button
   final Color color;
+
+  /// Color of the accent glow effect
   final Color? accentColor;
+
+  /// Position of the accent glow
   final Alignment? accentAlignment;
+
+  /// Intensity of the accent glow (0.0 to 1.0)
   final double accentIntensity;
+
+  /// Creates a neumorphic indicator button
   const NeumorphicIndicatorButton(
       {this.shape = const ContinuousRectangleBorder(),
       this.padding = emptyPadding,
@@ -47,6 +70,7 @@ class NeumorphicIndicatorButton extends StatefulWidget {
       NeumorphicIndicatorButtonState();
 }
 
+/// State for [NeumorphicIndicatorButton]
 class NeumorphicIndicatorButtonState extends State<NeumorphicIndicatorButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
@@ -67,6 +91,7 @@ class NeumorphicIndicatorButtonState extends State<NeumorphicIndicatorButton>
     super.initState();
   }
 
+  /// Programmatically switches the button to the given state
   void switchTo(bool value) {
     if (value) {
       _animationController.forward();
@@ -81,6 +106,7 @@ class NeumorphicIndicatorButtonState extends State<NeumorphicIndicatorButton>
     }
   }
 
+  /// Handles tap gesture and toggles button state
   void processTap() {
     if (_animationController.lastElapsedDuration?.inSeconds == 0) {
       return;

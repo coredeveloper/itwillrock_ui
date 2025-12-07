@@ -1,4 +1,12 @@
 # Changelog
+## 0.1.1
+### Documentation
+- Added 100% dartdoc coverage for all public API members
+- Added missing return type annotation to `switchColorMode`
+
+### Other
+- Compressed demo_dark.gif to meet pub.dev 4MB screenshot limit
+
 ## 0.1.0
 ### Breaking Changes
 - **BREAKING**: Renamed `accentAligment` to `accentAlignment` across all components for correct spelling

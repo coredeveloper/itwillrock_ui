@@ -1,11 +1,21 @@
 import 'package:flutter/widgets.dart';
 import '../neumorphic_shape_painter.dart';
 
+/// Painter for animated hamburger menu icon that transforms to X
 class MenuIconPainter extends NeumorphicShapePainter {
+  /// The color of the menu icon lines
   final Color color;
+
+  /// Cached paint object for drawing
   final Paint paintObject = Paint();
+
+  /// Animation progress from 0.0 (hamburger) to 1.0 (X)
   final double animationStep;
+
+  /// Maximum rotation angle in radians for the animation
   final maxRotationRadians = 0.79;
+
+  /// Creates a menu icon painter
   MenuIconPainter(
       {required this.color,
       required super.strokeWidth,
@@ -13,6 +23,7 @@ class MenuIconPainter extends NeumorphicShapePainter {
     paintObject.color = color;
   }
 
+  /// Paints the menu icon on the canvas
   void paintIcon(Canvas canvas) {
     var step = innerRect.height / 3;
 
