@@ -10,6 +10,7 @@ import 'email_validator.dart';
 import 'gradient_text.dart';
 import 'menu/menu_button.dart';
 import 'menu/back_button.dart' as menu;
+import 'menu/nested_back_button.dart';
 import 'neumorphic_counter.dart';
 import 'neumorphic_frosted_glass_container.dart';
 import 'neumorphic_indicator_button.dart';
@@ -114,6 +115,43 @@ class Neumorphism {
   static Widget backButton({GestureTapCallback? onTap}) => menu.BackButton(
         24.0,
         onTap,
+      );
+
+  /// Creates a nested back button that shows navigation depth.
+  ///
+  /// The number of chevrons indicates how deep in the navigation stack:
+  /// - Level 1: `<` (one screen deep)
+  /// - Level 2: `<<` (two screens deep)
+  /// - Level 3: `<<<` (three screens deep)
+  /// - etc.
+  ///
+  /// The [nestingLevel] parameter specifies the current depth.
+  /// The [onTap] callback is triggered when the button is tapped.
+  /// The [color] parameter allows custom chevron color.
+  /// The [size] parameter controls the button size.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// Neumorphism.nestedBackButton(
+  ///   nestingLevel: 2, // Shows <<
+  ///   onTap: () => Navigator.pop(context),
+  /// )
+  /// ```
+  static Widget nestedBackButton({
+    int nestingLevel = 1,
+    GestureTapCallback? onTap,
+    Color? color,
+    double size = 24,
+    double strokeWidth = 2.5,
+    Duration animationDuration = const Duration(milliseconds: 200),
+  }) =>
+      NestedBackButton(
+        nestingLevel: nestingLevel,
+        onTap: onTap,
+        color: color,
+        size: size,
+        strokeWidth: strokeWidth,
+        animationDuration: animationDuration,
       );
 
   /// Creates an [InputDecoration] with neumorphism styling.

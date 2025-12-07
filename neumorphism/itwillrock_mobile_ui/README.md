@@ -30,7 +30,7 @@ Add the package to your project by including it in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  itwillrock_neumorphism: ^0.1.3
+  itwillrock_neumorphism: ^0.1.4
 ```
 
 Then, run `flutter pub get` to install the package.

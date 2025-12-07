@@ -1,4 +1,20 @@
 # Changelog
+## 0.1.4
+### Features
+- **Nested Back Button**: New `Neumorphism.nestedBackButton()` for nested navigation
+  - Shows navigation depth with multiple chevrons: `<`, `<<`, `<<<`, etc.
+  - Animated transitions when nesting level changes
+  - Customizable size, color, and stroke width
+
+### Example
+```dart
+// In header, show back button with nesting level
+Neumorphism.nestedBackButton(
+  nestingLevel: navigationDepth, // 1 = <, 2 = <<, 3 = <<<
+  onTap: () => Navigator.pop(context),
+)
+```
+
 ## 0.1.3
 ### Features
 - **Full color customization**: All colors now have setters
