@@ -1,4 +1,21 @@
 # Changelog
+## 0.1.3
+### Features
+- **Full color customization**: All colors now have setters
+  - `AppColors.mainColor = myColor`
+  - `AppColors.textColor = myColor` (or null for auto)
+  - `AppColors.lightShadowColor = myColor` (or null for auto)
+  - `AppColors.darkShadowColor = myColor` (or null for auto)
+  - `AppColors.accentColor = myColor`
+  - `AppColors.altAccentColor = myColor`
+
+- **AppColors.reset()**: Clear all overrides, return to defaults
+
+### Improvements
+- Colors use override pattern: set explicitly or auto-derive from background
+- Setting a color to `null` reverts to computed default
+- `switchColorMode()` now calls `reset()` first for clean state
+
 ## 0.1.2
 ### Features
 - **AppColors.configure()**: New method to configure colors from a single background color

@@ -18,68 +18,138 @@ const defaultAltAccentColor = Color(0xFF6A82FB);
 /// Alternative text color for use on accent/gradient backgrounds
 const altTextColor = Color(0xFFFFFFFF);
 
-/// Dynamic color configuration for neumorphic design.
+/// Flexible color configuration for neumorphic design.
 ///
-/// Colors are derived from a single background color:
-/// - [mainColor]: The background color (user-provided or default)
-/// - [lightShadowColor]: Computed lighter shade for highlights
-/// - [darkShadowColor]: Computed darker shade for shadows
-/// - [textColor]: Computed contrasting color for readability
-/// - [accentColor]: User-provided accent color for highlights
+/// All colors can be set individually or auto-derived from background.
 ///
-/// Example usage:
+/// **Quick setup:**
 /// ```dart
-/// // Configure with custom background and accent
+/// // Set background, rest auto-derives
+/// AppColors.mainColor = Color(0xFFE0E5EC);
+///
+/// // Or configure multiple at once
 /// AppColors.configure(
-///   backgroundColor: Color(0xFFE0E5EC),
-///   accentColor: Colors.pink,
+///   backgroundColor: myBgColor,
+///   accent: Colors.pink,
 /// );
 ///
-/// // Or use dark mode preset
-/// AppColors.switchColorMode(darkMode: true);
+/// // Or use dark/light mode preset
+/// AppColors.switchColorMode(true);
+/// ```
+///
+/// **Full control:**
+/// ```dart
+/// AppColors.mainColor = myBackground;
+/// AppColors.textColor = myTextColor;
+/// AppColors.lightShadowColor = myLightShadow;
+/// AppColors.darkShadowColor = myDarkShadow;
+/// AppColors.accentColor = myAccent;
+/// ```
+///
+/// **Reset to defaults:**
+/// ```dart
+/// AppColors.reset(); // clears all overrides
 /// ```
 class AppColors {
-  // Private backing field for background color
+  // --- Private backing fields ---
   static Color _backgroundColor = defaultBackgroundLight;
+  static Color? _textColorOverride;
+  static Color? _lightShadowOverride;
+  static Color? _darkShadowOverride;
+  static Color? _accentOverride;
+  static Color? _altAccentOverride;
 
-  /// The accent color used for highlights and active states
-  static Color accentColor = defaultAccentColor;
+  // --- Main background color ---
 
-  /// The alternative accent color for gradients
-  static Color altAccentColor = defaultAltAccentColor;
-
-  /// The main background color
+  /// The main background color.
+  /// Setting this recalculates shadow/text defaults (unless overridden).
+  // ignore: unnecessary_getters_setters
   static Color get mainColor => _backgroundColor;
+  // ignore: unnecessary_getters_setters
+  static set mainColor(Color value) => _backgroundColor = value;
 
-  /// Text color - automatically computed for contrast against background
-  static Color get textColor => _computeTextColor(_backgroundColor);
+  // --- Text color ---
 
-  /// Light shadow color - computed lighter shade of background
-  static Color get lightShadowColor => _computeLightShadow(_backgroundColor);
+  /// Text color. Auto-computed for contrast if not set.
+  static Color get textColor =>
+      _textColorOverride ?? _computeTextColor(_backgroundColor);
 
-  /// Dark shadow color - computed darker shade of background
-  static Color get darkShadowColor => _computeDarkShadow(_backgroundColor);
+  /// Set custom text color, or null to use auto-computed.
+  static set textColor(Color? value) => _textColorOverride = value;
 
-  /// Configure colors from a background color.
+  // --- Shadow colors ---
+
+  /// Light shadow color. Auto-computed if not set.
+  static Color get lightShadowColor =>
+      _lightShadowOverride ?? _computeLightShadow(_backgroundColor);
+
+  /// Set custom light shadow, or null to use auto-computed.
+  static set lightShadowColor(Color? value) => _lightShadowOverride = value;
+
+  /// Dark shadow color. Auto-computed if not set.
+  static Color get darkShadowColor =>
+      _darkShadowOverride ?? _computeDarkShadow(_backgroundColor);
+
+  /// Set custom dark shadow, or null to use auto-computed.
+  static set darkShadowColor(Color? value) => _darkShadowOverride = value;
+
+  // --- Accent colors ---
+
+  /// Primary accent color for highlights.
+  static Color get accentColor => _accentOverride ?? defaultAccentColor;
+
+  /// Set custom accent color, or null for default.
+  static set accentColor(Color? value) => _accentOverride = value;
+
+  /// Secondary accent color for gradients.
+  static Color get altAccentColor => _altAccentOverride ?? defaultAltAccentColor;
+
+  /// Set custom alt accent color, or null for default.
+  static set altAccentColor(Color? value) => _altAccentOverride = value;
+
+  // --- Configuration methods ---
+
+  /// Configure multiple colors at once.
   ///
-  /// Shadow colors and text color are automatically derived.
-  /// Optionally provide accent colors for customization.
+  /// Only provided colors are set; others remain unchanged.
+  /// Shadow colors auto-derive from background unless explicitly set.
   static void configure({
-    required Color backgroundColor,
+    Color? backgroundColor,
+    Color? text,
+    Color? lightShadow,
+    Color? darkShadow,
     Color? accent,
     Color? altAccent,
   }) {
-    _backgroundColor = backgroundColor;
-    if (accent != null) accentColor = accent;
-    if (altAccent != null) altAccentColor = altAccent;
+    if (backgroundColor != null) _backgroundColor = backgroundColor;
+    if (text != null) _textColorOverride = text;
+    if (lightShadow != null) _lightShadowOverride = lightShadow;
+    if (darkShadow != null) _darkShadowOverride = darkShadow;
+    if (accent != null) _accentOverride = accent;
+    if (altAccent != null) _altAccentOverride = altAccent;
   }
 
-  /// Switches between light and dark color mode using default presets.
+  /// Switches to light or dark mode preset.
   ///
-  /// For custom colors, use [configure] instead.
+  /// Clears all overrides and uses default colors for the mode.
   static void switchColorMode(bool darkMode) {
+    reset();
     _backgroundColor = darkMode ? defaultBackgroundDark : defaultBackgroundLight;
   }
+
+  /// Resets all colors to defaults.
+  ///
+  /// Background returns to light mode, all overrides cleared.
+  static void reset() {
+    _backgroundColor = defaultBackgroundLight;
+    _textColorOverride = null;
+    _lightShadowOverride = null;
+    _darkShadowOverride = null;
+    _accentOverride = null;
+    _altAccentOverride = null;
+  }
+
+  // --- Gradients ---
 
   /// Gradient from accent to alt accent color
   static Gradient get mainGradient => LinearGradient(
@@ -112,6 +182,8 @@ class AppColors {
         begin: FractionalOffset.topLeft,
         end: FractionalOffset.bottomRight,
       );
+
+  // --- Shadow lists ---
 
   /// Generates outer shadows with configurable intensity
   static List<Shadow> currentShadows({
@@ -149,7 +221,7 @@ class AppColors {
         ),
       ];
 
-  // --- Private helper methods ---
+  // --- Private computation methods ---
 
   /// Computes contrasting text color based on background luminance
   static Color _computeTextColor(Color background) {
@@ -164,7 +236,7 @@ class AppColors {
     final isDark = hsl.lightness < 0.5;
 
     if (isDark) {
-      // For dark backgrounds, light shadow is even darker (appears as absence of light)
+      // For dark backgrounds, light shadow is even darker
       return hsl
           .withLightness((hsl.lightness - 0.05).clamp(0.0, 1.0))
           .toColor();
@@ -182,7 +254,7 @@ class AppColors {
     final isDark = hsl.lightness < 0.5;
 
     if (isDark) {
-      // For dark backgrounds, reduce lightness more subtly
+      // For dark backgrounds, reduce lightness subtly
       return hsl
           .withLightness((hsl.lightness - 0.03).clamp(0.0, 1.0))
           .toColor();
