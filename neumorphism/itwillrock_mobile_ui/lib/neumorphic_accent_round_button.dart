@@ -110,6 +110,7 @@ class NeumorphicAccentRoundButtonState
     HapticFeedback.selectionClick();
     if (widget.toggle) {
       if (_animationController.status == AnimationStatus.completed) {
+        _animationController.reverse();
       } else {
         _animationController.forward();
       }

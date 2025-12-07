@@ -140,11 +140,11 @@ class Neumorphism {
           Widget? icon,
           bool filled = true,
           bool renderAccent = false,
-          Alignment? accentAligment,
+          Alignment? accentAlignment,
           double accentIntensity = 0}) =>
       InputDecoration(
           enabledBorder: GradientOutlineInputBorder(
-            accentAligment: renderAccent ? accentAligment : null,
+            accentAlignment: renderAccent ? accentAlignment : null,
             accentColor: renderAccent ? AppColors.accentColor : null,
             accentIntensity: renderAccent ? accentIntensity : 0,
             borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -158,7 +158,7 @@ class Neumorphism {
           labelText: label,
           hintText: hint,
           border: GradientOutlineInputBorder(
-            accentAligment: renderAccent ? accentAligment : null,
+            accentAlignment: renderAccent ? accentAlignment : null,
             accentColor: renderAccent ? AppColors.accentColor : null,
             accentIntensity: renderAccent ? accentIntensity : 0,
             borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -183,7 +183,7 @@ class Neumorphism {
           EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne,
           bool renderAccent = false,
-          Alignment? accentAligment,
+          Alignment? accentAlignment,
           double accentIntensity = 0}) =>
       NeumorphicContainer(
         width: width,
@@ -193,7 +193,7 @@ class Neumorphism {
         color: color ?? AppColors.mainColor,
         blur: 0,
         borderBlur: 3,
-        accentAligment: renderAccent ? accentAligment : null,
+        accentAlignment: renderAccent ? accentAlignment : null,
         accentColor: renderAccent ? AppColors.accentColor : null,
         accentIntensity: renderAccent ? accentIntensity : 0,
         shadows: dropShadow ? AppColors.currentShadows() : <Shadow>[],
@@ -231,12 +231,12 @@ class Neumorphism {
           EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne,
           bool renderAccent = false,
-          Alignment? accentAligment,
+          Alignment? accentAlignment,
           double accentIntensity = 0}) =>
       NeumorphicFrostedGlassContainer(
         margin: margin,
         padding: padding,
-        accentAligment: renderAccent ? accentAligment : null,
+        accentAlignment: renderAccent ? accentAlignment : null,
         accentColor: renderAccent ? AppColors.accentColor : null,
         accentIntensity: renderAccent ? accentIntensity : 0,
         shape: RoundedRectangleBorder(
@@ -333,7 +333,7 @@ class Neumorphism {
             color: AppColors.textColor,
           ),
           decoration: inputDecoration(
-              accentAligment: renderAccent ? accentAlignment : null,
+              accentAlignment: renderAccent ? accentAlignment : null,
               accentIntensity: renderAccent ? accentIntensity : 0,
               renderAccent: renderAccent,
               label: label,
@@ -411,11 +411,11 @@ class Neumorphism {
           double margin = 0,
           VoidCallback? onTap,
           bool renderAccent = false,
-          Alignment? accentAligment,
+          Alignment? accentAlignment,
           double accentIntensity = 0}) =>
       NeumorphicActionContainer(
         animationDuration: animationDuration,
-        accentAligment: renderAccent ? accentAligment : null,
+        accentAlignment: renderAccent ? accentAlignment : null,
         accentColor: renderAccent ? AppColors.accentColor : null,
         accentIntensity: renderAccent ? accentIntensity : 0,
         onTap: onTap,
@@ -449,11 +449,11 @@ class Neumorphism {
           EdgeInsets margin = const EdgeInsets.all(0),
           VoidCallback? onTap,
           bool renderAccent = false,
-          Alignment? accentAligment,
+          Alignment? accentAlignment,
           double accentIntensity = 0}) =>
       NeumorphicExtendedActionContainer(
         animationDuration: animationDuration,
-        accentAligment: renderAccent ? accentAligment : null,
+        accentAlignment: renderAccent ? accentAlignment : null,
         accentColor: renderAccent ? AppColors.accentColor : null,
         accentIntensity: renderAccent ? accentIntensity : 0,
         onTap: onTap,
@@ -485,12 +485,12 @@ class Neumorphism {
           EdgeInsets margin = paddingStepOne,
           VoidCallback? onTap,
           bool renderAccent = false,
-          Alignment? accentAligment,
+          Alignment? accentAlignment,
           double elevationMultiplier = 1,
           double accentIntensity = 0}) =>
       NeumorphicSoftRoundButton(
         animationDuration: animationDuration,
-        accentAligment: renderAccent ? accentAligment : null,
+        accentAlignment: renderAccent ? accentAlignment : null,
         accentColor: renderAccent ? AppColors.accentColor : null,
         accentIntensity: renderAccent ? accentIntensity : 0,
         onTap: onTap,
@@ -526,10 +526,10 @@ class Neumorphism {
           EdgeInsets margin = paddingStepOne,
           Color? accentColor,
           ValueChanged<bool>? onChanged,
-          Alignment? accentAligment,
+          Alignment? accentAlignment,
           double accentIntensity = 0}) =>
       NeumorphicIndicatorButton(
-        accentAligment: accentAligment,
+        accentAlignment: accentAlignment,
         accentColor: accentColor,
         accentIntensity: accentIntensity,
         onChanged: onChanged,

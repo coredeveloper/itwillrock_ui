@@ -246,7 +246,7 @@ class CheckBoxState extends State<NeumorphicSwitch>
                           padding: const EdgeInsets.all(0),
                           child: NeumorphicContainer(
                             accentColor: _colorTween.value,
-                            accentAligment: Alignment.centerRight,
+                            accentAlignment: Alignment.centerRight,
                             accentIntensity: _positionTween.value,
                             gradient: LinearGradient(
                               colors: [

@@ -51,14 +51,14 @@ Note that there is a highlight of the surrounded controls to indicate the change
 
 ## Accents
 
-Controls in this package can have a global accent color highlight. This is achieved by setting the `accentAligment`, `renderAccent`, and other related properties. For example:
+Controls in this package can have a global accent color highlight. This is achieved by setting the `accentAlignment`, `renderAccent`, and other related properties. For example:
 
 ```dart
 Neumorphism.container(
   dropInnerShadow: false,
   margin: const EdgeInsets.all(10),
   padding: const EdgeInsets.all(10),
-  accentAligment: const Alignment(1, 0),
+  accentAlignment: const Alignment(1, 0),
   renderAccent: true,
   accentIntensity: 1.0,
   child: Container(
@@ -106,7 +106,7 @@ Neumorphism.accentButton(
 
 ```dart
 Neumorphism.indicatorButton(
-  accentAligment: const Alignment(1, -1),
+  accentAlignment: const Alignment(1, -1),
   accentColor: AppColors.accentColor,
   accentIntensity: 0.5,
   size: 74,
@@ -340,7 +340,7 @@ Neumorphism.softRoundButton(
 
 // Indicator button 
 Neumorphism.indicatorButton(
-  accentAligment: const Alignment(1, -1),
+  accentAlignment: const Alignment(1, -1),
   accentColor: AppColors.accentColor,
   accentIntensity: 0.5,
   size: 74,

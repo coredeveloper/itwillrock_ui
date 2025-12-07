@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/widgets.dart';
 
@@ -11,6 +12,9 @@ import 'noise_generator.dart';
 ///
 /// To use this painter, create an instance of it and pass it to a `CustomPaint` widget.
 class NeumorphicFrostedGlassPainter extends CustomPainter {
+  /// Cached identity matrix for performance.
+  static final Float64List _identityMatrix = Matrix4.identity().storage;
+
   /// The noise texture used to create the frosted glass effect.
   final ui.Image noiseTexture = NoiseGenerator.cachedSmall;
 
@@ -40,7 +44,7 @@ class NeumorphicFrostedGlassPainter extends CustomPainter {
         noiseTexture,
         TileMode.repeated,
         TileMode.repeated,
-        Matrix4.identity().storage,
+        _identityMatrix,
       );
 
     canvas.saveLayer(Offset.zero & size, Paint());

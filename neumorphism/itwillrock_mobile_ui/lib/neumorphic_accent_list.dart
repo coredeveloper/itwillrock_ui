@@ -181,6 +181,7 @@ class NeumorphicAccentListState extends State<NeumorphicAccentList>
 
   @override
   void dispose() {
+    _bounceController.dispose();
     _animationController.dispose();
     super.dispose();
   }

@@ -1,4 +1,24 @@
 # Changelog
+## 0.1.0
+### Breaking Changes
+- **BREAKING**: Renamed `accentAligment` to `accentAlignment` across all components for correct spelling
+  - Affects: container, actionContainer, extendedActionContainer, softRoundButton, indicatorButton, frostedGlassContainer, checkbox, and inputDecoration
+
+### Bug Fixes
+- Fixed memory leak: added missing `_bounceController.dispose()` in NeumorphicAccentList
+- Fixed double padding bug in NeumorphicFrostedGlassContainer
+- Fixed toggle behavior: buttons now properly toggle OFF when tapped while in completed state
+- Fixed indicator button animation duration (was too fast at 32ms, now 100ms)
+
+### Performance Improvements
+- Fixed `shouldRepaint` in container painters to properly detect changes
+- Added RepaintBoundary to all animated containers for better performance
+- Cached Paint objects in NeumorphicInnerShadowPainter to reduce allocations
+- Cached Matrix4.identity() in frosted glass painters to reduce per-frame allocations
+
+### Other
+- Pinned flutter_lints version to ^5.0.0
+
 ## 0.0.41
 - NeumorphicButtonPainter fix
 

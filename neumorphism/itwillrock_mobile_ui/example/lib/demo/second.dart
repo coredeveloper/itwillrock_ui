@@ -76,7 +76,7 @@ class _SecondPageState extends State<SecondPage>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Neumorphism.softRoundButton(
-                  accentAligment: const Alignment(1, -1),
+                  accentAlignment: const Alignment(1, -1),
                   renderAccent: true,
                   accentIntensity: intensity1,
                   size: const Size(74, 74),
@@ -92,7 +92,7 @@ class _SecondPageState extends State<SecondPage>
                   dropInnerShadow: false,
                   margin: const EdgeInsets.all(10),
                   padding: const EdgeInsets.all(10),
-                  accentAligment: const Alignment(1, 0),
+                  accentAlignment: const Alignment(1, 0),
                   renderAccent: true,
                   accentIntensity: intensity1,
                   child: Container(
@@ -139,7 +139,7 @@ class _SecondPageState extends State<SecondPage>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Neumorphism.indicatorButton(
-                  accentAligment: const Alignment(1, -1),
+                  accentAlignment: const Alignment(1, -1),
                   accentColor: AppColors.accentColor,
                   accentIntensity: intensity1 * 0.5,
                   size: 74,

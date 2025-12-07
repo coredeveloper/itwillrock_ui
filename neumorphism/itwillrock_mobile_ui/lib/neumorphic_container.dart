@@ -59,7 +59,7 @@ class NeumorphicContainer extends StatelessWidget {
   final Color? accentColor;
 
   /// The alignment of the accent.
-  final Alignment? accentAligment;
+  final Alignment? accentAlignment;
 
   /// The intensity of the accent.
   final double accentIntensity;
@@ -81,7 +81,7 @@ class NeumorphicContainer extends StatelessWidget {
     this.color = const Color.fromARGB(0, 0, 0, 0),
     this.innerShadows = const <Shadow>[],
     this.accentColor,
-    this.accentAligment,
+    this.accentAlignment,
     this.width = double.infinity,
     this.height = double.infinity,
     this.accentIntensity = 0,
@@ -96,7 +96,7 @@ class NeumorphicContainer extends StatelessWidget {
       child: CustomPaint(
         painter: NeumorphicContainerPainter(
           accentColor: accentColor,
-          accentAlignment: accentAligment,
+          accentAlignment: accentAlignment,
           accentIntensity: accentIntensity,
           blur: blur,
           borderBlur: borderBlur,

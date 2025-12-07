@@ -23,7 +23,7 @@ class NeumorphicFrostedGlassContainer extends StatelessWidget {
   final Color? accentColor;
 
   /// The alignment of the accent.
-  final Alignment? accentAligment;
+  final Alignment? accentAlignment;
 
   /// The intensity of the accent.
   final double accentIntensity;
@@ -37,7 +37,7 @@ class NeumorphicFrostedGlassContainer extends StatelessWidget {
     this.padding = const EdgeInsets.all(0),
     this.margin = const EdgeInsets.all(0),
     this.accentColor,
-    this.accentAligment,
+    this.accentAlignment,
     this.accentIntensity = 0,
     super.key,
   });
@@ -52,16 +52,12 @@ class NeumorphicFrostedGlassContainer extends StatelessWidget {
           shape: shape,
           accentColor: accentColor,
           accentIntensity: accentIntensity,
-          accentAlignment: accentAligment,
+          accentAlignment: accentAlignment,
         ),
         child: Container(
           margin: const EdgeInsets.all(0),
           padding: padding,
-          child: Container(
-            margin: const EdgeInsets.all(0),
-            padding: padding,
-            child: child,
-          ),
+          child: child,
         ),
       ),
     );

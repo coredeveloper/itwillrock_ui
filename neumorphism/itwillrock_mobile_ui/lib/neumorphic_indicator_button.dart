@@ -27,7 +27,7 @@ class NeumorphicIndicatorButton extends StatefulWidget {
   final ValueChanged<bool>? onChanged;
   final Color color;
   final Color? accentColor;
-  final Alignment? accentAligment;
+  final Alignment? accentAlignment;
   final double accentIntensity;
   const NeumorphicIndicatorButton(
       {this.shape = const ContinuousRectangleBorder(),
@@ -37,7 +37,7 @@ class NeumorphicIndicatorButton extends StatefulWidget {
       required this.size,
       this.color = const Color.fromARGB(0, 0, 0, 0),
       this.accentColor,
-      this.accentAligment,
+      this.accentAlignment,
       this.accentIntensity = 0,
       this.onChanged,
       super.key});
@@ -57,7 +57,7 @@ class NeumorphicIndicatorButtonState extends State<NeumorphicIndicatorButton>
   @override
   void initState() {
     _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 32));
+        vsync: this, duration: const Duration(milliseconds: 100));
 
     _shadowTween = Tween(begin: 1.0, end: 0.0).animate(_animationController);
     _colorTween = ColorTween(
@@ -116,7 +116,7 @@ class NeumorphicIndicatorButtonState extends State<NeumorphicIndicatorButton>
                       painter: NeumorphicButtonPainter(
                         animationValue: _animationController.value,
                         accentColor: widget.accentColor,
-                        accentAlignment: widget.accentAligment,
+                        accentAlignment: widget.accentAlignment,
                         accentIntensity: widget.accentIntensity > 0
                             ? widget.accentIntensity *
                                 (1 - _animationController.value)

@@ -53,6 +53,6 @@ class NeumorphicFrostedGlassContainerPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(NeumorphicFrostedGlassContainerPainter oldDelegate) {
-    return false;
+    return accentPainter?.value != oldDelegate.accentPainter?.value;
   }
 }

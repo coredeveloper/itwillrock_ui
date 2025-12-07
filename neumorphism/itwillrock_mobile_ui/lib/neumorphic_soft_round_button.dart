@@ -48,7 +48,7 @@ class NeumorphicSoftRoundButton extends StatefulWidget {
   final Color? accentColor;
 
   /// The alignment of the accent.
-  final Alignment? accentAligment;
+  final Alignment? accentAlignment;
 
   /// The intensity of the accent.
   final double accentIntensity;
@@ -76,7 +76,7 @@ class NeumorphicSoftRoundButton extends StatefulWidget {
       this.gradient,
       this.elevationMultiplier = 1,
       this.accentColor = const Color(0x00FFFFFF),
-      this.accentAligment = Alignment.center,
+      this.accentAlignment = Alignment.center,
       this.accentIntensity = 0,
       this.onTap,
       this.toggle = false,
@@ -126,6 +126,7 @@ class NeumorphicSoftRoundButtonState extends State<NeumorphicSoftRoundButton>
     HapticFeedback.selectionClick();
     if (widget.toggle) {
       if (_animationController.status == AnimationStatus.completed) {
+        _animationController.reverse();
       } else {
         _animationController.forward();
       }
@@ -200,7 +201,7 @@ class NeumorphicSoftRoundButtonState extends State<NeumorphicSoftRoundButton>
                 painter: NeumorphicButtonPainter(
                   animationValue: _animationController.value,
                   accentColor: widget.accentColor,
-                  accentAlignment: widget.accentAligment,
+                  accentAlignment: widget.accentAlignment,
                   accentIntensity: widget.accentIntensity > 0
                       ? widget.accentIntensity *
                           (1 - _animationController.value)
@@ -229,12 +230,9 @@ class NeumorphicSoftRoundButtonState extends State<NeumorphicSoftRoundButton>
                 ),
                 child: child,
               );
-              if (widget.accentColor == null) {
-                return RepaintBoundary(
-                  child: customPaint,
-                );
-              }
-              return customPaint;
+              return RepaintBoundary(
+                child: customPaint,
+              );
             },
           )),
     );

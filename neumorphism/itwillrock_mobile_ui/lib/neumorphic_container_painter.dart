@@ -122,6 +122,7 @@ class NeumorphicContainerPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(NeumorphicContainerPainter oldDelegate) {
-    return false;
+    return surfacePainter.color != oldDelegate.surfacePainter.color ||
+        accentPainter?.value != oldDelegate.accentPainter?.value;
   }
 }
