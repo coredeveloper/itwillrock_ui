@@ -1,138 +1,196 @@
 import 'package:flutter/painting.dart';
 
-/// Simple transperent color defentition, Yes we assume that sometimes transperent isn't fully transperent.
+/// Simple transparent color definition
 const transparentColor = Color.fromARGB(0, 0, 0, 0);
 
-///The main color in Light mode
-const mainColorLightMode = Color(0xFFE3E6EC);
+/// Default background color for light mode
+const defaultBackgroundLight = Color(0xFFE3E6EC);
 
-///The main color in Dark mode
-const mainColorDarkMode = Color(0xFF2A2D32);
+/// Default background color for dark mode
+const defaultBackgroundDark = Color(0xFF2A2D32);
 
-///The light color in Light mode
-const lightColorLightMode = Color(0xFFFFFFFF);
+/// Default accent color
+const defaultAccentColor = Color(0xFFFC5C7D);
 
-///The dark color in Light mode
-const darkColorLightMode = Color(0xFFD1D9E6);
+/// Default alternative accent color
+const defaultAltAccentColor = Color(0xFF6A82FB);
 
-///The light color in Dark mode
-const lightColorDarkMode = Color(0xFF000000);
-
-///The dark color in Dark mode
-const darkColorDarkMode = Color(0xFF24262B);
-
-///The text color in Light mode
-const textColorLightMode = Color(0xFF000000);
-
-///The text color in Dark mode
-const textColorDarkMode = Color(0xFFFFFFFF);
-
-///The alternative text color for non primary controls
+/// Alternative text color for use on accent/gradient backgrounds
 const altTextColor = Color(0xFFFFFFFF);
 
-///The accent color used to highlight or mark
-const accentColorConst = Color(0xFFFC5C7D);
-
-///The accent color used to highlight or mark non primary controls
-const altAccentColorConst = Color(0xFF6A82FB);
-
-///THe class for dynamicly changable colors. Like in case you switching modes.
+/// Dynamic color configuration for neumorphic design.
+///
+/// Colors are derived from a single background color:
+/// - [mainColor]: The background color (user-provided or default)
+/// - [lightShadowColor]: Computed lighter shade for highlights
+/// - [darkShadowColor]: Computed darker shade for shadows
+/// - [textColor]: Computed contrasting color for readability
+/// - [accentColor]: User-provided accent color for highlights
+///
+/// Example usage:
+/// ```dart
+/// // Configure with custom background and accent
+/// AppColors.configure(
+///   backgroundColor: Color(0xFFE0E5EC),
+///   accentColor: Colors.pink,
+/// );
+///
+/// // Or use dark mode preset
+/// AppColors.switchColorMode(darkMode: true);
+/// ```
 class AppColors {
-  ///The main color
-  static Color mainColor = mainColorLightMode;
+  // Private backing field for background color
+  static Color _backgroundColor = defaultBackgroundLight;
 
-  ///The text color
-  static Color textColor = textColorLightMode;
+  /// The accent color used for highlights and active states
+  static Color accentColor = defaultAccentColor;
 
-  ///The light shadow color
-  static Color lightShadowColor = lightColorLightMode;
+  /// The alternative accent color for gradients
+  static Color altAccentColor = defaultAltAccentColor;
 
-  ///The dark shadow color
-  static Color darkShadowColor = darkColorLightMode;
+  /// The main background color
+  static Color get mainColor => _backgroundColor;
 
-  ///The accent color
-  static Color accentColor = accentColorConst;
+  /// Text color - automatically computed for contrast against background
+  static Color get textColor => _computeTextColor(_backgroundColor);
 
-  ///The alternative accent color
-  static Color altAccentColor = altAccentColorConst;
+  /// Light shadow color - computed lighter shade of background
+  static Color get lightShadowColor => _computeLightShadow(_backgroundColor);
 
-  ///The alternative text color
-  static Gradient get mainGradient => LinearGradient(
-      stops: const [0, 1],
-      begin: FractionalOffset.centerLeft,
-      end: FractionalOffset.centerRight,
-      colors: [
-        AppColors.accentColor,
-        AppColors.altAccentColor,
-      ]);
+  /// Dark shadow color - computed darker shade of background
+  static Color get darkShadowColor => _computeDarkShadow(_backgroundColor);
 
-  ///The alternative text color
-  static Gradient get reversedGradient => LinearGradient(
-      stops: const [0, 1],
-      begin: FractionalOffset.centerLeft,
-      end: FractionalOffset.centerRight,
-      colors: [AppColors.altAccentColor, AppColors.accentColor]);
+  /// Configure colors from a background color.
+  ///
+  /// Shadow colors and text color are automatically derived.
+  /// Optionally provide accent colors for customization.
+  static void configure({
+    required Color backgroundColor,
+    Color? accent,
+    Color? altAccent,
+  }) {
+    _backgroundColor = backgroundColor;
+    if (accent != null) accentColor = accent;
+    if (altAccent != null) altAccentColor = altAccent;
+  }
 
-  ///The alternative text color
-  static Gradient get shadowGradient => LinearGradient(
-        colors: [AppColors.lightShadowColor, AppColors.darkShadowColor],
-        stops: const [0, 1],
-        begin: FractionalOffset.topLeft,
-        end: FractionalOffset.bottomRight,
-      );
-
-  ///The alternative text color
-  static Gradient get reversedShadowGradient => LinearGradient(
-        colors: [AppColors.darkShadowColor, AppColors.lightShadowColor],
-        stops: const [0, 1],
-        begin: FractionalOffset.topLeft,
-        end: FractionalOffset.bottomRight,
-      );
-
-  ///The alternative text color
-  static List<Shadow> currentShadows(
-          {double blurMultiplier = 1.0, double offsetMultiplier = 1.0}) =>
-      [
-        Shadow(
-          color: lightShadowColor,
-          blurRadius: 20 * blurMultiplier,
-          offset: Offset(-18 * offsetMultiplier, -18 * offsetMultiplier),
-        ),
-        Shadow(
-          color: darkShadowColor,
-          blurRadius: 20 * blurMultiplier,
-          offset: Offset(18 * offsetMultiplier, 18 * offsetMultiplier),
-        ),
-      ];
-
-  ///The alternative text color
-  static List<Shadow> currentInnerShadows(
-          {double blurMultiplier = 1.0, double offsetMultiplier = 1.0}) =>
-      [
-        Shadow(
-          color: lightShadowColor,
-          blurRadius: 30 * blurMultiplier,
-          offset: Offset(-18 * offsetMultiplier, -18 * offsetMultiplier),
-        ),
-        Shadow(
-          color: darkShadowColor,
-          blurRadius: 30 * blurMultiplier,
-          offset: Offset(18 * offsetMultiplier, 18 * offsetMultiplier),
-        ),
-      ];
-
-  /// Switches between light and dark color mode
+  /// Switches between light and dark color mode using default presets.
+  ///
+  /// For custom colors, use [configure] instead.
   static void switchColorMode(bool darkMode) {
-    if (darkMode) {
-      mainColor = mainColorDarkMode;
-      textColor = textColorDarkMode;
-      lightShadowColor = lightColorDarkMode;
-      darkShadowColor = darkColorDarkMode;
+    _backgroundColor = darkMode ? defaultBackgroundDark : defaultBackgroundLight;
+  }
+
+  /// Gradient from accent to alt accent color
+  static Gradient get mainGradient => LinearGradient(
+        stops: const [0, 1],
+        begin: FractionalOffset.centerLeft,
+        end: FractionalOffset.centerRight,
+        colors: [accentColor, altAccentColor],
+      );
+
+  /// Gradient from alt accent to accent color
+  static Gradient get reversedGradient => LinearGradient(
+        stops: const [0, 1],
+        begin: FractionalOffset.centerLeft,
+        end: FractionalOffset.centerRight,
+        colors: [altAccentColor, accentColor],
+      );
+
+  /// Gradient for shadow effects (light to dark)
+  static Gradient get shadowGradient => LinearGradient(
+        colors: [lightShadowColor, darkShadowColor],
+        stops: const [0, 1],
+        begin: FractionalOffset.topLeft,
+        end: FractionalOffset.bottomRight,
+      );
+
+  /// Reversed gradient for shadow effects (dark to light)
+  static Gradient get reversedShadowGradient => LinearGradient(
+        colors: [darkShadowColor, lightShadowColor],
+        stops: const [0, 1],
+        begin: FractionalOffset.topLeft,
+        end: FractionalOffset.bottomRight,
+      );
+
+  /// Generates outer shadows with configurable intensity
+  static List<Shadow> currentShadows({
+    double blurMultiplier = 1.0,
+    double offsetMultiplier = 1.0,
+  }) =>
+      [
+        Shadow(
+          color: lightShadowColor,
+          blurRadius: 20 * blurMultiplier,
+          offset: Offset(-18 * offsetMultiplier, -18 * offsetMultiplier),
+        ),
+        Shadow(
+          color: darkShadowColor,
+          blurRadius: 20 * blurMultiplier,
+          offset: Offset(18 * offsetMultiplier, 18 * offsetMultiplier),
+        ),
+      ];
+
+  /// Generates inner shadows with configurable intensity
+  static List<Shadow> currentInnerShadows({
+    double blurMultiplier = 1.0,
+    double offsetMultiplier = 1.0,
+  }) =>
+      [
+        Shadow(
+          color: lightShadowColor,
+          blurRadius: 30 * blurMultiplier,
+          offset: Offset(-18 * offsetMultiplier, -18 * offsetMultiplier),
+        ),
+        Shadow(
+          color: darkShadowColor,
+          blurRadius: 30 * blurMultiplier,
+          offset: Offset(18 * offsetMultiplier, 18 * offsetMultiplier),
+        ),
+      ];
+
+  // --- Private helper methods ---
+
+  /// Computes contrasting text color based on background luminance
+  static Color _computeTextColor(Color background) {
+    return background.computeLuminance() > 0.5
+        ? const Color(0xFF000000)
+        : const Color(0xFFFFFFFF);
+  }
+
+  /// Computes light shadow color (lighter than background)
+  static Color _computeLightShadow(Color background) {
+    final hsl = HSLColor.fromColor(background);
+    final isDark = hsl.lightness < 0.5;
+
+    if (isDark) {
+      // For dark backgrounds, light shadow is even darker (appears as absence of light)
+      return hsl
+          .withLightness((hsl.lightness - 0.05).clamp(0.0, 1.0))
+          .toColor();
     } else {
-      mainColor = mainColorLightMode;
-      darkShadowColor = darkColorLightMode;
-      lightShadowColor = lightColorLightMode;
-      textColor = textColorLightMode;
+      // For light backgrounds, light shadow is brighter
+      return hsl
+          .withLightness((hsl.lightness + 0.08).clamp(0.0, 1.0))
+          .toColor();
+    }
+  }
+
+  /// Computes dark shadow color (darker than background)
+  static Color _computeDarkShadow(Color background) {
+    final hsl = HSLColor.fromColor(background);
+    final isDark = hsl.lightness < 0.5;
+
+    if (isDark) {
+      // For dark backgrounds, reduce lightness more subtly
+      return hsl
+          .withLightness((hsl.lightness - 0.03).clamp(0.0, 1.0))
+          .toColor();
+    } else {
+      // For light backgrounds, darken noticeably
+      return hsl
+          .withLightness((hsl.lightness - 0.08).clamp(0.0, 1.0))
+          .toColor();
     }
   }
 }

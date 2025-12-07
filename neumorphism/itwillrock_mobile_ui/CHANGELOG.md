@@ -1,4 +1,28 @@
 # Changelog
+## 0.1.2
+### Features
+- **AppColors.configure()**: New method to configure colors from a single background color
+  - Shadow colors (light/dark) are now automatically derived from the background
+  - Text color is automatically computed for contrast against background
+  - Accent colors remain user-configurable
+
+### Improvements
+- Simplified color management - just provide background and accent colors
+- Better dark/light mode support with automatic shadow computation
+- Cleaner API: `AppColors.configure(backgroundColor: color, accent: accentColor)`
+
+### Example
+```dart
+// Configure from theme
+AppColors.configure(
+  backgroundColor: Theme.of(context).colorScheme.surface,
+  accent: Theme.of(context).colorScheme.primary,
+);
+
+// Or use preset dark/light mode
+AppColors.switchColorMode(true); // dark mode
+```
+
 ## 0.1.1
 ### Documentation
 - Added 100% dartdoc coverage for all public API members

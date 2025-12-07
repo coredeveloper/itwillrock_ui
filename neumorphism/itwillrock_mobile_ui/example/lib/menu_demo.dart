@@ -6,7 +6,6 @@ import 'package:itwillrock_mobile_ui_example/demo/second.dart';
 
 // Neumorphism package
 import 'package:itwillrock_neumorphism/constants/colors.dart';
-import 'package:itwillrock_neumorphism/color_utils.dart';
 import 'package:itwillrock_neumorphism/neumorphism.dart';
 import 'package:itwillrock_neumorphism/menu/menu_container.dart';
 
@@ -26,7 +25,6 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
   static const _animationDuration = Duration(milliseconds: 300);
   static const double _menuShiftValue = 200.0;
   static const double _paddingValue = 16.0;
-  static const int _darkenFactor = 20;
   static const List<String> _menuItems = ["Sample 1", "Sample 2"];
 
   // State
@@ -134,8 +132,8 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
         animation: _controller,
         builder: (_, __) => AnimatedContainer(
           duration: _animationDuration,
-          color: ColorsUtils.darken(
-              AppColors.mainColor, _darkenFactor * _controller.value.toInt()),
+          color: Color.lerp(
+              AppColors.mainColor, Colors.black, _controller.value * 0.2),
           padding: padding,
           child: NavigationWrapper(
             menu: _buildMenu(context),
@@ -150,12 +148,12 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
   void _updateThemeColors(BuildContext context) {
     final themeData = Theme.of(context);
 
-    AppColors.mainColor = themeData.colorScheme.surface;
-    AppColors.textColor = themeData.textTheme.titleLarge!.color!;
-    AppColors.lightShadowColor = ColorsUtils.lighten(AppColors.mainColor, 7);
-    AppColors.darkShadowColor =
-        ColorsUtils.darken(AppColors.mainColor, _darkenFactor);
-    AppColors.accentColor = themeData.colorScheme.primary;
-    AppColors.altAccentColor = themeData.colorScheme.secondary;
+    // Configure neumorphic colors from theme
+    // Shadow colors are automatically derived from the background
+    AppColors.configure(
+      backgroundColor: themeData.colorScheme.surface,
+      accent: themeData.colorScheme.primary,
+      altAccent: themeData.colorScheme.secondary,
+    );
   }
 }
