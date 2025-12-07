@@ -12,10 +12,10 @@ class NeumorphicActionContainer extends StatefulWidget {
   final ShapeBorder shape;
 
   /// The margin around the container.
-  final double margin;
+  final EdgeInsets margin;
 
   /// The padding inside the container.
-  final double padding;
+  final EdgeInsets padding;
 
   /// The size of the container.
   final Size size;
@@ -54,8 +54,8 @@ class NeumorphicActionContainer extends StatefulWidget {
   const NeumorphicActionContainer({
     this.shape = const ContinuousRectangleBorder(),
     this.animationDuration = Duration.zero,
-    this.padding = 0,
-    this.margin = 0,
+    this.padding = EdgeInsets.zero,
+    this.margin = EdgeInsets.zero,
     this.child,
     this.size = const Size(0, 0),
     this.color = const Color.fromARGB(0, 0, 0, 0),
@@ -160,15 +160,15 @@ class NeumorphicActionContainerState extends State<NeumorphicActionContainer>
       },
       onTap: widget.onTap,
       child: Container(
-          margin: EdgeInsets.all(widget.margin),
+          margin: widget.margin,
           child: AnimatedBuilder(
             animation: _shadowTween,
             child: Container(
               height: widget.size.height,
               width: widget.size.width,
               alignment: const Alignment(0, 0),
-              margin: const EdgeInsets.all(0),
-              padding: EdgeInsets.all(widget.padding),
+              margin: EdgeInsets.zero,
+              padding: widget.padding,
               child: widget.child,
             ),
             builder: (context, child) {

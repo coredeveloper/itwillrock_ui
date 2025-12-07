@@ -1,4 +1,34 @@
 # Changelog
+## 0.1.5
+### Breaking Changes
+- **BREAKING**: `actionContainer` now uses `EdgeInsets` for `margin` and `padding` parameters instead of `double`
+  - Before: `margin: 8` (applied uniformly to all sides)
+  - After: `margin: const EdgeInsets.all(8)` or `margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8)`
+  - This provides more flexibility for asymmetric margins and padding
+
+### Bug Fixes
+- Fixed nested back button (`<<`, `<<<`) chevrons not rendering correctly at higher nesting levels
+  - Chevron size is now consistent regardless of nesting depth
+
+### Migration
+```dart
+// Before (0.1.4)
+Neumorphism.actionContainer(
+  margin: 8,
+  padding: 16,
+  // ...
+)
+
+// After (0.1.5)
+Neumorphism.actionContainer(
+  margin: const EdgeInsets.all(8),
+  padding: const EdgeInsets.all(16),
+  // Or use asymmetric values:
+  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+  // ...
+)
+```
+
 ## 0.1.4
 ### Features
 - **Nested Back Button**: New `Neumorphism.nestedBackButton()` for nested navigation

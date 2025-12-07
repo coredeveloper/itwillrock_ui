@@ -5,17 +5,8 @@ import 'nested_back_button_painter.dart';
 ///
 /// Shows `<` for level 1, `<<` for level 2, `<<<` for level 3, etc.
 /// Animates smoothly when the nesting level changes.
-///
-/// Example usage:
-/// ```dart
-/// NestedBackButton(
-///   size: 24,
-///   nestingLevel: 2, // Shows <<
-///   onTap: () => Navigator.pop(context),
-/// )
-/// ```
 class NestedBackButton extends StatefulWidget {
-  /// The size of the button (width and height).
+  /// The size of the button (height, width grows with nesting level).
   final double size;
 
   /// The current nesting level (1 = <, 2 = <<, etc.)
@@ -40,7 +31,7 @@ class NestedBackButton extends StatefulWidget {
     this.nestingLevel = 1,
     this.onTap,
     this.color,
-    this.strokeWidth = 2.5,
+    this.strokeWidth = 2,
     this.animationDuration = const Duration(milliseconds: 200),
   });
 
@@ -58,19 +49,16 @@ class _NestedBackButtonState extends State<NestedBackButton>
     _controller = AnimationController(
       vsync: this,
       duration: widget.animationDuration,
-      value: 1.0, // Start fully visible
+      value: 1.0,
     );
   }
 
   @override
   void didUpdateWidget(NestedBackButton oldWidget) {
     super.didUpdateWidget(oldWidget);
-
-    // Animate when nesting level changes
     if (oldWidget.nestingLevel != widget.nestingLevel) {
       _controller.forward(from: 0);
     }
-
     if (oldWidget.animationDuration != widget.animationDuration) {
       _controller.duration = widget.animationDuration;
     }
@@ -84,24 +72,27 @@ class _NestedBackButtonState extends State<NestedBackButton>
 
   @override
   Widget build(BuildContext context) {
+    // Width grows with nesting level (same formula as BackButton but wider for multiple)
+    final width = widget.size + (widget.nestingLevel - 1) * widget.size * 0.5;
+
+    // Match BackButton structure exactly
     return RepaintBoundary(
       child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
         onTap: widget.onTap,
-        child: AnimatedBuilder(
-          animation: _controller,
-          builder: (context, child) => CustomPaint(
-            size: Size(widget.size * widget.nestingLevel, widget.size),
-            painter: NestedBackButtonPainter(
-              nestingLevel: widget.nestingLevel,
-              animationStep: _controller.value,
-              color: widget.color,
-              strokeWidth: widget.strokeWidth,
-            ),
-            child: SizedBox(
-              height: widget.size,
-              width: widget.size * widget.nestingLevel * 0.8,
-            ),
+        child: CustomPaint(
+          size: const Size(double.infinity, double.infinity),
+          painter: NestedBackButtonPainter(
+            nestingLevel: widget.nestingLevel,
+            animationStep: _controller.value,
+            color: widget.color,
+            strokeWidth: widget.strokeWidth,
+          ),
+          child: Container(
+            height: widget.size,
+            width: width,
+            alignment: const Alignment(0, 0),
+            margin: EdgeInsets.zero,
+            padding: EdgeInsets.zero,
           ),
         ),
       ),

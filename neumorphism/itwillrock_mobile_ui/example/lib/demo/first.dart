@@ -110,7 +110,7 @@ class _FirstPageState extends State<FirstPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Neumorphism.actionContainer(
-              margin: 8,
+              margin: const EdgeInsets.all(8),
               size: const Size(double.infinity, 48),
               onTap: _navigateToSettings,
               child: Row(
@@ -174,7 +174,7 @@ class SettingsPage extends StatelessWidget {
           ),
           // Navigate to nested profile
           Neumorphism.actionContainer(
-            margin: 8,
+            margin: const EdgeInsets.all(8),
             size: const Size(double.infinity, 56),
             onTap: _navigateToProfile,
             child: Row(
@@ -246,7 +246,7 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: 32),
           // Edit profile button
           Neumorphism.actionContainer(
-            margin: 8,
+            margin: const EdgeInsets.all(8),
             size: const Size(double.infinity, 48),
             onTap: _navigateToEditProfile,
             child: Row(

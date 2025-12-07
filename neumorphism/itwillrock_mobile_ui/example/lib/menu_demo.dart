@@ -35,7 +35,7 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _navigationService = NavigationService(
-      FirstPage(navigationService: null), // Will be set properly in resetTo
+      const FirstPage(navigationService: null), // Will be set properly in resetTo
       'Sample 1',
     );
     // Set the initial page with navigation service
@@ -116,16 +116,13 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
       children: [
         // Show menu button OR back button depending on state
         if (canGoBack)
-          GestureDetector(
-            behavior: HitTestBehavior.translucent,
-            onTap: _handleBack,
-            child: Padding(
-              padding: const EdgeInsets.all(_paddingValue),
-              // Use nested back button to show navigation depth
-              child: Neumorphism.nestedBackButton(
-                nestingLevel: nestingLevel - 1, // -1 because root is level 1
-                size: 24,
-              ),
+          Padding(
+            padding: const EdgeInsets.all(_paddingValue),
+            // Use nested back button to show navigation depth
+            child: Neumorphism.nestedBackButton(
+              nestingLevel: nestingLevel - 1, // -1 because root is level 1
+              size: 24,
+              onTap: _handleBack,
             ),
           )
         else

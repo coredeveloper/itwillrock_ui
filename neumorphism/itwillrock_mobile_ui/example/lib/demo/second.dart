@@ -198,7 +198,7 @@ class _SecondPageState extends State<SecondPage>
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Neumorphism.actionContainer(
-                margin: 8,
+                margin: const EdgeInsets.all(8),
                 size: const Size(double.infinity, 48),
                 onTap: _navigateToDetails,
                 child: Row(

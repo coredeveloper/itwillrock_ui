@@ -142,7 +142,7 @@ class Neumorphism {
     GestureTapCallback? onTap,
     Color? color,
     double size = 24,
-    double strokeWidth = 2.5,
+    double strokeWidth = 2,
     Duration animationDuration = const Duration(milliseconds: 200),
   }) =>
       NestedBackButton(
@@ -445,8 +445,8 @@ class Neumorphism {
           ShapeBorder? shape,
           bool main = false,
           bool toggle = false,
-          double padding = 0,
-          double margin = 0,
+          EdgeInsets padding = EdgeInsets.zero,
+          EdgeInsets margin = EdgeInsets.zero,
           VoidCallback? onTap,
           bool renderAccent = false,
           Alignment? accentAlignment,

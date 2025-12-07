@@ -49,7 +49,7 @@ class NavigationService with ChangeNotifier {
     if (_navigationStack.length > 1) {
       _navigationStack.removeLast();
       _titleStack.removeLast();
-      _notify();
+      notifyListeners();
     }
   }
 
