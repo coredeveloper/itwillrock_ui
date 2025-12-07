@@ -75,17 +75,21 @@ class _NestedBackButtonState extends State<NestedBackButton>
     // Width grows with nesting level (same formula as BackButton but wider for multiple)
     final width = widget.size + (widget.nestingLevel - 1) * widget.size * 0.5;
 
-    // Match BackButton structure exactly
+    // Use AnimatedBuilder to rebuild when animation value changes
     return RepaintBoundary(
       child: GestureDetector(
         onTap: widget.onTap,
-        child: CustomPaint(
-          size: const Size(double.infinity, double.infinity),
-          painter: NestedBackButtonPainter(
-            nestingLevel: widget.nestingLevel,
-            animationStep: _controller.value,
-            color: widget.color,
-            strokeWidth: widget.strokeWidth,
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) => CustomPaint(
+            size: const Size(double.infinity, double.infinity),
+            painter: NestedBackButtonPainter(
+              nestingLevel: widget.nestingLevel,
+              animationStep: _controller.value,
+              color: widget.color,
+              strokeWidth: widget.strokeWidth,
+            ),
+            child: child,
           ),
           child: Container(
             height: widget.size,

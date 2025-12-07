@@ -1,4 +1,10 @@
 # Changelog
+## 0.1.6
+### Bug Fixes
+- Fixed nested back button animation not triggering when navigating deeper
+  - Added AnimatedBuilder to properly rebuild during chevron fade-in animation
+  - All chevrons now appear and animate correctly at each nesting level
+
 ## 0.1.5
 ### Breaking Changes
 - **BREAKING**: `actionContainer` now uses `EdgeInsets` for `margin` and `padding` parameters instead of `double`
