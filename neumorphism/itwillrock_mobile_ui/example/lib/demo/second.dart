@@ -3,8 +3,12 @@ import 'package:itwillrock_neumorphism/charts/label_model.dart';
 import 'package:itwillrock_neumorphism/constants/colors.dart';
 import 'package:itwillrock_neumorphism/neumorphism.dart';
 
+import '../navigation_service.dart';
+
 class SecondPage extends StatefulWidget {
-  const SecondPage({Key? key}) : super(key: key);
+  final NavigationService? navigationService;
+
+  const SecondPage({Key? key, this.navigationService}) : super(key: key);
 
   @override
   State<SecondPage> createState() => _SecondPageState();
@@ -40,13 +44,20 @@ class _SecondPageState extends State<SecondPage>
   }
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _navigateToDetails() {
+    widget.navigationService?.navigateTo(
+      DetailsPage(navigationService: widget.navigationService),
+      'Details',
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return AnimatedBuilder(
       animation: _heightAnimation,
       builder: (context, child) {
@@ -181,8 +192,82 @@ class _SecondPageState extends State<SecondPage>
                 }
               },
               text: "Login"),
+          // Nested navigation demo
+          if (widget.navigationService != null) ...[
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Neumorphism.actionContainer(
+                margin: 8,
+                size: const Size(double.infinity, 48),
+                onTap: _navigateToDetails,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.info_outline, color: AppColors.textColor, size: 20),
+                    const SizedBox(width: 8),
+                    Neumorphism.text('View Details', size: 16),
+                    const SizedBox(width: 8),
+                    Icon(Icons.chevron_right, color: AppColors.textColor, size: 20),
+                  ],
+                ),
+              ),
+            ),
+          ],
           const SizedBox(
             height: 130,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Details page - demonstrates nested navigation from Sample 2
+class DetailsPage extends StatelessWidget {
+  final NavigationService? navigationService;
+
+  const DetailsPage({Key? key, this.navigationService}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Neumorphism.text('Details', size: 24, fontWeight: FontWeight.bold),
+          const SizedBox(height: 24),
+          Neumorphism.container(
+            margin: const EdgeInsets.only(bottom: 16),
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Neumorphism.text('Nested Navigation Demo', size: 18),
+                const SizedBox(height: 16),
+                Neumorphism.text(
+                  'This page demonstrates the nested back button feature. '
+                  'Notice the "<" chevron in the header that takes you back.',
+                  size: 14,
+                ),
+                const SizedBox(height: 16),
+                Neumorphism.text(
+                  'Try Sample 1 for deeper nesting (up to 3 levels) '
+                  'to see <<< chevrons!',
+                  size: 14,
+                  color: AppColors.accentColor,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          Center(
+            child: Neumorphism.softRoundButton(
+              size: const Size(120, 48),
+              text: 'Go Back',
+              onTap: () => navigationService?.pop(),
+            ),
           ),
         ],
       ),
