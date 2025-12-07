@@ -9,6 +9,7 @@
 - Fixed double padding bug in NeumorphicFrostedGlassContainer
 - Fixed toggle behavior: buttons now properly toggle OFF when tapped while in completed state
 - Fixed indicator button animation duration (was too fast at 32ms, now 100ms)
+- Fixed deprecated `value` parameter in DropdownButtonFormField (now uses `initialValue`)
 
 ### Performance Improvements
 - Fixed `shouldRepaint` in container painters to properly detect changes

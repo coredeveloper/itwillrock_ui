@@ -275,7 +275,7 @@ class Neumorphism {
             elevation: 0,
             decoration: inputDecoration(),
             isExpanded: true,
-            value: value,
+            initialValue: value,
             icon: Icon(
               Icons.arrow_downward,
               color: AppColors.textColor,
