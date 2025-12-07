@@ -30,7 +30,7 @@ Add the package to your project by including it in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  itwillrock_neumorphism: ^0.0.36
+  itwillrock_neumorphism: ^0.1.0
 ```
 
 Then, run `flutter pub get` to install the package.
@@ -45,9 +45,13 @@ import 'package:itwillrock_neumorphism/neumorphism.dart';
 
 ## Demo
 
-![Screenshot](demo.gif)
+### Light Theme
+![Light Theme Demo](demo.gif)
 
-Note that there is a highlight of the surrounded controls to indicate the change in the main control.
+### Dark Theme
+![Dark Theme Demo](demo_dark.gif)
+
+Note that there is a highlight of the surrounded controls to indicate the change in the main control. The package supports both light and dark themes.
 
 ## Accents
 

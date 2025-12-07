@@ -4,8 +4,10 @@ version: 0.1.0
 homepage: https://github.com/coredeveloper/itwillrock_ui/tree/main/neumorphism/itwillrock_mobile_ui
 repository: https://github.com/coredeveloper/itwillrock_ui/tree/main/neumorphism/itwillrock_mobile_ui
 screenshots:
-  - description: 'The demo of the example controls'
+  - description: 'Light theme demo of the example controls'
     path: demo.gif
+  - description: 'Dark theme demo of the example controls'
+    path: demo_dark.gif
 
 environment:
   sdk: '>=2.19.6 <4.0.0'
