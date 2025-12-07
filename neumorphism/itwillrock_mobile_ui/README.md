@@ -46,10 +46,10 @@ import 'package:itwillrock_neumorphism/neumorphism.dart';
 ## Demo
 
 ### Light Theme
-![Light Theme Demo](demo.gif)
+![Light Theme Demo](https://raw.githubusercontent.com/coredeveloper/itwillrock_ui/main/neumorphism/itwillrock_mobile_ui/demo.gif)
 
 ### Dark Theme
-![Dark Theme Demo](demo_dark.gif)
+![Dark Theme Demo](https://raw.githubusercontent.com/coredeveloper/itwillrock_ui/main/neumorphism/itwillrock_mobile_ui/demo_dark.gif)
 
 Note that there is a highlight of the surrounded controls to indicate the change in the main control. The package supports both light and dark themes.
 
