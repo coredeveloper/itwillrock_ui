@@ -1,4 +1,11 @@
 # Changelog
+## 0.1.7
+### Improvements
+- Improved nested back button animation style
+  - New chevrons now animate from `-` (horizontal) to `<` (chevron) via rotation
+  - Matches the menu button animation style (`=` to `>`)
+  - More visually consistent with the overall design language
+
 ## 0.1.6
 ### Bug Fixes
 - Fixed nested back button animation not triggering when navigating deeper
