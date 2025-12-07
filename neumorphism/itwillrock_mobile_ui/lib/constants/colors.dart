@@ -121,8 +121,8 @@ class AppColors {
         ),
       ];
 
-  ///The alternative text color
-  static switchColorMode(bool darkMode) {
+  /// Switches between light and dark color mode
+  static void switchColorMode(bool darkMode) {
     if (darkMode) {
       mainColor = mainColorDarkMode;
       textColor = textColorDarkMode;
