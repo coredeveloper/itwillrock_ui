@@ -1,4 +1,10 @@
 # Changelog
+## 0.1.14
+### Bug Fixes
+- Fixed `textFormField()` multiline keyboard type assertion error
+  - Auto-detects `TextInputType.multiline` when `maxLines != 1`, `minLines` is set, or `expands` is true
+  - No longer need to manually set `inputType` for multiline fields
+
 ## 0.1.13
 ### Bug Fixes
 - Fixed multiline `textFormField()` rendering:

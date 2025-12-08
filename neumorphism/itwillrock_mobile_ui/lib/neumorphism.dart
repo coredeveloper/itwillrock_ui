@@ -361,7 +361,7 @@ class Neumorphism {
           bool renderAccent = false,
           Alignment? accentAlignment,
           double accentIntensity = 0,
-          TextInputType inputType = TextInputType.text,
+          TextInputType? inputType,
           int? maxLines = 1,
           int? minLines,
           bool expands = false,
@@ -370,37 +370,43 @@ class Neumorphism {
           bool alignLabelWithHint = false,
           EdgeInsetsGeometry? contentPadding,
           EdgeInsets padding = paddingStepOne,
-          EdgeInsets margin = paddingStepOne}) =>
-      Container(
-        padding: padding,
-        margin: margin,
-        child: TextFormField(
-          autovalidateMode: validateMode,
-          textDirection: TextDirection.ltr,
-          controller: controller,
-          validator: validator,
-          obscureText: obscureText,
-          keyboardType: inputType,
-          maxLines: maxLines,
-          minLines: minLines,
-          expands: expands,
-          textInputAction: textInputAction,
-          textAlignVertical: textAlignVertical,
-          style: TextStyle(
-            fontFamily: defaultFontFamily,
-            color: AppColors.textColor,
-          ),
-          decoration: inputDecoration(
-              accentAlignment: renderAccent ? accentAlignment : null,
-              accentIntensity: renderAccent ? accentIntensity : 0,
-              renderAccent: renderAccent,
-              alignLabelWithHint: alignLabelWithHint,
-              contentPadding: contentPadding,
-              label: label,
-              hint: hint,
-              icon: icon),
+          EdgeInsets margin = paddingStepOne}) {
+    // Auto-detect multiline keyboard type
+    final isMultiline = maxLines != 1 || minLines != null || expands;
+    final keyboardType = inputType ??
+        (isMultiline ? TextInputType.multiline : TextInputType.text);
+
+    return Container(
+      padding: padding,
+      margin: margin,
+      child: TextFormField(
+        autovalidateMode: validateMode,
+        textDirection: TextDirection.ltr,
+        controller: controller,
+        validator: validator,
+        obscureText: obscureText,
+        keyboardType: keyboardType,
+        maxLines: maxLines,
+        minLines: minLines,
+        expands: expands,
+        textInputAction: textInputAction,
+        textAlignVertical: textAlignVertical,
+        style: TextStyle(
+          fontFamily: defaultFontFamily,
+          color: AppColors.textColor,
         ),
-      );
+        decoration: inputDecoration(
+            accentAlignment: renderAccent ? accentAlignment : null,
+            accentIntensity: renderAccent ? accentIntensity : 0,
+            renderAccent: renderAccent,
+            alignLabelWithHint: alignLabelWithHint,
+            contentPadding: contentPadding,
+            label: label,
+            hint: hint,
+            icon: icon),
+      ),
+    );
+  }
 
   /// Creates a form field for email input with neumorphic design.
   ///
