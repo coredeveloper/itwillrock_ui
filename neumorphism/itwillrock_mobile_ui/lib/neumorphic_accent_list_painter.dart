@@ -15,11 +15,6 @@ class NeumorphicAccentListPainter extends CustomPainter {
   ///
   /// The [NeumorphicShadowPainter] is typically used in conjunction with
   /// other Neumorphic painters to achieve the desired visual effect.
-  ///
-  /// See also:
-  ///
-  ///  * [NeumorphicPainter], which is used to paint the main Neumorphic elements.
-  ///  * [NeumorphicAccentPainter], which is used to paint accent elements in a Neumorphic design.
   late NeumorphicShadowPainter shadowPainter;
 
   /// A painter that is used to render the surface of a Neumorphic design element.

@@ -691,14 +691,12 @@ class Neumorphism {
   /// ```dart
   /// Neumorphism.counter(
   ///   initialValue: 0,
-  ///   onIncrement: () => setState(() => _counter++),
-  ///   onDecrement: () => setState(() => _counter--),
+  ///   onChanged: (value) => setState(() => _counter = value),
   /// );
   /// ```
   ///
-  /// - [initialValue]: The starting value of the counter.
-  /// - [onIncrement]: Callback function to be called when the counter is incremented.
-  /// - [onDecrement]: Callback function to be called when the counter is decremented.
+  /// - `initialValue`: The starting value of the counter.
+  /// - `onChanged`: Callback function called when the counter value changes.
   static Widget counter(
           {EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne,

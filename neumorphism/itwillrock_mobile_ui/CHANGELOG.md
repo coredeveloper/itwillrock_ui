@@ -1,4 +1,8 @@
 # Changelog
+## 0.1.17
+### Other
+- Fixed unresolved doc references for dartdoc warnings
+
 ## 0.1.16
 ### Other
 - Fixed Dart formatting issues for pub.dev score compliance
