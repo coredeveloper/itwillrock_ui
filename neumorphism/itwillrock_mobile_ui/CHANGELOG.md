@@ -1,4 +1,13 @@
 # Changelog
+## 0.1.12
+### Features
+- Added multiline support to `textFormField()`:
+  - `maxLines`: Maximum number of lines (default 1, set to null for unlimited)
+  - `minLines`: Minimum number of lines to display
+  - `expands`: Whether to expand to fill available vertical space
+  - `textInputAction`: The action button to display on the keyboard
+  - `textAlignVertical`: Vertical alignment of text within the field
+
 ## 0.1.11
 ### Improvements
 - Replaced hardcoded inner shadow colors with AppColors for theme consistency

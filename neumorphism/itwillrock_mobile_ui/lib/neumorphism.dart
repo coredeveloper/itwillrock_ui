@@ -358,6 +358,11 @@ class Neumorphism {
           Alignment? accentAlignment,
           double accentIntensity = 0,
           TextInputType inputType = TextInputType.text,
+          int? maxLines = 1,
+          int? minLines,
+          bool expands = false,
+          TextInputAction? textInputAction,
+          TextAlignVertical? textAlignVertical,
           EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne}) =>
       Container(
@@ -370,6 +375,11 @@ class Neumorphism {
           validator: validator,
           obscureText: obscureText,
           keyboardType: inputType,
+          maxLines: maxLines,
+          minLines: minLines,
+          expands: expands,
+          textInputAction: textInputAction,
+          textAlignVertical: textAlignVertical,
           style: TextStyle(
             fontFamily: defaultFontFamily,
             color: AppColors.textColor,
