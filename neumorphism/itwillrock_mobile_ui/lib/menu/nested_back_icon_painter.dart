@@ -54,14 +54,18 @@ class NestedBackIconPainter extends NeumorphicShapePainter {
 
       // Draw chevron - same SIZE as single BackIconPainter
       var topLine = RRect.fromLTRBR(
-        0, 0,
-        chevronSize, step,
+        0,
+        0,
+        chevronSize,
+        step,
         Radius.circular(step / 2),
       );
 
       var bottomLine = RRect.fromLTRBR(
-        0, step * 2,
-        chevronSize, chevronSize,
+        0,
+        step * 2,
+        chevronSize,
+        chevronSize,
         const Radius.circular(4),
       );
 

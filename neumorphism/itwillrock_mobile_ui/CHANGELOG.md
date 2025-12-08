@@ -1,4 +1,8 @@
 # Changelog
+## 0.1.16
+### Other
+- Fixed Dart formatting issues for pub.dev score compliance
+
 ## 0.1.15
 ### Bug Fixes
 - Fixed `accentButton` color appearing darker/tinted when not pressed

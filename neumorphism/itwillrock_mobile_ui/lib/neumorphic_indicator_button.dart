@@ -84,9 +84,9 @@ class NeumorphicIndicatorButtonState extends State<NeumorphicIndicatorButton>
         vsync: this, duration: const Duration(milliseconds: 100));
 
     _shadowTween = Tween(begin: 1.0, end: 0.0).animate(_animationController);
-    _colorTween = ColorTween(
-            begin: AppColors.accentColor, end: AppColors.altAccentColor)
-        .animate(_animationController);
+    _colorTween =
+        ColorTween(begin: AppColors.accentColor, end: AppColors.altAccentColor)
+            .animate(_animationController);
 
     super.initState();
   }

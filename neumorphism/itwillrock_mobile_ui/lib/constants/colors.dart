@@ -102,7 +102,8 @@ class AppColors {
   static set accentColor(Color? value) => _accentOverride = value;
 
   /// Secondary accent color for gradients.
-  static Color get altAccentColor => _altAccentOverride ?? defaultAltAccentColor;
+  static Color get altAccentColor =>
+      _altAccentOverride ?? defaultAltAccentColor;
 
   /// Set custom alt accent color, or null for default.
   static set altAccentColor(Color? value) => _altAccentOverride = value;
@@ -134,7 +135,8 @@ class AppColors {
   /// Clears all overrides and uses default colors for the mode.
   static void switchColorMode(bool darkMode) {
     reset();
-    _backgroundColor = darkMode ? defaultBackgroundDark : defaultBackgroundLight;
+    _backgroundColor =
+        darkMode ? defaultBackgroundDark : defaultBackgroundLight;
   }
 
   /// Resets all colors to defaults.
