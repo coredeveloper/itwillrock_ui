@@ -75,6 +75,12 @@ class NeumorphicSwitch extends StatefulWidget {
   /// If this is set to `null`, the checkbox will be displayed as disabled.
   final ValueChanged<bool>? onChanged;
 
+  /// The initial value of the checkbox.
+  ///
+  /// If `true`, the checkbox will be initially checked.
+  /// If `false` (default), the checkbox will be initially unchecked.
+  final bool initialValue;
+
   /// A custom switch widget that uses a Neumorphic design.
   ///
   /// This widget is used to create a switch with a Neumorphic appearance,
@@ -87,6 +93,7 @@ class NeumorphicSwitch extends StatefulWidget {
       this.padding = emptyPadding,
       this.margin = emptyPadding,
       this.onChanged,
+      this.initialValue = false,
       super.key});
 
   @override
@@ -109,7 +116,9 @@ class CheckBoxState extends State<NeumorphicSwitch>
   @override
   void initState() {
     _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 100));
+        vsync: this,
+        duration: const Duration(milliseconds: 100),
+        value: widget.initialValue ? 1.0 : 0.0);
     _colorTween = ColorTween(
             begin: const Color(0x00FFFFFF), end: AppColors.altAccentColor)
         .animate(_animationController);

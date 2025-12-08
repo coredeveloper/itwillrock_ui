@@ -621,11 +621,13 @@ class Neumorphism {
   static Widget checkBox(
           {EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne,
+          bool initialValue = false,
           ValueChanged<bool>? onChanged}) =>
       NeumorphicSwitch(
         padding: padding,
         margin: margin,
         borderRadius: borderRadius,
+        initialValue: initialValue,
         onChanged: onChanged,
       );
 

@@ -1,4 +1,8 @@
 # Changelog
+## 0.1.8
+### Features
+- Added `initialValue` parameter to `checkBox()` to set the initial checked state
+
 ## 0.1.7
 ### Improvements
 - Improved nested back button animation style
