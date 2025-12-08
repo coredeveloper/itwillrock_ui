@@ -218,6 +218,8 @@ class Neumorphism {
           double height = double.infinity,
           bool dropShadow = true,
           bool dropInnerShadow = false,
+          List<Shadow>? shadows,
+          List<Shadow>? innerShadows,
           EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne,
           bool renderAccent = false,
@@ -234,9 +236,11 @@ class Neumorphism {
         accentAlignment: renderAccent ? accentAlignment : null,
         accentColor: renderAccent ? AppColors.accentColor : null,
         accentIntensity: renderAccent ? accentIntensity : 0,
-        shadows: dropShadow ? AppColors.currentShadows() : <Shadow>[],
-        innerShadows:
-            dropInnerShadow ? AppColors.currentInnerShadows() : <Shadow>[],
+        shadows:
+            dropShadow ? (shadows ?? AppColors.currentShadows()) : <Shadow>[],
+        innerShadows: dropInnerShadow
+            ? (innerShadows ?? AppColors.currentInnerShadows())
+            : <Shadow>[],
         borderGradient: AppColors.shadowGradient,
         gradient: color != null ? null : AppColors.shadowGradient,
         shape: RoundedRectangleBorder(

@@ -5,19 +5,19 @@ import '../../../constants/colors.dart';
 import 'neumorphic_button_painter.dart';
 import 'neumorphic_container_painter.dart';
 
-/// Default inner shadows for the indicator dot
-const innerShadows = [
-  Shadow(
-    color: Color(0x30000000),
-    blurRadius: 2,
-    offset: Offset(2, 2),
-  ),
-  Shadow(
-    color: Color(0x20FFFFFF),
-    blurRadius: 2,
-    offset: Offset(-2, -2),
-  ),
-];
+/// Returns inner shadows for the indicator dot using theme colors.
+List<Shadow> _getIndicatorInnerShadows() => [
+      Shadow(
+        color: AppColors.darkShadowColor.withAlpha(48),
+        blurRadius: 2,
+        offset: const Offset(2, 2),
+      ),
+      Shadow(
+        color: AppColors.lightShadowColor.withAlpha(32),
+        blurRadius: 2,
+        offset: const Offset(-2, -2),
+      ),
+    ];
 
 /// A neumorphic button with an indicator dot that shows active state
 class NeumorphicIndicatorButton extends StatefulWidget {
@@ -193,7 +193,7 @@ class NeumorphicIndicatorButtonState extends State<NeumorphicIndicatorButton>
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5)),
                         strokeWidth: 0.5,
-                        innerShadows: innerShadows),
+                        innerShadows: _getIndicatorInnerShadows()),
                     child: const SizedBox(
                       width: 10,
                       height: 10,

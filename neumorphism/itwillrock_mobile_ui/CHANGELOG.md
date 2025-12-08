@@ -1,4 +1,10 @@
 # Changelog
+## 0.1.11
+### Improvements
+- Replaced hardcoded inner shadow colors with AppColors for theme consistency
+  - `checkBox` and `indicatorButton` now use `AppColors.darkShadowColor` and `AppColors.lightShadowColor`
+  - Inner shadows now adapt to light/dark theme
+
 ## 0.1.10
 ### Bug Fixes
 - Fixed checkBox accent color: now shows no color when unchecked, accent color when checked

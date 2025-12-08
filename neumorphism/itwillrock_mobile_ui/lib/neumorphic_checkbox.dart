@@ -6,22 +6,19 @@ import 'constants/colors.dart';
 import 'neumorphic_container.dart';
 import 'neumorphic_container_painter.dart';
 
-/// A list of inner shadows used for the Neumorphic Checkbox widget.
-///
-/// This list defines the shadows that will be applied inside the checkbox
-/// to create a neumorphic effect, giving it a 3D appearance.
-const innerShadows = [
-  Shadow(
-    color: Color(0x30000000),
-    blurRadius: 2,
-    offset: Offset(2, 2),
-  ),
-  Shadow(
-    color: Color(0x20FFFFFF),
-    blurRadius: 2,
-    offset: Offset(-2, -2),
-  ),
-];
+/// Returns inner shadows for the checkbox indicator dot.
+List<Shadow> _getIndicatorInnerShadows() => [
+      Shadow(
+        color: AppColors.darkShadowColor.withAlpha(48),
+        blurRadius: 2,
+        offset: const Offset(2, 2),
+      ),
+      Shadow(
+        color: AppColors.lightShadowColor.withAlpha(32),
+        blurRadius: 2,
+        offset: const Offset(-2, -2),
+      ),
+    ];
 
 /// A custom switch widget that uses a neumorphic design.
 ///
@@ -291,7 +288,7 @@ class CheckBoxState extends State<NeumorphicSwitch>
                                 borderRadius: BorderRadius.circular(
                                     elementHeightOne / 4)),
                             strokeWidth: 0.5,
-                            innerShadows: innerShadows),
+                            innerShadows: _getIndicatorInnerShadows()),
                         child: const SizedBox(
                           width: elementHeightOne / 2,
                           height: elementHeightOne / 2,
