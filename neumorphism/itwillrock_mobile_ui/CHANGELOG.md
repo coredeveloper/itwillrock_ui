@@ -1,4 +1,11 @@
 # Changelog
+## 0.1.13
+### Bug Fixes
+- Fixed multiline `textFormField()` rendering:
+  - Added `alignLabelWithHint` to position hint/label at top for multiline fields
+  - Added `contentPadding` for custom padding control
+  - Also exposed in `inputDecoration()` for direct use
+
 ## 0.1.12
 ### Features
 - Added multiline support to `textFormField()`:

@@ -179,7 +179,9 @@ class Neumorphism {
           bool filled = true,
           bool renderAccent = false,
           Alignment? accentAlignment,
-          double accentIntensity = 0}) =>
+          double accentIntensity = 0,
+          bool alignLabelWithHint = false,
+          EdgeInsetsGeometry? contentPadding}) =>
       InputDecoration(
           enabledBorder: GradientOutlineInputBorder(
             accentAlignment: renderAccent ? accentAlignment : null,
@@ -195,6 +197,8 @@ class Neumorphism {
           fillColor: AppColors.mainColor,
           labelText: label,
           hintText: hint,
+          alignLabelWithHint: alignLabelWithHint,
+          contentPadding: contentPadding,
           border: GradientOutlineInputBorder(
             accentAlignment: renderAccent ? accentAlignment : null,
             accentColor: renderAccent ? AppColors.accentColor : null,
@@ -363,6 +367,8 @@ class Neumorphism {
           bool expands = false,
           TextInputAction? textInputAction,
           TextAlignVertical? textAlignVertical,
+          bool alignLabelWithHint = false,
+          EdgeInsetsGeometry? contentPadding,
           EdgeInsets padding = paddingStepOne,
           EdgeInsets margin = paddingStepOne}) =>
       Container(
@@ -388,6 +394,8 @@ class Neumorphism {
               accentAlignment: renderAccent ? accentAlignment : null,
               accentIntensity: renderAccent ? accentIntensity : 0,
               renderAccent: renderAccent,
+              alignLabelWithHint: alignLabelWithHint,
+              contentPadding: contentPadding,
               label: label,
               hint: hint,
               icon: icon),
