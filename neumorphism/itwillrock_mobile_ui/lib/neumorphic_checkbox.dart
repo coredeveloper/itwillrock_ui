@@ -120,7 +120,8 @@ class CheckBoxState extends State<NeumorphicSwitch>
         duration: const Duration(milliseconds: 100),
         value: widget.initialValue ? 1.0 : 0.0);
     _colorTween = ColorTween(
-            begin: AppColors.accentColor, end: AppColors.altAccentColor)
+            begin: AppColors.accentColor.withAlpha(0),
+            end: AppColors.accentColor)
         .animate(_animationController);
 
     _positionTween = Tween(begin: -1.0, end: 1.0).animate(_animationController);

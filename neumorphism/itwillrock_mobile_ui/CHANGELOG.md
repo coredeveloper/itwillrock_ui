@@ -1,4 +1,8 @@
 # Changelog
+## 0.1.10
+### Bug Fixes
+- Fixed checkBox accent color: now shows no color when unchecked, accent color when checked
+
 ## 0.1.9
 ### Improvements
 - Replaced hardcoded colors with AppColors for consistent theming
