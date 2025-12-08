@@ -1,4 +1,10 @@
 # Changelog
+## 0.1.9
+### Improvements
+- Replaced hardcoded colors with AppColors for consistent theming
+  - `checkBox`, `indicatorButton`, `softRoundButton` now use `AppColors.accentColor` and `AppColors.altAccentColor`
+  - User-defined accent colors are now properly applied across all components
+
 ## 0.1.8
 ### Features
 - Added `initialValue` parameter to `checkBox()` to set the initial checked state

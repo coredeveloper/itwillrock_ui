@@ -75,7 +75,7 @@ class NeumorphicSoftRoundButton extends StatefulWidget {
       this.color = const Color.fromARGB(0, 0, 0, 0),
       this.gradient,
       this.elevationMultiplier = 1,
-      this.accentColor = const Color(0x00FFFFFF),
+      this.accentColor,
       this.accentAlignment = Alignment.center,
       this.accentIntensity = 0,
       this.onTap,
@@ -200,7 +200,7 @@ class NeumorphicSoftRoundButtonState extends State<NeumorphicSoftRoundButton>
                 size: const Size(double.infinity, double.infinity),
                 painter: NeumorphicButtonPainter(
                   animationValue: _animationController.value,
-                  accentColor: widget.accentColor,
+                  accentColor: widget.accentColor ?? AppColors.accentColor,
                   accentAlignment: widget.accentAlignment,
                   accentIntensity: widget.accentIntensity > 0
                       ? widget.accentIntensity *
