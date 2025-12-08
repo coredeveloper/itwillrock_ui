@@ -1,4 +1,10 @@
 # Changelog
+## 0.1.15
+### Bug Fixes
+- Fixed `accentButton` color appearing darker/tinted when not pressed
+  - Button now renders exact color without darkening blend
+  - Reduced border gradient intensity for cleaner look
+
 ## 0.1.14
 ### Bug Fixes
 - Fixed `textFormField()` multiline keyboard type assertion error

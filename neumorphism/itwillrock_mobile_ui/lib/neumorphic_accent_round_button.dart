@@ -164,27 +164,24 @@ class NeumorphicAccentRoundButtonState
               size: const Size(double.infinity, double.infinity),
               painter: NeumorphicButtonPainter(
                 animationValue: _animationController.value,
-                blur: 5.0 - 5.0 * _shadowTween.value,
-                color: Color.alphaBlend(
-                    AppColors.darkShadowColor.withAlpha(
-                        (255 * ((1 - _shadowTween.value) / 4)).round()),
-                    widget.color),
+                blur: 0,
+                color: widget.color,
                 borderGradient: LinearGradient(
-                    stops: const [.5, 2],
+                    stops: const [0, 1],
                     begin: FractionalOffset.topLeft,
                     end: FractionalOffset.bottomRight,
                     colors: [
                       AppColors.lightShadowColor
-                          .withAlpha((255 * _shadowTween.value).round()),
+                          .withAlpha((128 * _shadowTween.value).round()),
                       AppColors.darkShadowColor
-                          .withAlpha((255 * (_shadowTween.value / 3)).round()),
+                          .withAlpha((64 * _shadowTween.value).round()),
                     ]),
                 shape: widget.shape,
                 strokeWidth: 0,
                 shadows: [
                   Shadow(
-                    color: widget.color.withAlpha((0.6 * 255).toInt()),
-                    blurRadius: 16.0 * _shadowTween.value,
+                    color: widget.color.withAlpha((0.5 * 255).toInt()),
+                    blurRadius: 12.0 * _shadowTween.value,
                     offset: Offset(0, 4.0 * _shadowTween.value),
                   ),
                 ],
